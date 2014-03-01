@@ -1,0 +1,270 @@
+1:Academy Raider:2:M14:Academy Raider
+2:Accorders Shield:1:M14:accorders-shield
+3:Accursed Spirit:0:M14:accursedd-spirit
+4:Act of Treason:0:M14:act-of-treason
+5:Advocate of the Beast:1:M14:advocate-of-the-beast
+6:Air Servant:1:M14:air-servant
+7:Ajani, Caller of the Pride:3:M14:ajani-caller0of-the-pride
+8:Ajani's Chosen:2:M14:ajanis-chosen
+9:Alter's Reap:0:M14:alters-reap
+10:Angelic Accord:1:M14:angelic-accord
+11:Angelic Wall:0:M14:angelic-wall
+12:Archaeomancer:0:M14:archaeomancer
+13:Archangel of Thune:3:M14:archangel-of-thune
+14:Armored Cancrix:0:M14:armored-cancrix
+15:Artificer's Hex:1:M14:artificers-hex
+16:Auramancer:0:M14:auramancer
+17:Awaken the Ancient:2:M14:awaken-the-ancient
+18:Banisher Priest:1:M14:banisher-priest
+19:Barrage of Expendables:1:M14:barrage-of-expendables
+20:Battle Sliver:1:M14:Battle Sliver
+21:Blessing:1:M14:blessing
+22:Blightcaster:1:M14:blightcaster
+23:Blood Bairn:0:M14:blood-bairn
+24:Blur Sliver:0:M14:blur-sliver
+25:Bogbrew Witch:2:M14:bogbrew-witch
+26:Bonescythe Sliver:2:M14:bonescythe-sliver
+27:Bramblecrush:1:M14:bramblecrush
+28:Brace the Elements:1:M14:brave-the-elements
+29:Briarpack Alpha:1:M14:briarpack-alpha
+30:Brindle Boar:0:M14:brindle-boar
+31:Bubbling Couldron:1:M14:bubbing-couldron
+32:Burning Earth:2:M14:burning-earth
+33:Cancel:0:M14:cancel
+34:Canyon Minotaur:0:M14:canyon-minotaur
+35:Capashen Knight:0:M14:capashen-knight
+36:Celestial Flare:0:M14:celestial-flare
+37:Chandra Pyromaster:3:M14:chandra-pyromaster
+38:Chandra's Outrage:0:M14:chandras-pheonix
+39:Charging Griffin:0:M14:charging-griffin
+40:Child of Night:0:M14:child-of-night
+41:Claustrophobia:0:M14:claustrophobia
+42:Clone:2:M14:clone
+43:Colossal Whale:2:M14:colossal-whale
+44:Congregate:0:M14:congregate
+45:Coral merfolk:0:M14:coral-merfolk
+64:Corpse Hauler:0:M14:corpse-hauler
+46:Corrupt:1:M14:corrupt
+47:Cyclops Tyrant:0:M14:cyclops-tyrant
+48:Dark Favor:0:M14:dark-favor
+49:Dark Prophecy:2:M14:dark-prophecy
+50:Darksteel Forge:3:M14:darksteel-forge
+51:Darksteel Ingot:1:M14:darksteel-ingot
+52:Dawnstrike Paladin:0:M14:dawnstrike-paladin
+53:Deadly Recluse:0:M14:deadly-recluse
+54:Deathgaze Cockatrice:0:M14:deathgaze-cockatrice
+55:Demolish:0:M14:demolish
+56:Devout Invocation:3:M14:devout-invocation
+57:Diablolic Tutor:0:M14:diabolic-tutor
+58:Dismiss into Dream:2:M14:dismiss-into-dream
+59:Disperse:0:M14:disperse
+60:Divination:0:M14:divination
+61:Divine Favor:0:M14:divine-favor
+62:Domestication:2:M14:domestication
+63:Doom Blade:1:M14:doom-blade
+65:Door of Destinies:2:M14:door-of-destinies
+66:Dragon Egg:1:M14:dragon-egg
+67:Dragon Hatchling:0:M14:dragon-hatchling
+68:Duress:0:M14:duress
+69:Elite Arcanist:2:M14:elite-arcanist
+70:Elixir of Immortality:1:M14:elixir-of-immortality
+71:Elvish Mystic:0:M14:elvish-mystic
+72:Encroaching Wastes:1:M14:encroaching-wastes
+73:Enlarge:1:M14:enlarge
+74:Essence Scatter:0:M14:essence-scatter
+75:Festering Newt:0:M14:festering-newt
+76:Fiendslayer Paladin:2:M14:fiendslayer-paladin
+77:Fireshrieker:1:M14:fireshrieker
+78:Flames of the Firebrand:1:M14:flames-of-the-firebrand
+79:Fleshpulper Giant:1:M14:fleshpulper-giant
+80:Fog:0:M14:fog
+81:Fortify:0:M14:fortify
+82:Frost Breath:0:M14:frost-breath
+83:Galerider Sliver:2:M14:galerider-sliver
+84:Garruk, Caller of Beasts:3:M14:garruk-caller-of-beasts
+85:Garruk's Horde:2:M14:garruks-horde
+86:Giant Growth:0:M14:giant-growth
+87:Giant Spider:0:M14:giant-spider
+88:Gladecover Scout:0:M14:gladecover-scout
+89:Glimpse the Future:1:M14:glimpse-the-future
+90:Gnawing Zombie:1:M14:gnawing-zombie
+91:Goblin Diplomats:2:M14:goblin-diplomats
+92:Goblin Shortcutter:0:M14:goblin-shortcutter
+93:Griffin Sentinel:0:M14:griffin-sentinel
+94:Grim Return:2:M14:grim-return
+95:Groundshaker Sliver:0:M14:groundshaker-sliver
+96:Guardian of the ges:2:M14:guardian-of-the-ages
+97:Haunted Plate Mail:2:M14:haunted-plate-mail
+98:Hive Stirrings:0:M14:hive-stirrings
+99:Howl of the Night Pack:1:M14:howl-of-the-night-pack
+100:Hunt the Weak:0:M14:hunt-the-weak
+101:Illusionary Armor:0:M14:illusionary-armor
+102:Imposing Sovereign:2:M14:imposing-sovereign
+103:Indestructibility:2:M14:indestructibility
+104:Into the Wilds:2:M14:into-the-wilds
+105:Jace, Memory Adept:3:M14:jace-memory-adept
+106:Jace's Mindseeker:2:M14:jaces-mindseeker
+107:Kalonian Hydra:3:M14:kalonian-hydra
+108:Kalonian Tusker:1:M14:kalonian-tusker
+109:Lava Axe:0:M14:lava-axe
+110:Lay of the Land:0:M14:lay-of-the-land
+111:Lifebane Zombie:2::M14:lifebane-zombie
+112:Lightning Talons:0:M14:lightning-talons
+113:Liliana of the Dark Realms:3:M14:liliana-of-the-dark-realms
+114:Liliana's Reaver:2:M14:lilianas-reaver
+115:Liturgy of Blood:0:M14:liturgy-of-blood
+116:Manaweft Sliver:1:M14:manawet-sliver
+117:Marauding Maulhorn:0:M14:marauding-Maulhorn
+118:Mark of the Vampire:0:M14:mark-of-the-vampire
+119:Master of Diversion:0:M14:master-of-diversion
+120:Megantic Sliver:2:M14:magantic-sliver
+121:Merfolk Spy:0:M14:merfolk-spy
+122:Messenger Drake:0:M14:messenger-drake
+123:Mind Rot:0:M14:mind-rot
+124:Mindsparker:2:M14:mindsparker
+125:Minotaur Abomination:0:M14:minotaur-abomination
+126:Molten Birth:0:M14:molten-birth
+127:Mutavault:2:M14:mutavault
+128:Naturalize:0:M14:naturalize
+129:Negate:0:M14:negate
+130:Nephalia Seakite:0:M14:nephalia-seakite
+131:Nightmare:2:M14:nightmare
+132:Nightwing Shade:0:M14:nightwing-shade
+133:Oath of the Ancient Wood:2:M14:oath-of-the-ancient-wood
+134:Ogre Battledriver:2:M14:ogre-battledriver
+135:Opportunity:1:M14:opportunity
+136:Pacifism:0:M14:pacifism
+137:Path of Bravery:2:M14:path-of-bravery
+138:Pay No Heed:0:M14:pay-no-heed
+139:Phantom Warrior:1:M14:phantom-warrior
+140:Pillarfiield Ox:0:M14:pillarfield-ox
+141:Pitchburn Devils:1:M14:pitchburn-devils
+142:Planar Cleansing:2:M14:planar-cleansing
+143:Plummet:0:M14:plummet
+144:Predatory Sliver:0:M14:predatory-sliver
+145:Primeval Bounty:3:M14:primeval-bounty
+146:Pyromancer's Gauntlet:2:M14:pyromancers-gauntlet
+147:Sanguine Bond:2:M14:sanguine-bond
+148:Savage Summoning:2:M14:savage-summoning
+149:Scavenging Ooze:2:M14:scavenging-ooze
+150:Scourge of Valkas:3:M14:scourge-of-valkas
+151:Scroll Thief:0:M14:scroll-thief
+152:Seacoast Drake:0:M14:seacoast-drake
+153:Seismic Stomp:0:m14:seismic-stomp
+154:Sengir Vampire:1:M14:sengir-vampire
+155:Sensory Deprivation:0:M14:sensorry-deprivation
+156:Sentinel Sliver:0:M14:sentinel-sliver
+157:Seraph of the Sword:2:M14:seraph-of-the-sword
+158:Serra Angel:1:M14:serra-angel
+159:Shadowborn Apostle:0:M14:shadowborn-apostle
+160:Shadowborn Demon:3:M14:shadowborn-demon
+161:Shimmering Grotto:1:M14:shimmering-grotto
+162:Shivan Dragon:2:M14:shivan-dragon
+163:Shiv's Embrace:1:M14:shivs-embrae
+164:Shock:0:M14:shock
+165:Show of Valor:0:M14:show-of-valor
+166:Shrivel:0:M14:srivel
+167:Siege Mastodon:0:M14:siege-mastodon
+168:Silence:2:M14:silence
+169:Sliver Construct:0:M14:sliver-construct
+170:Smelt:0:M14:smelt
+171:Solemn Offering:0:M14:solemn-offering
+172:Soulmender:0:M14:soulmender
+173:Spell Blast:1:M14:spell-blast
+174:Sporemound:0:M14:sporemound
+175:Staff of the Death Magus:1:M14:staff-of-the-death-magus
+176:Staff of the flame magus:1:M14:staff-of-the-flame-magus
+177:Staff of the Mind Magus:1:M14:staff-of-the-mind-magus
+178:Staff of the Sun Magus:1:M14:staff-of-the-sun-magus
+179:Staff of the Wild Magus:1:M14:staff-of-the-wild-magus
+180:Steelform Sliver:1:M14:steelform-sliver
+181:Stonehorn Chanter:1:M14:stonehorn-chanter
+182:Striking Sliver:0:M14:striking-sliver
+183:Strionic Resonator:2:M14:strionic-resonator
+184:Suntail Hawk:0:M14:suntail-hawk
+185:Syphon Sliver:2:M14:syphon-sliver
+186:Tenacious Dead:1:M14:tenacious-dead
+187:Thorncaster Sliver:2:M14:throrncaster-sliver
+188:Thunder Strike:0:M14:thunder-strike
+189:Tidebinder Mage:2:M14:tidebringer-mage
+190:Time Ebb:2:M14:time-ebb
+191:Tome Scour:0:M14:tome-scour
+192:Trading Post:2:M14:trading-post
+193:Trained Condor:0:M14:trained-condor
+194:Traumatize:2:M14:traumatize
+195:Trollhide:1:M14:trollhide
+196:Undead Minotaur:0:M14:undead-minotaur
+197:Vampire Warlord:1:M14:vampire-warlord
+198:Vastwood Hydra:2:M14:vastwood-hydra
+199:Verdant Haven:0:M14:verdant-haven
+200:Vial of Poison:1:M14:vial-of-poison
+201:Vile Rebirth:0:M14:vile-rebirth
+202:Volcanic Geyser:1:M14:volcanic-geyser
+203:Voracious Wurm:1:M14:coracious-wurm
+204:Wall of Frost:1:M14:wall-of-frost
+205:Wall of Swords:1:M14:wall-of-swords
+206:Warden of Evos Isle:1:M14:warden-of-evos-isle
+207:Water Servant:1:M14:water-servant
+208:Wild Guess:0:M14:wild-guess
+209:Wild Ricochet:2:M14:wild-ricochet
+210:Windreader Sphinx:3:M14:windreader-sphinx
+211:Windstorm:1:M14:windstorm
+212:Witchstalker:2:M14:witchstalker
+213:Woodborn Behemoth:1:M14:woodborn-behemoth
+214:Wring Flesh:0:M14:wring-flesh
+215:Xathrid Necromancer:2:M14:xathrid-necromancer
+216:Young Pyromancer:1:M14:young-pyromancer
+217:Zephyr Charge:0:M14:zephyr-charge
+218:Swamp (5ED):4:Lands:Swamp(5th)
+219:Swamp (7ED):4:Lands:Swamp(7th)
+220:Swamp (LEB):4:Lands:Swamp(BTA)
+221:Swamp (M14):4:Lands:Swamp(M14)
+222:Swamp (RTR):4:Lands:Swamp(RTR)
+223:Swamp (UNH):4:Lands:Swamp(UNH)
+224:Swamp (SHM):4:Lands:Swamp(SHM)
+225:Swamp (ZEN):4:Lands:Swamp(ZEN)
+226:Swamp (ZEN) v.2:4:Lands:Swamp(ZEN)2
+227:Plains (5ED):4:Lands:Plains(5th)
+228:Plains (7ED):4:Lands:Plains(7th)
+229:Plains (LEB):4:Lands:Plains(BTA)
+230:Plains (M14):4:Lands:Plains(M14)
+231:Plains (RTR):4:Lands:Plains(RTR)
+232:Plains (UNH):4:Lands:Plains(UNH)
+233:Plains (SHM):4:Lands:Plains(SHM)
+234:Plains (ZEN):4:Lands:Plains(ZEN)
+235:Plains (ZEN) v.2:4:Lands:Plains(ZEN)2
+236:Island (5ED):4:Lands:Island(5th)
+237:Island (7ED):4:Lands:Island(7th)
+238:Island (LEB):4:Lands:Island(BTA)
+239:Island (M14):4:Lands:Island(M14)
+240:Island (RTR):4:Lands:Island(RTR)
+241:Island (UNH):4:Lands:Island(UNH)
+242:Island (SHM):4:Lands:Island(SHM)
+243:Island (ZEN):4:Lands:Island(ZEN)
+244:Island (ZEN) v.2:4:Lands:Island(ZEN)2
+245:Forest (5ED):4:Lands:Forest(5th)
+246:Forest (7ED):4:Lands:Forest(7th)
+247:Forest (LEB):4:Lands:Forest(BTA)
+248:Forest (M14):4:Lands:Forest(M14)
+249:Forest (RTR):4:Lands:Forest(RTR)
+250:Forest (UNH):4:Lands:Forest(UNH)
+251:Forest (SHM):4:Lands:Forest(SHM)
+252:Forest (ZEN):4:Lands:Forest(ZEN)
+253:Forest (ZEN) v.2:4:Lands:Forest(ZEN)2
+254:Mountain (5ED):4:Lands:Mountain(5th)
+255:Mountain (7ED):4:Lands:Mountain(7th)
+256:Mountain (LEB):4:Lands:Mountain(BTA)
+257:Mountain (M14):4:Lands:Mountain(M14)
+258:Mountain (RTR):4:Lands:Mountain(RTR)
+259:Mountain (UNH):4:Lands:Mountain(UNH)
+260:Mountain (SHM):4:Lands:Mountain(SHM)
+261:Mountain (ZEN):4:Lands:Mountain(ZEN)
+262:Mountain (ZEN) v.2:4:Lands:Mountain(ZEN)2
+263:Clifftop Retreat:2:Lands:Clifftop Retreat
+264:Dragonskull Summit Retreat:2:Lands:Dragonskull Summit
+265:Drowned Catacombs:2:Lands:Drowned Catacomb
+266:Glacial Fortress:2:Lands:Glacial Fortress
+267:Hinterland Harbor:2:Lands:Hinterland Harbor
+268:Sunpetal Grove:2:Lands:Sunpetal Grove
+269:Rootbound Crag:2:Lands:Rootbound Crag
+270:Sulfur Falls:2:Lands:Sulfur Falls
