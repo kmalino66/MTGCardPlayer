@@ -126,6 +126,11 @@ public class DropBox {
 	{
 		return clickedObject;
 	}
+	
+	public String getSelected()
+	{
+		return optionList[clickedObject].getOption();
+	}
 }
 
 class DropBoxEntry {

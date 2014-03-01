@@ -51,4 +51,10 @@ public class ButtonHandler {
 		}
 		
 	}
+	
+	public static void scene1Click(MouseEvent e)
+	{
+		Rectangle rect = new Rectangle(Screen.width / 20, Screen.height - 100, 500, 100);
+		if(rect.contains(e.getPoint())) Screen.playGame();
+	}
 }

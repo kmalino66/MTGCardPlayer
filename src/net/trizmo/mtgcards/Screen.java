@@ -1,7 +1,6 @@
 package net.trizmo.mtgcards;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -24,7 +23,7 @@ import net.trizmo.mtgcards.inCameCards.LibraryCard;
 import net.trizmo.mtgcards.input.*;
 
 public class Screen extends JPanel implements Runnable, ActionListener {
-	
+
 	/**
 	 * TODO Next turn button
 	 * TODO Other useful buttons
@@ -60,9 +59,10 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public static LibraryCard[] libraryCards;
 	public static HandCard[] handCards;
 	public static DropBox[] dropBox = new DropBox[10];
-	
+
 	public static MouseEvent mEvent;
 	public static Font customFont;
+	public static Image dice;
 
 	public static int width;
 	public static int height;
@@ -101,10 +101,10 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public void paintComponent(Graphics g)
 	{
 
-		if(!isNewScene){
-			g.clearRect(0, 0, this.frame.getWidth(), this.frame.getHeight());
-		}
-		
+
+		g.clearRect(0, 0, this.frame.getWidth(), this.frame.getHeight());
+
+
 		if(scene == 0)
 		{
 			g.setColor(Color.black);
@@ -112,45 +112,14 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			g.drawImage(menu, 0, 0, this.frame.getWidth(), this.frame.getHeight(), null);
 		}
 
-		if(scene == 1 && !isNewScene)
+		if(scene == 1)
 		{
 			g.setColor(Color.black);
 			//g.drawImage(background, 0, 0, this.frame.getWidth(), this.frame.getHeight(), null);
 
-			isNewScene = true;
-			deckPick.removeAllItems();
-
-			for(int i = 0; i < deckAmmount; i++) {
-				deckPick.addItem(deckNames[i].getDeckName());
-			}
-			g.drawImage(background, 0, 0, width, height, null);
-
-			pnl.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			pnl.setVisible(true);
-			pnl.setSize(200,300);
-			pnl.setEnabled(true);
-			pnl.setBackground(Color.black);
-
-			pnl1.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			pnl1.setVisible(true);
-			pnl1.setSize(200,300);
-			pnl1.setEnabled(true);
-			pnl1.setBackground(Color.black);
-			pnl1.setLocation(400, 300);
-
-			pnl.add(deckPick);
-			pnl1.add(deckButton);
-
-			deckPick.setVisible(true);
-			deckPick.setSize(200, 50);
-
-			deckButton.addActionListener(this);
-			deckButton.setVisible(true);
-			deckButton.setSize(200, 50);
-			deckButton.setEnabled(true);
-
-			frame.add(pnl).setLocation(0,0);
-			frame.add(pnl1).setLocation(200, 0);
+			dropBox[0].drawDropBox(g);
+			dropBox[1].drawDropBox(g);
+			g.drawImage(new ImageIcon("res/Button/ButtonPlay.png").getImage(), Screen.width / 20, Screen.height - 100, 500, 100, null);
 
 		}
 
@@ -163,15 +132,12 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			CardDrawer.drawExiled(g);
 			CardDrawer.drawGraveyard(g);
 			CardDrawer.drawHand(g);
+			g.drawImage(dice, Screen.width - 100, 0, 100, 100, null);
 
 		}
 
-		for(int i = 0; i < dropBox.length; i++)
-		{
-			if(dropBox[i] != null) dropBox[i].drawDropBox(g);
-		}
 		ButtonHandler.sceneFinder(scene, g, width, height, buttonWidth, buttonHeight);
-		
+
 	}
 
 	//Loads all needed resources.
@@ -180,10 +146,11 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		FileManager.loadCards();
 		FileManager.getDeckNames();
 		FileManager.checkDeckFormat();
+		DropBoxHandler.createDropBoxes();
 		running = true;
-		
-		
-		
+
+
+
 	}
 
 	//The main running method, start to everything.	
@@ -209,6 +176,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	//Works when mouse clicked, thought i wouldn't remember
 	public void mouseClicked(MouseEvent e) {
 		if (scene == 0) ButtonHandler.scene0Click(e);
+		if (scene == 1) ButtonHandler.scene1Click(e);
 		if (scene == 2) CardHandler.doDraw(e);
 	}
 
@@ -235,7 +203,25 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			changeScene(2);
 		}
 	}
-	public void shuffleCards() {
+	
+	public static void playGame()
+	{
+		CoutHandler.event(dropBox[0].getSelected() + " was the deck that was picked");
+		
+		int par1 = dropBox[1].getClickedId();
+		if(par1 == 0) dice = new ImageIcon("res/Dice/LifeDie.png").getImage();//blue, green red white
+		if(par1 == 1) dice = new ImageIcon("res/Dice/LifeDieBlue.png").getImage();
+		if(par1 == 2) dice = new ImageIcon("res/Dice/LifeDieGreen.png").getImage();
+		if(par1 == 3) dice = new ImageIcon("res/Dice/LifeDieRed.png").getImage();
+		if(par1 == 4) dice = new ImageIcon("res/Dice/LifeDieWhite.png").getImage();
+		
+		FileManager.loadDeck(dropBox[0].getClickedId());
+		shuffleCards();
+		changeScene(2);
+	}
+	
+	
+	public static void shuffleCards() {
 		deckCard = new PlayableCard[totalCardsInDeck];
 		CoutHandler.event("Initialized the deck of " + totalCardsInDeck + " cards");
 

@@ -5,7 +5,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import net.trizmo.mtgcards.CardHandler;
-import net.trizmo.mtgcards.CoutHandler;
 import net.trizmo.mtgcards.Screen;
 
 public class MouseHandler implements MouseListener, MouseMotionListener{
@@ -30,9 +29,9 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
 	public void mouseClicked(MouseEvent arg0) {
 		screen.mouseClicked(arg0);
 		
-		for(int i = 0; i < screen.dropBox.length; i++)
+		for(int i = 0; i < Screen.dropBox.length; i++)
 		{
-			if(screen.dropBox[i] != null) screen.dropBox[i].checkClicked(arg0);
+			if(Screen.dropBox[i] != null) Screen.dropBox[i].checkClicked(arg0);
 			
 		}
 		
