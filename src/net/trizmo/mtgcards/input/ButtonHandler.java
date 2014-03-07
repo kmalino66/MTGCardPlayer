@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 import net.trizmo.mtgcards.Screen;
 
 public class ButtonHandler {
-	
+	//TODO Scene 2 clicked for buttons
 	public static Rectangle playButton;
 	public static Rectangle editDeckButton;
 	public static Rectangle closeButton;
@@ -56,5 +56,10 @@ public class ButtonHandler {
 	{
 		Rectangle rect = new Rectangle(Screen.width / 20, Screen.height - 100, 500, 100);
 		if(rect.contains(e.getPoint())) Screen.playGame();
+	}
+	
+	public static void scene2Click(MouseEvent e)
+	{
+		
 	}
 }

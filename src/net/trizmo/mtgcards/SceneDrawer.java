@@ -40,6 +40,15 @@ public class SceneDrawer {
 		//Life box
 		g.fillRect(Screen.width - 100, 0, 100, 125);
 		
+		//Next turn button
+		g.drawImage(new ImageIcon("res/Button/ButtonNextTurn.png").getImage(), Screen.width - 200, 0, null);
+		
+		//Life Buttons
+		int par1Height = 50;
+		int par2Width = 50 / 5;
+		
+		
+		
 	}
 	
 }

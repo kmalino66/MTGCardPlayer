@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -27,9 +28,9 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	/**
 	 * TODO Next turn button
 	 * TODO Other useful buttons
-	 * TODO Card Zoom?
+	 * TODO Card Zoom
 	 * TODO Make cards smaller in hand
-	 * TODO Finish dropBoxes
+	 * TODO Draw life text
 	 */
 
 	Thread thread = new Thread(this);
@@ -94,6 +95,13 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		buttonWidth = this.frame.getWidth() / 3;
 		buttonHeight = buttonWidth / 5;
 
+		
+		
+		CardHandler.spotLocations[0] = new Rectangle(Screen.width - ((Screen.cardWidth + 30) * 3) - 30, Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
+		CardHandler.spotLocations[1] = new Rectangle(0, width - cardWidth - 15, width - (15 * 3) - ((cardWidth + 30) * 3), cardHeight + 15);
+		CardHandler.spotLocations[3] = new Rectangle(Screen.width - ((Screen.cardWidth + 30) * 2) - 15, Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
+		CardHandler.spotLocations[4] = new Rectangle(Screen.width - (Screen.cardWidth + 30), Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
+		
 		thread.start();
 	}
 

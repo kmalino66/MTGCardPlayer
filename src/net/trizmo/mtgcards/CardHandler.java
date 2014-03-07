@@ -9,19 +9,23 @@ import net.trizmo.mtgcards.inCameCards.ExiledCard;
 import net.trizmo.mtgcards.inCameCards.GraveyardCard;
 import net.trizmo.mtgcards.inCameCards.HandCard;
 import net.trizmo.mtgcards.inCameCards.LibraryCard;
+import net.trizmo.mtgcards.input.ButtonHandler;
 
 public class CardHandler {
 	/**
 	 * TODO Change the array the card is in
+	 * TODO Put cards on top
 	 */
 
 	public static boolean mouseDown;
 
+	public static Rectangle[] spotLocations = new Rectangle[5];
+	
 	public static CardInteract interactionCard;
 
 	public static void mousePressed(MouseEvent e)
 	{
-		
+
 		mouseDown = true;
 		if(Screen.scene == 2) interactionCard = getInteractCard(e);
 
@@ -36,7 +40,16 @@ public class CardHandler {
 
 	public static void mouseReleased(MouseEvent e)
 	{
-				mouseDown = false;
+		mouseDown = false;
+
+		if(interactionCard != null && Screen.scene == 2)
+		{
+			if(spotLocations[0].contains(e.getPoint()))
+			{
+				
+			}
+		}
+		
 		interactionCard = null;
 	}
 
@@ -396,6 +409,9 @@ public class CardHandler {
 
 				}
 			}
+		}else{
+			ButtonHandler.scene2Click(e);
+
 		}
 	}
 
