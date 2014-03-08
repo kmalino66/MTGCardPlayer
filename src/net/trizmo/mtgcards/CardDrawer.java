@@ -70,7 +70,7 @@ public class CardDrawer {
 		{
 			if(Screen.handCards[i] != null)
 			{
-				g.drawImage(Screen.handCards[i].getTextureImage(), Screen.cardWidth * i, y, Screen.cardWidth, Screen.cardHeight, null);
+				g.drawImage(Screen.handCards[i].getTextureImage(), Screen.cardWidth * (i - 1), y, (int)(Screen.cardWidth * .95), (int)(Screen.cardHeight * .95), null);
 			}
 		}
 	}
@@ -91,7 +91,7 @@ public class CardDrawer {
 	public static void drawExiled(Graphics g)
 	{
 		int y = Screen.height - ((Screen.cardHeight + 15) - (15 / 2));
-		int x = Screen.width - ((Screen.cardWidth + 30) * 2) - 15;
+		int x = Screen.width - ((Screen.cardWidth + 30) * 1);
 
 		for(int i = Screen.exiledCards.length - 1; i > 0; i--){
 			if(Screen.exiledCards[i] != null)

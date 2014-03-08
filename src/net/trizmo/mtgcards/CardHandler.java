@@ -20,8 +20,10 @@ public class CardHandler {
 	public static boolean mouseDown;
 
 	public static Rectangle[] spotLocations = new Rectangle[5];
-	
+
 	public static CardInteract interactionCard;
+
+	public static int firstOpen;
 
 	public static void mousePressed(MouseEvent e)
 	{
@@ -41,18 +43,65 @@ public class CardHandler {
 	public static void mouseReleased(MouseEvent e)
 	{
 		mouseDown = false;
-
 		if(interactionCard != null && Screen.scene == 2)
 		{
+
 			if(spotLocations[0].contains(e.getPoint()))
 			{
+				for(int i = Screen.libraryCards.length - 1; i > 0; i--)
+				{
+					if (Screen.libraryCards[i] == null)
+					{
+						firstOpen = i;
+					}
+				}
+
+				Screen.libraryCards[firstOpen] = new LibraryCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage());
+				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
+
+			}else if(spotLocations[1].contains(e.getPoint()))
+			{
+				for(int i = Screen.handCards.length - 1; i > 0; i--)
+				{
+					if(Screen.handCards[i] == null)
+					{
+						firstOpen = i;
+					}
+				}
+
+				Screen.handCards[firstOpen] = new HandCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage(), firstOpen);
+				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
+				CoutHandler.event("Card put into hand");
+
+			}else if(spotLocations[3].contains(e.getPoint()))
+			{
+				for(int i = Screen.graveyardCards.length - 1; i > 0; i--)
+				{
+					if (Screen.graveyardCards[i] == null) firstOpen = i;
+				}
+
+
+				Screen.graveyardCards[firstOpen] = new GraveyardCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage());
+				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
+				CoutHandler.event("Card put into graveyard");
+				
+			}else if(spotLocations[4].contains(e.getPoint()))
+			{
+				for(int i = Screen.exiledCards.length - 1; i > 0; i--)
+				{
+					if (Screen.exiledCards[i] == null) firstOpen = i;
+				}
+
+
+				Screen.exiledCards[firstOpen] = new ExiledCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage());
+				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
+				CoutHandler.event("Card put into exile");
 				
 			}
-		}
-		
-		interactionCard = null;
-	}
+			interactionCard = null;
 
+		}
+	}
 	public static void splitByState()
 	{
 
@@ -279,7 +328,7 @@ public class CardHandler {
 		for(int i = Screen.graveyardCards.length - 1; i > 0; i--)
 		{
 			if(Screen.graveyardCards[i] != null ) {
-				if( Screen.graveyardCards[i].contains(e))
+				if( CardHandler.spotLocations[4].contains(e.getPoint()))
 				{
 					index = 1;
 					break;
@@ -332,7 +381,6 @@ public class CardHandler {
 		switch(interactionCard.getLocation())
 		{
 		case 0:
-			CoutHandler.event("You took a card from the library" + interactionCard.getArrayLocation());
 			for(int i = 0; i < Screen.battlefieldCards.length; i++)
 			{
 				if(Screen.battlefieldCards[i] == null)
@@ -371,6 +419,7 @@ public class CardHandler {
 				if(Screen.battlefieldCards[i] == null)
 				{
 					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.graveyardCards[interactionCard.getArrayLocation()].getImage(), mouseX - offsetX, mouseY - offsetY, false);
+					Screen.graveyardCards[interactionCard.getArrayLocation()] = null;
 					interactionCard = new CardInteract(2, i);
 					break;
 				}
@@ -384,8 +433,9 @@ public class CardHandler {
 				if(Screen.battlefieldCards[i] == null)
 				{
 					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.exiledCards[interactionCard.getArrayLocation()].getImage(), mouseX - offsetX, mouseY - offsetY, false);
-					interactionCard = new CardInteract(2, i);
 					Screen.exiledCards[interactionCard.getArrayLocation()] = null;
+					interactionCard = new CardInteract(2, i);
+	
 					break;
 				}
 			}
@@ -414,5 +464,6 @@ public class CardHandler {
 
 		}
 	}
+
 
 }

@@ -9,12 +9,13 @@ import net.trizmo.mtgcards.Screen;
 public class GraveyardCard {
 private Image textureImage;
 	
-	private int XPOSITION = Screen.width - ((Screen.deckCard[1].getWidth() + 30) * 2) + 30;
-	private int YPOSITION = Screen.height - (Screen.deckCard[1].getHeight() + 15) + (int)(15 / 2);
+	private int XPOSITION = Screen.width - ((Screen.cardWidth + 30) * 2) + 30;
+	private int YPOSITION = Screen.height - (Screen.cardHeight+ 15) + (int)(15 / 2);
 	
 	public GraveyardCard(Image textureImage)
 	{
 		this.textureImage = textureImage;
+		
 	}
 	
 	public Image getImage()

@@ -95,10 +95,11 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		buttonWidth = this.frame.getWidth() / 3;
 		buttonHeight = buttonWidth / 5;
 
-		
+		cardWidth = (int)(width * (187.5 / 1920));
+		cardHeight = (int)((width * (187.5 / 1920)) / .717);
 		
 		CardHandler.spotLocations[0] = new Rectangle(Screen.width - ((Screen.cardWidth + 30) * 3) - 30, Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
-		CardHandler.spotLocations[1] = new Rectangle(0, width - cardWidth - 15, width - (15 * 3) - ((cardWidth + 30) * 3), cardHeight + 15);
+		CardHandler.spotLocations[1] = new Rectangle(0, Screen.height - ((Screen.cardHeight + 15) - (15/2)), width - (15 * 3) - ((cardWidth + 30) * 3), cardHeight + 15);
 		CardHandler.spotLocations[3] = new Rectangle(Screen.width - ((Screen.cardWidth + 30) * 2) - 15, Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
 		CardHandler.spotLocations[4] = new Rectangle(Screen.width - (Screen.cardWidth + 30), Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
 		
@@ -251,8 +252,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 
 
 		}
-		cardWidth = (int)(width * (187.5 / 1920));
-		cardHeight = (int)((width * (187.5 / 1920)) / .717);
+		
 		deckCard = null;
 
 	}
