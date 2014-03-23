@@ -30,7 +30,7 @@ public class HandCard {
 	
 	public boolean contains(MouseEvent e)
 	{
-		Rectangle rect = new Rectangle(Screen.cardWidth * index, Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth, Screen.cardHeight);
+		Rectangle rect = new Rectangle((int)((Screen.cardWidth * index) * .9), Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), (int)(Screen.cardWidth * .9) , (int)(Screen.cardHeight * .9));
 		return rect.contains(e.getPoint());
 	}
 	

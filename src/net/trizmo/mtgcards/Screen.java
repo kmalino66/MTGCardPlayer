@@ -26,10 +26,9 @@ import net.trizmo.mtgcards.input.*;
 public class Screen extends JPanel implements Runnable, ActionListener {
 
 	/**
-	 * TODO Next turn button
+	 * TODO Next turn button method
 	 * TODO Other useful buttons
 	 * TODO Card Zoom
-	 * TODO Make cards smaller in hand
 	 * TODO Draw life text
 	 */
 
@@ -60,6 +59,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public static LibraryCard[] libraryCards;
 	public static HandCard[] handCards;
 	public static DropBox[] dropBox = new DropBox[10];
+	public static Rectangle[] lifeBoxes = new Rectangle[6];
 
 	public static MouseEvent mEvent;
 	public static Font customFont;
@@ -74,6 +74,8 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public static int cardWidth;
 	public static int cardHeight;
 	public static int scene = 0;
+	
+	public static int lifeAmmount;
 
 	public boolean isNewScene = false;
 	public static boolean running = false;
@@ -102,6 +104,13 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		CardHandler.spotLocations[1] = new Rectangle(0, Screen.height - ((Screen.cardHeight + 15) - (15/2)), width - (15 * 3) - ((cardWidth + 30) * 3), cardHeight + 15);
 		CardHandler.spotLocations[3] = new Rectangle(Screen.width - ((Screen.cardWidth + 30) * 2) - 15, Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
 		CardHandler.spotLocations[4] = new Rectangle(Screen.width - (Screen.cardWidth + 30), Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
+		
+		lifeBoxes[0] = new Rectangle(width - 100, 100, 100, 20);
+		lifeBoxes[1] = new Rectangle(width - 100, 120, 100, 20);
+		lifeBoxes[2] = new Rectangle(width - 100, 140, 100, 20);
+		lifeBoxes[3] = new Rectangle(width - 100, 160, 100, 20);
+		lifeBoxes[4] = new Rectangle(width - 100, 180, 100, 20);
+		lifeBoxes[5] = new Rectangle(width - 100, 200, 100, 20);
 		
 		thread.start();
 	}
@@ -143,6 +152,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			CardDrawer.drawHand(g);
 			g.drawImage(dice, Screen.width - 100, 0, 100, 100, null);
 
+			StackManager.reformatStacks();
 		}
 
 		ButtonHandler.sceneFinder(scene, g, width, height, buttonWidth, buttonHeight);
@@ -156,9 +166,8 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		FileManager.getDeckNames();
 		FileManager.checkDeckFormat();
 		DropBoxHandler.createDropBoxes();
+		lifeAmmount = 20;
 		running = true;
-
-
 
 	}
 
@@ -245,7 +254,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 					}
 
 					deckCard[numInDeck] = new PlayableCard(0, 0, (int)(width * (187.5 / 1920)), (int)((width * (187.5 / 1920)) / .717), false, true, false, false, false, false, new ImageIcon("res/CardsAndDecks/CardTextures/" + deck[i].getSetName() + "/" + deck[i].getTextureName() + ".jpg").getImage());
-					System.out.println("res/CardsAndDecks/CardTextures/" + deck[i].getSetName() + deck[i].getTextureName() + ".jpg");
 					CardHandler.splitByState();
 				}
 			}

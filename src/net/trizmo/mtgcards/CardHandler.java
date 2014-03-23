@@ -13,7 +13,6 @@ import net.trizmo.mtgcards.input.ButtonHandler;
 
 public class CardHandler {
 	/**
-	 * TODO Change the array the card is in
 	 * TODO Put cards on top
 	 */
 
@@ -30,7 +29,16 @@ public class CardHandler {
 
 		mouseDown = true;
 		if(Screen.scene == 2) interactionCard = getInteractCard(e);
+		Rectangle rect = new Rectangle(Screen.width - 100, 100, 100, 120);
 
+		if(Screen.scene == 2)
+		{
+			if(rect.contains(e.getPoint()))
+			{
+				LifeHandler.changeLife(e);
+			}
+			rect = null;
+		}
 	}
 
 	public static void mouseDragged(MouseEvent e)
@@ -48,7 +56,7 @@ public class CardHandler {
 
 			if(spotLocations[0].contains(e.getPoint()))
 			{
-				for(int i = Screen.libraryCards.length - 1; i > 0; i--)
+				for(int i = Screen.libraryCards.length - 1; i >= 0; i--)
 				{
 					if (Screen.libraryCards[i] == null)
 					{
@@ -61,7 +69,7 @@ public class CardHandler {
 
 			}else if(spotLocations[1].contains(e.getPoint()))
 			{
-				for(int i = Screen.handCards.length - 1; i > 0; i--)
+				for(int i = Screen.handCards.length - 1; i >= 0; i--)
 				{
 					if(Screen.handCards[i] == null)
 					{
@@ -71,11 +79,10 @@ public class CardHandler {
 
 				Screen.handCards[firstOpen] = new HandCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage(), firstOpen);
 				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
-				CoutHandler.event("Card put into hand");
 
 			}else if(spotLocations[3].contains(e.getPoint()))
 			{
-				for(int i = Screen.graveyardCards.length - 1; i > 0; i--)
+				for(int i = Screen.graveyardCards.length - 1; i >= 0; i--)
 				{
 					if (Screen.graveyardCards[i] == null) firstOpen = i;
 				}
@@ -83,11 +90,10 @@ public class CardHandler {
 
 				Screen.graveyardCards[firstOpen] = new GraveyardCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage());
 				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
-				CoutHandler.event("Card put into graveyard");
-				
+
 			}else if(spotLocations[4].contains(e.getPoint()))
 			{
-				for(int i = Screen.exiledCards.length - 1; i > 0; i--)
+				for(int i = Screen.exiledCards.length - 1; i >= 0; i--)
 				{
 					if (Screen.exiledCards[i] == null) firstOpen = i;
 				}
@@ -95,8 +101,7 @@ public class CardHandler {
 
 				Screen.exiledCards[firstOpen] = new ExiledCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage());
 				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
-				CoutHandler.event("Card put into exile");
-				
+
 			}
 			interactionCard = null;
 
@@ -231,19 +236,14 @@ public class CardHandler {
 		par5 = checkExileClicked(e);
 
 		if(par3 != null){
-			CoutHandler.event("Clicked a battlefield card");
 			return par3;
 		}else if (par2 != null){
-			CoutHandler.event("Clicked a hand card");			
 			return par2;
 		}else if (par1 != null){
-			CoutHandler.event("Clicked the library");
 			return par1;
 		}else if (par4 != null){
-			CoutHandler.event("Clicked a graveyard card");
 			return par4;
 		}else if (par5 != null){
-			CoutHandler.event("Clicked a Exiled card, it's on the island");
 			return par5;
 		}else{
 			return null;
@@ -325,12 +325,12 @@ public class CardHandler {
 	public static CardInteract checkGraveyardClicked(MouseEvent e)
 	{
 		int index = -1;
-		for(int i = Screen.graveyardCards.length - 1; i > 0; i--)
+		for(int i = Screen.graveyardCards.length - 1; i >= 0; i--)
 		{
 			if(Screen.graveyardCards[i] != null ) {
-				if( CardHandler.spotLocations[4].contains(e.getPoint()))
+				if( CardHandler.spotLocations[3].contains(e.getPoint()))
 				{
-					index = 1;
+					index = i;
 					break;
 				}
 			}
@@ -348,11 +348,11 @@ public class CardHandler {
 	public static CardInteract checkExileClicked(MouseEvent e)
 	{
 		int index = -1;
-		for(int i = Screen.graveyardCards.length - 1; i > 0; i--)
+		for(int i = Screen.exiledCards.length - 1; i >= 0; i--)
 		{
-			if(Screen.graveyardCards[i] != null)
+			if(Screen.exiledCards[i] != null)
 			{
-				if(Screen.graveyardCards[i].contains(e))
+				if(CardHandler.spotLocations[4].contains(e.getPoint()))
 				{
 					index = i;
 					break;
@@ -385,7 +385,7 @@ public class CardHandler {
 			{
 				if(Screen.battlefieldCards[i] == null)
 				{
-					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.libraryCards[interactionCard.getArrayLocation()].getImage(), mouseX - offsetX, mouseY - offsetY, false);
+					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.libraryCards[interactionCard.getArrayLocation()].getImage(), mouseX, mouseY, false);
 					Screen.libraryCards[interactionCard.getArrayLocation()] = null;
 					interactionCard = new CardInteract(2, i);
 					break;
@@ -399,7 +399,7 @@ public class CardHandler {
 			{
 				if(Screen.battlefieldCards[i] == null)
 				{
-					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.handCards[interactionCard.getArrayLocation()].getTextureImage(), mouseX - offsetX, mouseY - offsetY, false);
+					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.handCards[interactionCard.getArrayLocation()].getTextureImage(), mouseX, mouseY, false);
 					Screen.handCards[interactionCard.getArrayLocation()] = null;
 					interactionCard = new CardInteract(2, i);
 					break;
@@ -418,7 +418,7 @@ public class CardHandler {
 			{
 				if(Screen.battlefieldCards[i] == null)
 				{
-					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.graveyardCards[interactionCard.getArrayLocation()].getImage(), mouseX - offsetX, mouseY - offsetY, false);
+					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.graveyardCards[interactionCard.getArrayLocation()].getImage(), mouseX, mouseY, false);
 					Screen.graveyardCards[interactionCard.getArrayLocation()] = null;
 					interactionCard = new CardInteract(2, i);
 					break;
@@ -432,10 +432,10 @@ public class CardHandler {
 			{
 				if(Screen.battlefieldCards[i] == null)
 				{
-					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.exiledCards[interactionCard.getArrayLocation()].getImage(), mouseX - offsetX, mouseY - offsetY, false);
+					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.exiledCards[interactionCard.getArrayLocation()].getImage(), mouseX, mouseY, false);
 					Screen.exiledCards[interactionCard.getArrayLocation()] = null;
 					interactionCard = new CardInteract(2, i);
-	
+
 					break;
 				}
 			}

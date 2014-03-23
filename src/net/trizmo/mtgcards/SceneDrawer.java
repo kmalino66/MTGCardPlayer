@@ -43,11 +43,12 @@ public class SceneDrawer {
 		//Next turn button
 		g.drawImage(new ImageIcon("res/Button/ButtonNextTurn.png").getImage(), Screen.width - 200, 0, null);
 		
-		//Life Buttons
-		int par1Height = 50;
-		int par2Width = 50 / 5;
-		
-		
+		g.drawImage(new ImageIcon("res/Button/plus10.png").getImage(), Screen.width - 100, 100, 100, 20, null);
+		g.drawImage(new ImageIcon("res/Button/plus5.png").getImage(), Screen.width - 100, 120, 100, 20, null);
+		g.drawImage(new ImageIcon("res/Button/plus1.png").getImage(), Screen.width - 100, 140, 100, 20, null);
+		g.drawImage(new ImageIcon("res/Button/minus1.png").getImage(), Screen.width - 100, 160, 100, 20, null);
+		g.drawImage(new ImageIcon("res/Button/minus5.png").getImage(), Screen.width - 100, 180, 100, 20, null);
+		g.drawImage(new ImageIcon("res/Button/minus10.png").getImage(), Screen.width - 100, 200, 100, 20, null);
 		
 	}
 	

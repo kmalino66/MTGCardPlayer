@@ -70,7 +70,7 @@ public class CardDrawer {
 		{
 			if(Screen.handCards[i] != null)
 			{
-				g.drawImage(Screen.handCards[i].getTextureImage(), Screen.cardWidth * (i - 1), y, (int)(Screen.cardWidth * .95), (int)(Screen.cardHeight * .95), null);
+				g.drawImage(Screen.handCards[i].getTextureImage(), (int)((Screen.cardWidth * (i)) * .9), y, (int)(Screen.cardWidth * .9), (int)(Screen.cardHeight * .9), null);
 			}
 		}
 	}
@@ -80,10 +80,11 @@ public class CardDrawer {
 		int y = Screen.height - ((Screen.cardHeight + 15) - (15 / 2));
 		int x = Screen.width - ((Screen.cardWidth + 30) * 2) - 15;
 
-		for(int i = Screen.graveyardCards.length - 1; i > 0; i--){
+		for(int i = Screen.graveyardCards.length - 1; i >= 0; i--){
 			if(Screen.graveyardCards[i] != null)
 			{
 				g.drawImage(Screen.graveyardCards[i].getImage(), x, y, Screen.cardWidth, Screen.cardHeight, null);
+				break;
 			}
 		}
 	}
@@ -93,7 +94,7 @@ public class CardDrawer {
 		int y = Screen.height - ((Screen.cardHeight + 15) - (15 / 2));
 		int x = Screen.width - ((Screen.cardWidth + 30) * 1);
 
-		for(int i = Screen.exiledCards.length - 1; i > 0; i--){
+		for(int i = Screen.exiledCards.length - 1; i >= 0; i--){
 			if(Screen.exiledCards[i] != null)
 			{
 				g.drawImage(Screen.exiledCards[i].getImage(), x, y, Screen.cardWidth, Screen.cardHeight, null);

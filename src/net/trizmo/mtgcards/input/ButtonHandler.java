@@ -60,6 +60,10 @@ public class ButtonHandler {
 	
 	public static void scene2Click(MouseEvent e)
 	{
-		
+		Rectangle rect = new Rectangle(Screen.width - 200, 0, 100, 20);
+		if(rect.contains(e.getPoint()))
+		{
+			
+		}
 	}
 }
