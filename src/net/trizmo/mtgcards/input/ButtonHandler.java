@@ -8,9 +8,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 import net.trizmo.mtgcards.Screen;
+import net.trizmo.mtgcards.StackManager;
 
 public class ButtonHandler {
-	//TODO Scene 2 clicked for buttons
 	public static Rectangle playButton;
 	public static Rectangle editDeckButton;
 	public static Rectangle closeButton;
@@ -63,7 +63,14 @@ public class ButtonHandler {
 		Rectangle rect = new Rectangle(Screen.width - 200, 0, 100, 20);
 		if(rect.contains(e.getPoint()))
 		{
-			
+			StackManager.drawCard();
+			for(int i = 0; i < Screen.battlefieldCards.length; i++)
+			{
+				if(Screen.battlefieldCards[i] != null && Screen.battlefieldCards[i].getTapped())
+				{
+					Screen.battlefieldCards[i].setTapped(false);
+				}
+			}
 		}
 	}
 }

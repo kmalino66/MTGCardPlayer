@@ -1,5 +1,7 @@
 package net.trizmo.mtgcards;
 
+import net.trizmo.mtgcards.inCameCards.HandCard;
+
 public class StackManager {
 	public static void reformatStacks()
 	{
@@ -10,6 +12,10 @@ public class StackManager {
 			{
 				Screen.battlefieldCards[i] = Screen.battlefieldCards[i+1];
 				Screen.battlefieldCards[i+1] = null;
+				if(i + 1 == CardHandler.interactionCard.getArrayLocation())
+				{
+					CardHandler.interactionCard = new CardInteract(2, i);
+				}
 			}
 		}
 		
@@ -51,6 +57,26 @@ public class StackManager {
 			{
 				Screen.exiledCards[i] = Screen.exiledCards[i + 1];
 				Screen.exiledCards[i + 1] = null;
+			}
+		}
+	}
+
+	public static void drawCard() 
+	{
+		for(int i = 0; i < Screen.handCards.length; i++)
+		{
+			if(Screen.handCards[i] == null)
+			{
+				for(int j = Screen.libraryCards.length - 1; j > 0; j--)
+				{
+					if(Screen.libraryCards[j] != null)
+					{
+						Screen.handCards[i] = new HandCard(Screen.libraryCards[j].getImage(), i);
+						Screen.libraryCards[j] = null;
+						break;
+					}
+				}
+				break;
 			}
 		}
 	}

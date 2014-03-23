@@ -41,6 +41,7 @@ public class SceneDrawer {
 		g.fillRect(Screen.width - 100, 0, 100, 125);
 		
 		//Next turn button
+		
 		g.drawImage(new ImageIcon("res/Button/ButtonNextTurn.png").getImage(), Screen.width - 200, 0, null);
 		
 		g.drawImage(new ImageIcon("res/Button/plus10.png").getImage(), Screen.width - 100, 100, 100, 20, null);

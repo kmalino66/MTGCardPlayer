@@ -24,9 +24,7 @@ import net.trizmo.mtgcards.inCameCards.LibraryCard;
 import net.trizmo.mtgcards.input.*;
 
 public class Screen extends JPanel implements Runnable, ActionListener {
-
-	/**
-	 * TODO Next turn button method
+/**
 	 * TODO Other useful buttons
 	 * TODO Card Zoom
 	 * TODO Draw life text
@@ -146,10 +144,11 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			g.drawImage(background, 0, 0, width, height, null);
 			SceneDrawer.scene2(g);
 			CardDrawer.drawLibrary(g);
-			CardDrawer.drawBattlefield(g);
 			CardDrawer.drawExiled(g);
 			CardDrawer.drawGraveyard(g);
 			CardDrawer.drawHand(g);
+			CardDrawer.drawBattlefield(g);
+
 			g.drawImage(dice, Screen.width - 100, 0, 100, 100, null);
 
 			StackManager.reformatStacks();
@@ -259,6 +258,11 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			}
 
 
+		}
+		
+		for(int j = 0; j < 7; j++)
+		{
+			StackManager.drawCard();
 		}
 		
 		deckCard = null;

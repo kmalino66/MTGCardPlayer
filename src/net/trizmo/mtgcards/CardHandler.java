@@ -3,6 +3,7 @@ package net.trizmo.mtgcards;
 import java.awt.MouseInfo;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 import net.trizmo.mtgcards.inCameCards.BattlefieldCard;
 import net.trizmo.mtgcards.inCameCards.ExiledCard;
@@ -12,9 +13,6 @@ import net.trizmo.mtgcards.inCameCards.LibraryCard;
 import net.trizmo.mtgcards.input.ButtonHandler;
 
 public class CardHandler {
-	/**
-	 * TODO Put cards on top
-	 */
 
 	public static boolean mouseDown;
 
@@ -409,7 +407,18 @@ public class CardHandler {
 			break;
 		case 2:
 
+			for(int i = 0; i < Screen.battlefieldCards.length; i++)
+			{
+				if(Screen.battlefieldCards[i] == null && i != interactionCard.getArrayLocation() - 1)
+				{
+					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.battlefieldCards[interactionCard.getArrayLocation()]);
+					Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
+					interactionCard = new CardInteract(2, i);
+					break;
+				}
+			}
 			Screen.battlefieldCards[interactionCard.getArrayLocation()].setPos((int)(mouseX), (int) (mouseY));
+
 
 			break;
 		case 3:
@@ -465,5 +474,35 @@ public class CardHandler {
 		}
 	}
 
+	public static void reshuffle()
+	{
+		Random rand = new Random();
 
+		LibraryCard[] par1temp = new LibraryCard[Screen.libraryCards.length];
+		
+		for(int k = 0; k < par1temp.length; k++)
+		{
+			par1temp[k] = Screen.libraryCards[k];
+		}
+
+		for(int j = 0; j < Screen.libraryCards.length; j++)
+		{
+			Screen.libraryCards[j] = null;
+		}
+		
+		for(int i = 0; i < par1temp.length; i++)
+		{
+			int par2 = rand.nextInt(Screen.libraryCards.length);
+
+			if(par1temp[i] != null)
+			{
+				while(Screen.libraryCards[par2] != null)
+				{
+					par2 = rand.nextInt(Screen.libraryCards.length);
+				}
+
+				Screen.libraryCards[par2] = par1temp[i];
+			}
+		}
+	}
 }

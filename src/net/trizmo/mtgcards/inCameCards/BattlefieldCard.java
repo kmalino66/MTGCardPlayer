@@ -26,6 +26,23 @@ public class BattlefieldCard {
 
 	}
 
+	public BattlefieldCard(BattlefieldCard battlefieldCard) {
+		if(!battlefieldCard.getTapped())
+		{
+		this.textureImage = battlefieldCard.textureImage;
+		this.x = battlefieldCard.getX();
+		this.y = battlefieldCard.getY();
+		this.tapped = battlefieldCard.getTapped();
+	
+		}else
+		{
+			this.textureImage = battlefieldCard.textureImage;
+			this.tx = battlefieldCard.getTX();
+			this.ty = battlefieldCard.getTY();
+			this.tapped = battlefieldCard.getTapped();
+		}
+	}
+
 	public Image getImage()
 	{
 		return textureImage;
