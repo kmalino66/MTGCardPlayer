@@ -51,6 +51,10 @@ public class SceneDrawer {
 		g.drawImage(new ImageIcon("res/Button/minus5.png").getImage(), Screen.width - 100, 180, 100, 20, null);
 		g.drawImage(new ImageIcon("res/Button/minus10.png").getImage(), Screen.width - 100, 200, 100, 20, null);
 		
+		//Restart and Mullagain buttons
+		g.drawImage(new ImageIcon("res/Button/ButtonReshuffle.png").getImage(), Screen.width - 200, 20, 100, 20, null);
+		g.drawImage(new ImageIcon("res/Button/ButtonMullagain.png").getImage(), Screen.width - 200, 40, 100, 20, null);
+		
 	}
 	
 }

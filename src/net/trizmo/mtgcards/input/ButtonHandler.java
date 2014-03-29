@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
+import net.trizmo.mtgcards.CardHandler;
 import net.trizmo.mtgcards.Screen;
 import net.trizmo.mtgcards.StackManager;
 
@@ -71,6 +72,19 @@ public class ButtonHandler {
 					Screen.battlefieldCards[i].setTapped(false);
 				}
 			}
+		}
+		
+		Rectangle rect1 = new Rectangle(Screen.width - 200, 20, 100, 20);
+		if(rect1.contains(e.getPoint()))
+		{
+			CardHandler.reshuffle(); //Reshuffles cards
+		}
+		
+		Rectangle rect2 = new Rectangle(Screen.width - 200, 40, 100, 20);
+		if(rect2.contains(e.getPoint()))
+		{
+			CardHandler.mullagain(Screen.mullagainNumber);
+			Screen.mullagainNumber++;
 		}
 	}
 }

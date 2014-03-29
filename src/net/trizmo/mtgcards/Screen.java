@@ -72,11 +72,13 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public static int cardWidth;
 	public static int cardHeight;
 	public static int scene = 0;
+	public static int mullagainNumber = 0;
 	
 	public static int lifeAmmount;
 
 	public boolean isNewScene = false;
 	public static boolean running = false;
+	public static boolean whiteText = false;
 
 	private static final long serialVersionUID = 1L;
 
@@ -150,7 +152,17 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			CardDrawer.drawBattlefield(g);
 
 			g.drawImage(dice, Screen.width - 100, 0, 100, 100, null);
-
+			
+			if(whiteText)
+			{
+				g.setColor(Color.white);
+			}else
+			{
+				g.setColor(Color.BLACK);
+			}
+			g.drawString("" + (lifeAmmount) + "", Screen.width - 60, 50);
+			
+			
 			StackManager.reformatStacks();
 		}
 
@@ -225,12 +237,19 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	{
 		CoutHandler.event(dropBox[0].getSelected() + " was the deck that was picked");
 		
-		int par1 = dropBox[1].getClickedId();
-		if(par1 == 0) dice = new ImageIcon("res/Dice/LifeDie.png").getImage();//blue, green red white
+		int par1 = dropBox[1].getClickedId();//blue, green red white
+		if(par1 == 0) {
+			dice = new ImageIcon("res/Dice/LifeDie.png").getImage();
+			whiteText = true;
+		}
 		if(par1 == 1) dice = new ImageIcon("res/Dice/LifeDieBlue.png").getImage();
 		if(par1 == 2) dice = new ImageIcon("res/Dice/LifeDieGreen.png").getImage();
 		if(par1 == 3) dice = new ImageIcon("res/Dice/LifeDieRed.png").getImage();
-		if(par1 == 4) dice = new ImageIcon("res/Dice/LifeDieWhite.png").getImage();
+		if(par1 == 4) {
+			dice = new ImageIcon("res/Dice/LifeDieWhite.png").getImage();
+			whiteText = false;
+		}
+	
 		
 		FileManager.loadDeck(dropBox[0].getClickedId());
 		shuffleCards();

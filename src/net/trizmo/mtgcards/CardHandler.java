@@ -505,4 +505,27 @@ public class CardHandler {
 			}
 		}
 	}
+	
+	public static void mullagain(int mNum)
+	{
+		for(int i = 0; i < Screen.handCards.length; i++)
+		{
+			if(Screen.handCards[i] != null)
+			{
+				for(int j = Screen.libraryCards.length - 1; j > 0; j--)
+				{
+					if(Screen.libraryCards[j] == null)
+					{
+						Screen.libraryCards[j] = new LibraryCard(Screen.handCards[i].getTextureImage());
+						Screen.handCards[i] = null;
+						break;
+					}
+				}
+			}
+		}
+		
+		reshuffle();
+		
+		for(int i = 1; i < 7 - mNum; i++) StackManager.drawCard();
+	}
 }
