@@ -254,10 +254,12 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		if (scene == 0) ButtonHandler.scene0Click(e);
 		if (scene == 1) ButtonHandler.scene1Click(e);
 		if (scene == 2) CardHandler.doDraw(e);
-		if (scene == 3 && SceneDrawer.playButton.contains(e.getPoint())) {
+		Rectangle playButton = new Rectangle(500, 0, Screen.buttonWidth, Screen.buttonHeight);
+
+		if (scene == 3 && playButton.contains(e.getPoint())) {
 			
 		}
-		if (scene == 4 && SceneDrawer.playButton.contains(e.getPoint()))
+		if (scene == 4 && playButton.contains(e.getPoint()))
 		{
 			changeScene(5);
 			sealedPlay(dropBox[2].getSelected());
@@ -284,8 +286,10 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 
 			for(int i = 0; i < sets.length; i++)
 			{
-				Screen.dropBox[3].addOption(sets[i]);
+				Screen.dropBox[4].addOption(sets[i]);
 			}
+			
+			EditorBase.addDeckNames(deckNames);
 		}
 	}
 

@@ -131,6 +131,25 @@ public class DropBox {
 		return optionList[clickedObject].getOption();
 	}
 	
+	public String[] getOptions()
+	{
+		String[] par1 = null;
+		
+		try {
+			par1 = new String[optionList.length];
+			for(int i = 0; i < optionList.length; i++)
+			{
+				par1[i] = optionList[i].getOption();
+			}
+		} catch (NullPointerException e)
+		{
+			
+		}
+		
+		return par1;
+		
+	}
+	
 }
 
 class DropBoxEntry {

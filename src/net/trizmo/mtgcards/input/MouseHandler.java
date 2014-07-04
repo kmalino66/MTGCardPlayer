@@ -31,7 +31,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
 		
 		for(int i = 0; i < Screen.dropBox.length; i++)
 		{
-			if(Screen.dropBox[i] != null) Screen.dropBox[i].checkClicked(arg0);
+			if(Screen.dropBox[i] != null && Screen.dropBox[i].getOptions() != null) Screen.dropBox[i].checkClicked(arg0);
 			
 		}
 		
