@@ -15,6 +15,7 @@ public class ButtonHandler {
 	public static Rectangle playButton;
 	public static Rectangle editDeckButton;
 	public static Rectangle closeButton;
+	public static Rectangle sealedButton;
 
 	public static void sceneFinder(int scene, Graphics g, int width, int height, int btnW, int btnH){
 		if(scene == 0) drawScene0(g, width, height, btnW, btnH);
@@ -30,15 +31,21 @@ public class ButtonHandler {
 		Image btnPlay = new ImageIcon("res/Button/ButtonPlay.png").getImage();
 		Image btnEdit = new ImageIcon("res/Button/ButtonEditDeck.png").getImage();
 		Image btnClose = new ImageIcon("res/Button/ButtonClose.png").getImage();
-		
+		Image btnSealed = new ImageIcon("res/Button/ButtonSealedPlay.png").getImage();
 		
 		g.drawImage(btnPlay, Xpos, middleY - (buttonH / 2), buttonW, buttonH, null);
 		g.drawImage(btnEdit, Xpos , gap + (middleY - (buttonH / 2)) + buttonH, buttonW, buttonH, null);
-		g.drawImage(btnClose, Xpos , (gap * 2) + middleY - (buttonH/2) + (buttonH * 2), buttonW, buttonH, null);
+		g.drawImage(btnSealed, Xpos, (gap * 2) + middleY - (buttonH/2) + (buttonH * 2), buttonW, buttonH, null);
+		g.drawImage(btnClose, Xpos , (gap * 3) + middleY - (buttonH/2) + (buttonH * 3), buttonW, buttonH, null);
 		
 		playButton = new Rectangle(Xpos, middleY - (buttonH / 2), buttonW, buttonH);
 		editDeckButton = new Rectangle(Xpos, gap + middleY - (buttonH / 2) + buttonH, buttonW, buttonH);
-		closeButton = new Rectangle(Xpos, gap + gap + middleY - (buttonH / 2) + buttonH + buttonH, buttonW, buttonH);
+		closeButton = new Rectangle(Xpos, (gap * 3) + middleY - (buttonH / 2) + (buttonH * 3), buttonW, buttonH);
+		sealedButton = new Rectangle(Xpos, (gap * 2) + middleY - (buttonH / 2) + (buttonH * 2), buttonW, buttonH);
+		
+		//int par1Height = (int)(buttonW * 2) * (500/1024);
+		
+		g.drawImage(new ImageIcon("res/Background/CardPlayerLogo.png").getImage(), buttonW / 2, -gap * 5, (int)(buttonW * 2), (int)((buttonW * 2) * .48), null);
 		
 	}
 	
@@ -46,9 +53,11 @@ public class ButtonHandler {
 		if(playButton.contains(e.getPoint())) {
 			Screen.changeScene(1);
 		}else if(editDeckButton.contains(e.getPoint())) {
-			Screen.changeScene(2);
+			Screen.changeScene(3);
 		}else if(closeButton.contains(e.getPoint())) {
 			Screen.stopGame();
+		}else if(sealedButton.contains(e.getPoint())) {
+			Screen.changeScene(4);
 		}
 		
 	}
@@ -86,5 +95,10 @@ public class ButtonHandler {
 			CardHandler.mullagain(Screen.mullagainNumber);
 			Screen.mullagainNumber++;
 		}
+	}
+	
+	public static void scene3Click(MouseEvent e)
+	{
+		
 	}
 }

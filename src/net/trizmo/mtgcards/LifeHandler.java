@@ -40,4 +40,14 @@ public class LifeHandler {
 		
 		CoutHandler.event("Life is now:" + Screen.lifeAmmount);
 	}
+	
+	public static void addLife(int deltaAmmount)
+	{
+		Screen.lifeAmmount += deltaAmmount;
+	}
+	
+	public static void subtractLife(int deltaAmmount)
+	{
+		Screen.lifeAmmount -= deltaAmmount;
+	}
 }

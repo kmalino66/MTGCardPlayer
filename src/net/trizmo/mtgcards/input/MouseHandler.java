@@ -51,6 +51,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
 
 	public void mouseReleased(MouseEvent arg0) {
 		CardHandler.mouseReleased(arg0);
+		CardHandler.alreadyScanned = false;
 	}
 
 }

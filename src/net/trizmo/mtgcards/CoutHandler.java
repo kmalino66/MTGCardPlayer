@@ -30,4 +30,9 @@ public class CoutHandler {//Console Output Handler
 		System.out.println("-");
 
 	}
+	
+	public static void info(String info)
+	{
+		System.out.println("[Info] " + info);
+	}
 }

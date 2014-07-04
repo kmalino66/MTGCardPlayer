@@ -11,6 +11,8 @@ public class Frame extends JFrame {
 	static ImageIcon play = new ImageIcon("res/Button/Button.png");
 	
 	public static void main(String[] args) {
+		
+		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new Frame();
@@ -19,6 +21,8 @@ public class Frame extends JFrame {
 	}
 	
 	public Frame() {
+		Screen.printVersionInfo();
+
 		new JFrame();
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

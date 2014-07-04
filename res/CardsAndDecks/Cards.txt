@@ -108,7 +108,7 @@
 108:Kalonian Tusker:1:M14:kalonian-tusker
 109:Lava Axe:0:M14:lava-axe
 110:Lay of the Land:0:M14:lay-of-the-land
-111:Lifebane Zombie:2::M14:lifebane-zombie
+111:Lifebane Zombie:2:M14:lifebane-zombie
 112:Lightning Talons:0:M14:lightning-talons
 113:Liliana of the Dark Realms:3:M14:liliana-of-the-dark-realms
 114:Liliana's Reaver:2:M14:lilianas-reaver
@@ -150,7 +150,7 @@
 150:Scourge of Valkas:3:M14:scourge-of-valkas
 151:Scroll Thief:0:M14:scroll-thief
 152:Seacoast Drake:0:M14:seacoast-drake
-153:Seismic Stomp:0:m14:seismic-stomp
+153:Seismic Stomp:0:M14:seismic-stomp
 154:Sengir Vampire:1:M14:sengir-vampire
 155:Sensory Deprivation:0:M14:sensorry-deprivation
 156:Sentinel Sliver:0:M14:sentinel-sliver
@@ -268,3 +268,263 @@
 268:Sunpetal Grove:2:Lands:Sunpetal Grove
 269:Rootbound Crag:2:Lands:Rootbound Crag
 270:Sulfur Falls:2:Lands:Sulfur Falls
+300:Adaptive Tusker:0:RTZ:Adaptive Tusker
+301:AEther Shift:2:RTZ:AEther Shift
+302:Alternate Plan:0:RTZ:Alternate Plan
+303:Aluria Angel of Preservation:3:RTZ:Aluria Angel of Preservation
+304:Amulet of Mystic Connection:2:RTZ:Amulet of Mystic Connection
+305:Ancient Wards:0:RTZ:Ancient Wards
+306:Angel of the Ruins:2:RTZ:Angel of the Ruins
+307:Aqueous Emergence:2:RTZ:Aqueous Emergence
+308:Art of Death:2:RTZ:Art of Death
+309:Artificial Tampering:1:RTZ:Artificial Tampering
+310:Aura Domination:2:RTZ:Aura Domination
+311:Avenge the Lost:1:RTZ:Avenge the Lost
+312:Backgrove Hunter:0:RTZ:Backgrove Hunter
+313:Baffle:2:RTZ:Baffle
+314:Bane of the Eldrazi:2:RTZ:Bane of the Eldrazi
+315:Beast:5:RTZ:Beast
+316:Berseker of Fates:0:RTZ:Berseker of Fates
+317:Big Fur Coat:0:RTZ:Big Fur Coat
+318:Bladed Helm:0:RTZ:Bladed Helm
+319:Blessed Citadel:1:RTZ:Blessed Citadel
+320:Blood Haven:0:RTZ:Blessed Haven
+321:Blood Conjurer:1:RTZ:Blood Conjurer
+322:Blood Countess:1:RTZ:Blood Countess
+323:Blood-Mad Kor:1:RTZ:Blood-Mad Kor
+324:Blood-Crystal Emblem:0:RTZ:Blood-Crystal Emblem
+325:Boundless Desire:2:RTZ:Boundless Desire
+326:Breath of Shadow:0:RTZ:Breath of Shadow
+327:Breeding Pits:1:RTZ:Breeding Pits
+328:Burning Stone:0:RTZ:Burning Stone
+329:Change the Fates:1:RTZ:Change the Fates
+330:Cleanse:1:RTZ:Cleanse
+331:Combined Defense:0:RTZ:Combined Defense
+332:Compleat Dragon:1:RTZ:Compleat Dragon
+333:Compleat:1:RTZ:Compleat
+334:Conveive:0:RTZ:Conceive
+335:Corpse Gnawers:0:RTZ:Corpse Gnawers
+336:Corrupting Power:0:RTZ:Corrupting Power
+337:Corruptive Desire:0:RTZ:Corruptive Desire
+338:Crack the Hedron:1:RTZ:Crack the Hedron
+339:Crown of the Roil:0:RTZ:Crown of the Roil
+340:Darksteel Implants:1:RTZ:Darksteel Implants
+341:Dawn Flier:2:RTZ:Dawn Flier
+342:Death's Illusion:2:RTZ:Death's Illusion
+343:Deceptive Wanderer:2:RTZ:Deceptive Wanderer
+344:Deepsea Sorcerer:0:RTZ:Deepsea Sorcerer
+345:Deepwater Conjurer:0:RTZ:Deepwater Conjurer
+346:Deepwood Elf:0:RTZ:Deepwood Elf
+347:Defensive Strike:0:RTZ:Defensive Strike
+348:Despirate Ritual:0:RTZ:Despirate Ritual
+349:Doomed Assault:2:RTZ:Doomed Assault
+350:Dream Reality:1:RTZ:Dream Reality
+351:Echoing Presence:2:RTZ:Echoing Presence
+352:Eldrazi Spawn:5:RTZ:Eldrazi Spawn
+353:Elf Druid:5:RTZ:Elf Druid
+354:Elf:5:RTZ:Elf.1
+355:Elf (Reach):5:RTZ:Elf
+356:Elusive Elf:5:RTZ:Elusive Elf
+357:Encampment Raid:1:RTZ:Encampment Raid
+358:End in Sight:1:RTZ:End in Sight
+359:Enveloping Dark:0:RTZ:Enveloping Dark
+360:Equipment Enchantress:1:RTZ:Equipment Enchantress
+361:Everlasting Buckler:0:RTZ:Everlasting Buckler
+362:Ever-Shifting Cloak:0:RTZ:Ever-Shifting Cloak
+363:Examine the Horizon:1:RTZ:Examine the Horizon
+364:Explporer of the Wilds:1:RTZ:Explorer of the Wilds
+365:Explosive Downfall:2:RTZ:Explosive Downfall
+366:Expunge:1:RTZ:Expunge
+367:False Promises:2:RTZ:False Promises
+368:Fatal Gale:0:RTZ:Fatal Gale
+369:Fight for Life:2:RTZ:Fight for Life
+370:Final Banishment:0:RTZ:Final Banishment
+371:Final Fortune:0:RTZ:Final Fortune
+372:Flamefeather Phoenix:2:RTZ:Flamefeather Poenix
+373:Flames of Revenge:1:RTZ:Flames of Revenge
+374:Flaming Emergence:0:RTZ:Flaming Emergence
+375:Flash of Lightning:0:RTZ:Flash of Lightning
+376:Flux Orb:2:RTZ:Flux Orb
+377:Forced Labor:0:RTZ:Forced Labor
+378:Forest.1:4:RTZ:Forest.1
+379:Forest.2:4:RTZ:Forest.2
+380:Forest:4:RTZ:Forest
+381:Forge Alliance:1:RTZ:Forge Alliance
+382:Future Worries:0:RTZ:Future Worries
+383:Gather For Assault:2:RTZ:Gather For Assault
+384:Gesture of Force:2:RTZ:Gesture of Force
+385:Giharun Storm Chanter:3:RTZ:Giharun Storm
+386:Glade Hunter:0:RTZ:Glade Hunter
+387:Gleaming Leaf:0:RTZ:Gleaming Leaf
+388:Goblin:5:RTZ:Goblin
+389:Grasp of Heat:0:RTZ:Grasp of Heat
+390:Great Plannar Rift:3:RTZ:Great Planar Rift
+391:Grow Over:0:RTZ:Grow Over
+392:Guardian Illusion:5:RTZ:Guardian Illusion
+393:Guardian of the Ruins:1:RTZ:Guardian of the Ruins
+394:Guul Draz Bloodlasher:1:RTZ:Guul Draz Bloodlasher
+395:Hanging Swamp Warleader:2:RTZ:Hanging Swamp Warleader
+396:Harness the Roil:1:RTZ:Harness the Roil
+397:Hedron Colossus:2:RTZ:Hedron Colossus
+398:Hedron Horizons:0:RTZ:Hedron Horizons
+399:Hedron Rows:1:RTZ:Hedron Rows
+400:Hedron Wreckage:2:RTZ:Hedron Wreckage
+401:Hedron:5:RTZ:Hedron
+402:Hedron Warp:0:RTZ:Hedron Warp
+403:Hide in Death:2:RTZ:Hide in Death
+404:Hold off the Horde:2:RTZ:Hold off the Horde
+405:Holy Intervention:3:RTZ:Holy Intervention
+406:Honest Inspiration:2:RTZ:Honest Inspiration
+407:Honored Worshiper:0:RTZ:Honored Worshiper
+408:Hopeless Refugee:0:RTZ:Hopeless Refugee
+409:Horizons Duelist:1:RTZ:Horizons Duelist
+410:Horrific deminse:1:RTZ:Horrific Demise
+411:Hunt the Solitary:2:RTZ:Hunt the Solitary
+412:Hunter of the Corrupt:1:RTZ:Hunter of the Corrupt
+413:Hurl:1:RTZ:Hurl
+414:Illuminated Mechanism:0:RTZ:Illuminated Mechanism
+415:Illuminating Blessing:0:RTZ:Illuminating Blessing
+416:Illusion:5:RTZ:Illusion
+417:Illusionists Conjure:1:RTZ:Illusionists Conjure
+418:Impossible Target:0:RTZ:Impossible Target
+419:Infection Depositer:0:RTZ:Infection Depositer
+420:Internal Eruption:1:RTZ:Internal Eruption
+421:Invisible Strike:0:RTZ:Invisible Strike
+422:Island.1:4:RTZ:Island.1
+423:Island.2:4:RTZ:Island.2
+424:Island:4:RTZ:Island
+425:Join the Alliance:0:RTZ:Join the Alliance
+426:Kor Band Leader:2:RTZ:Kor Band Leader
+427:Kor Scavenger:0:RTZ:Kor Scavenger
+428:Kor Weaponsmaster:1:RTZ:Kor Weaponsmaster
+429:Kozilek Revealer of Ruins:3:RTZ:Kozilek Revealer of Ruins
+430:Lady Karin Volkos:3:RTZ:Lady Karin Volkos
+431:Leader of the Charge:2:RTZ:Leader of the Charge
+432:Leave Everything Behind:2:RTZ:Leave Everything Behind
+433:Leave the Trees:0:RTZ:Leave the Trees
+434:Light of Nature:1:RTZ:Light of Nature
+435:Light Surge:0:RTZ:Light Surge
+436:Lightning Surge:0:RTZ:Lightning Surge
+437:Lore Rediscovery:0:RTZ:Lore Rediscovery
+438:Lurker of the Dark Woods:0:RTZ:Lurker of the Dark Woods
+439:Magic Missile:1:RTZ:Magic Missile
+440:Magmatic Mark:2:RTZ:Magmatic Mark
+441:Make a Move:0:RTZ:Make a Move
+442:Makeshift Kitesail:0:RTZ:Makeshift Kitesail
+443:Mana Beacon:3:RTZ:Mana Beacon
+444:Mana Incineration:0:RTZ:Mana Incineration
+445:Mana Net:0:RTZ:Mana Net
+446:Master of Armament:0:RTZ:Master of Armament
+447:Method:2:RTZ:Method
+448:Mind Corrupt:1:RTZ:Mind Corrupt
+449:Mind Flooder:0:RTZ:Mind Flooder
+450:Molten Ground:2:RTZ:Molten Ground
+451:Moonlight Hunter:1:RTZ:Moonlight Hunter
+452:Mountain.1:4:RTZ:Mountain.1
+453:Mountain.2:4:RTZ:Mountain.2
+454:Mountain:4:RTZ:Mountain
+455:Mystic Encounter:2:RTZ:Mystic Encounter
+456:Mystic Interweavings:0:RTZ:Mystic Interweavings
+457:Natural Cycle:1:RTZ:Natural Cycle
+458:Natural Inevitability:2:RTZ:Natural Inevitability
+459:Natural Regrowth:2:RTZ:Natural Regrowth
+460:Natural Restoration:1:RTZ:Natural Restoration
+461:Necrotic Bone:0:RTZ:Necrotic Bone
+462:Nexus of Purity:2:RTZ:Nexus of Purity
+463:Night Hunter of Guul Draz:0:RTZ:Night Hunter of Guul Draz
+464:Nissa Preserver of Zendikar.1:5:RTZ:Nissa Preserver of Zendikar.1
+465:Nissa Preserver of Zendikar:3:RTZ:Nissa Preserver of Zendikar
+466:Observant Scout:2:RTZ:Observant Scout
+467:Opportunistic Ranger:0:RTZ:Opportunistic Ranger
+468:Orium Dragon:2:RTZ:Orium Dragon
+469:Overgrown Emergence:0:RTZ:Overgrown Emergence
+470:Overthink:0:RTZ:Overthink
+471:Packcaller:0:RTZ:Packcaller
+472:Perilous Skies:0:RTZ:Perilous Skies
+473:Phyrexian Oil.1:5:RTZ:Phyrexian Oil.1
+474:Phyrexian Oil:2:RTZ:Phyrexian Oil
+475:Plains.1:4:RTZ:Plains.1
+476:Plains.2:4:RTZ:Plains.2
+477:Plains:4:RTZ:Plains
+478:Plan Ahead:1:RTZ:Plan Ahead
+479:Ponderous Thought:1:RTZ:Ponderous Thought
+480:Prepared Camp:0:RTZ:Prepared Camp
+481:Presence of Fate:1:RTZ:Presence of Fate
+482:Protected Grove:2:RTZ:Protected Grove
+483:Queen of Leaves:3:RTZ:Queen of Leaves
+484:Ragelar the Newborn:3:RTZ:Ragelar the Newborn
+485:Rediscover:0:RTZ:Rediscover
+486:Reef Observer:0:RTZ:Reef Observer
+487:Reef Striker:0:RTZ:Reef Striker
+488:Reign of Terror:1:RTZ:Reign of Terror
+489:Relentless Horde:2:RTZ:Relentless Horde
+490:Restless Wanderer:0:RTZ:Restless Wanderer
+491:Roil Eruption:1:RTZ:Roil Eruption
+492:Roil Spike:2:RTZ:Roil Spike
+493:Roils Turbulence:0:RTZ:Roils Turbulence
+494:Roils Upheaval:2:RTZ:Roils Upheaval
+495:Ruin Crawler:0:RTZ:Ruin Crawler
+496:Ruin:1:RTZ:Ruin
+497:Ruinstrider Baloth:2:RTZ:Ruinstrider Baloth
+498:Sacred Armaments:2:RTZ:Sacred Armaments
+499:Saving Leap:0:RTZ:Saving Leap
+500:Scuffed Mandolin:1:RTZ:Scuffed Mandolin
+501:Search for the Lost:2:RTZ:Search for the Lost
+502:Selfless Duelist:0:RTZ:Selfless Duelist
+503:Settle:1:RTZ:Settle
+504:Share the Burden:1:RTZ:Share the Burden
+505:Share the Heat:2:RTZ:Share the Heat
+506:Shattered Emergence:0:RTZ:Shattered Emergence
+507:Smoldering Growler:1:RTZ:Smoldering Growler
+508:Solitary Weaponsmith:2:RTZ:Solitary Weaponsmith
+509:Sorin Seeker of Balance:3:RTZ:Sorin Seeker of Balance
+510:Soul Drain:0:RTZ:Soul Drain
+511:Soul Reflection:2:RTZ:Soul Reflection
+512:Soul Summons:0:RTZ:Soul Summons
+513:Spell Fizzle:1:RTZ:Spell Fizzle
+514:Spontanious Idea:1:RTZ:Spontanious Idea
+515:Steepcliff Auramancer:0:RTZ:Steepcliff Auramancer
+516:Stoneland Raider:0:RTZ:Stoneland Raider
+517:Stormcloud Mystic:0:RTZ:Stormcloud Mystic
+518:Subterranean Mana Pool:2:RTZ:Subterranean Mana Pool
+519:Summoner of Ancients:2:RTZ:Summonder of Ancients
+520:Surge of Energy:1:RTZ:Surge of Energy
+521:Surge of the Roil:0:RTZ:Surge of the Roil
+522:Survivalist Raiders:1:RTZ:Survivalist Raiders
+523:Swamp:4:RTZ:Swamp.1
+524:Swamp:4:RTZ:Swamp.2
+525:Swamp:4:RTZ:Swamp
+526:Tazeem Archmage:2:RTZ:Tazeem Archmage
+527:Thorn-Valley Hellkite:2:RTZ:Thorn-Valley Hellkite
+528:Thought Grasp:0:RTZ:Thought Grasp
+529:Thriving Bounty:1:RTZ:Thriving Bounty
+530:Tragic Fatality:0:RTZ:Tragic Fatality
+531:Trunk Crasher Baloth:0:RTZ:Trunk Crasher Baloth
+532:Tuk Tuk Marauder:0:RTZ:Tuk Tuk Marauder
+533:Twisted Bone-Fiend:0:RTZ:Twisted Bone-Fiend
+534:Unending Rain of Flames:2:RTZ:Unending Rain of Flames
+535:Shocking Deconstruction:0:RTZ:Shocking Deconstruction
+536:Unstable Presence:3:RTZ:Unstable Presence
+537:Unstoppable Plan:0:RTZ:Unstoppable Plan
+538:Untimely Treachery:1:RTZ:Untimely Treachery
+539:Unwavering Will:1:RTZ:Unwavering Will
+540:Valiant Fighter:0:RTZ:Valiant Fighter
+541:Valiants Sword:0:RTZ:Valiants Sword
+542:Vamparic Noble:2:RTZ:Vamparic Noble
+543:Vaporous Serpent:0:RTZ:Vaporous Serpent
+544:Vein Drainer Vampire:0:RTZ:Vein Drainer Vampire
+545:Vision Pearl:0:RTZ:Vision Pearl
+546:Volorun Ressurecter of Defense:3:RTZ:Volorun Ressurecter of Defense
+547:Wandering Hedron:0:RTZ:Wandering Hedron
+548:Wandering Seer:1:RTZ:Wandering Seer
+549:Warded Passage:1:RTZ:Warded Passage
+550:Withering Light:0:RTZ:Withering Light
+551:Wolf:5:RTZ:Wolf
+552:Woodland Preserver:4:RTZ:Woodland Preserver
+553:Words of Holy Might:0:RTZ:Words of Holy Might
+554:Yarutargar Phyrexian Destroyer:3:RTZ:Yarutargar Phyrexian Destroyer
+555:Zombie:5:RTZ:Zombie
+556:Purge the Impure:2:RTZ:Purge the Impure
+557:Forest.2:4:RTZ:Forest.2
+558:Shower of Flames:0:RTZ:Shower of Flames
+559:Shimmering Emergence:0:RTZ:Shimmering Emergence

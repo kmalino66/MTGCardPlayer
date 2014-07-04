@@ -1,6 +1,7 @@
 package net.trizmo.mtgcards;
 
 import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.util.Random;
@@ -21,6 +22,8 @@ public class CardHandler {
 	public static CardInteract interactionCard;
 
 	public static int firstOpen;
+	public static boolean alreadyScanned = false;
+	public static Point par1Point = new Point(0,0);
 
 	public static void mousePressed(MouseEvent e)
 	{
@@ -370,11 +373,8 @@ public class CardHandler {
 	public static void moveCard()
 	{
 
-		int mouseX = (int) MouseInfo.getPointerInfo().getLocation().getX();
-		int mouseY = (int) MouseInfo.getPointerInfo().getLocation().getY();
-
-		int offsetX = Screen.cardWidth / 2;
-		int offsetY = Screen.cardHeight / 2;
+		int mouseX = (int) MouseInfo.getPointerInfo().getLocation().getX() - Screen.frameX;
+		int mouseY = (int) MouseInfo.getPointerInfo().getLocation().getY() - Screen.frameY;
 
 		switch(interactionCard.getLocation())
 		{
@@ -407,6 +407,7 @@ public class CardHandler {
 			break;
 		case 2:
 
+
 			for(int i = 0; i < Screen.battlefieldCards.length; i++)
 			{
 				if(Screen.battlefieldCards[i] == null && i != interactionCard.getArrayLocation() - 1)
@@ -417,8 +418,14 @@ public class CardHandler {
 					break;
 				}
 			}
-			Screen.battlefieldCards[interactionCard.getArrayLocation()].setPos((int)(mouseX), (int) (mouseY));
+			
+			if(!alreadyScanned){
 
+				par1Point = new Point(Screen.battlefieldCards[interactionCard.getArrayLocation()].getPosOnCard(mouseX, mouseY));
+				alreadyScanned = true;
+			}
+			
+				Screen.battlefieldCards[interactionCard.getArrayLocation()].setPos((int)(mouseX - par1Point.getX()), (int) (mouseY - par1Point.getY()));
 
 			break;
 		case 3:
@@ -479,7 +486,7 @@ public class CardHandler {
 		Random rand = new Random();
 
 		LibraryCard[] par1temp = new LibraryCard[Screen.libraryCards.length];
-		
+
 		for(int k = 0; k < par1temp.length; k++)
 		{
 			par1temp[k] = Screen.libraryCards[k];
@@ -489,7 +496,7 @@ public class CardHandler {
 		{
 			Screen.libraryCards[j] = null;
 		}
-		
+
 		for(int i = 0; i < par1temp.length; i++)
 		{
 			int par2 = rand.nextInt(Screen.libraryCards.length);
@@ -505,7 +512,7 @@ public class CardHandler {
 			}
 		}
 	}
-	
+
 	public static void mullagain(int mNum)
 	{
 		for(int i = 0; i < Screen.handCards.length; i++)
@@ -523,9 +530,10 @@ public class CardHandler {
 				}
 			}
 		}
-		
+
 		reshuffle();
-		
-		for(int i = 1; i < 7 - mNum; i++) StackManager.drawCard();
+
+		for(int i = 1; i < 8 - mNum; i++) StackManager.drawCard();
 	}
+
 }

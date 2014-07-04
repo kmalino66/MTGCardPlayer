@@ -53,6 +53,7 @@ public class DropBox {
 		
 		g.setFont(new Font("TimesRoman", Font.PLAIN, height - 2));
 		g.setColor(foreground);
+		if(clickedObject > optionList.length - 1) clickedObject = 0;
 		g.drawString(optionList[clickedObject].getOption(), xPos + 10, yPos + height - 2);
 		if(opened)
 		{
@@ -91,7 +92,6 @@ public class DropBox {
 	
 	public void checkClicked(MouseEvent e)
 	{
-		boolean clickedInArray = false;
 		if(!opened)
 		{
 			Rectangle rect = new Rectangle(xPos, yPos, width, height);
@@ -105,7 +105,6 @@ public class DropBox {
 				Rectangle rect = new Rectangle(xPos, (yPos + (height * (i +1))), width, height);
 				if(rect.contains(e.getPoint()))
 				{
-					clickedInArray = true;
 					clickedObject = i;
 					break;
 				}
@@ -131,6 +130,7 @@ public class DropBox {
 	{
 		return optionList[clickedObject].getOption();
 	}
+	
 }
 
 class DropBoxEntry {
@@ -159,4 +159,5 @@ class DropBoxEntry {
 		this.optionId = optionId;
 		option = optionString;
 	}
+	
 }

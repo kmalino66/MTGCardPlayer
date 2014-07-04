@@ -101,17 +101,21 @@ public class BattlefieldCard {
 	{
 		tx = txPos;
 		ty = tyPos;
-		x = -ty + ((Screen.cardHeight - Screen.cardWidth) / 2);
-		y = tx + ((Screen.cardHeight - Screen.cardWidth) / 2);
+		x = -1 * (ty + ((Screen.cardHeight - Screen.cardWidth) / 2));
+		y = (tx + ((Screen.cardHeight - Screen.cardWidth) / 2));
 	}
 	
 	public Point getPosOnCard(int mouseX, int mouseY)
 	{
 		if(!tapped)
 		{
+			if(mouseX > x && mouseY > y) {
 			return new Point(mouseX - x, mouseY - y);
+			} else{
+				return new Point(0,0);
+			}
 		}else{
-			return new Point( mouseX - (x - (Screen.cardHeight - Screen.cardWidth) / 2), mouseY - (y - (Screen.cardHeight - Screen.cardWidth) / 2));
+			return new Point(0,0);
 		}
 	}
 

@@ -44,6 +44,7 @@ public class CardDrawer {
 
 				if(Screen.battlefieldCards[i].getTapped())
 				{
+					
 					BufferedImage textureImage = new BufferedImage(cardWidth, cardHeight, BufferedImage.TYPE_INT_ARGB);
 
 					textureImage.getGraphics().drawImage(Screen.battlefieldCards[i].getImage(), 0, 0, cardWidth, cardHeight, null);
@@ -54,6 +55,8 @@ public class CardDrawer {
 					g2d.drawImage(textureImage, tx, ty, cardWidth, cardHeight, null);
 
 					g2d.dispose();
+					
+					
 
 				}else{
 					g.drawImage(Screen.battlefieldCards[i].getImage(), x, y, Screen.cardWidth, Screen.cardHeight, null);
@@ -102,4 +105,6 @@ public class CardDrawer {
 			}
 		}
 	}
+	
+	
 }

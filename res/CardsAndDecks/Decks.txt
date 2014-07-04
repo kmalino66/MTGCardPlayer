@@ -1,3 +1,11 @@
-2
+10
+9:Enchanted Arms
+8:Evil has good consequences - Draft
+7:URG Draft
+6:Mill
+5:Auramancy
+4:Death Feast
+3:Hedronfall
+2:Canada
+1:Elf
 0:Test Deck
-1:Why

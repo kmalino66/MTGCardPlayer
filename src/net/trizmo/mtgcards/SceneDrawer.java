@@ -2,6 +2,8 @@ package net.trizmo.mtgcards;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
@@ -10,6 +12,7 @@ public class SceneDrawer {
 	public static int barHeight;
 	public static int boxWidth;
 	public static int pictureHeight;
+	public static Rectangle playButton;
 	
 	public static void scene2(Graphics g)
 	{
@@ -55,6 +58,18 @@ public class SceneDrawer {
 		g.drawImage(new ImageIcon("res/Button/ButtonReshuffle.png").getImage(), Screen.width - 200, 20, 100, 20, null);
 		g.drawImage(new ImageIcon("res/Button/ButtonMullagain.png").getImage(), Screen.width - 200, 40, 100, 20, null);
 		
+	}
+	
+	public static void scene4(Graphics g)
+	{
+		Screen.dropBox[2].drawDropBox(g);
+		
+		Image btnPlay = new ImageIcon("res/Button/ButtonPlay.png").getImage();
+		playButton = new Rectangle(500, 0, Screen.buttonWidth, Screen.buttonHeight);
+		g.drawImage(btnPlay, 500, 0, Screen.buttonWidth, Screen.buttonHeight, null);
+
+		
+
 	}
 	
 }
