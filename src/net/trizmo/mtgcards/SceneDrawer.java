@@ -65,8 +65,8 @@ public class SceneDrawer {
 		Screen.dropBox[2].drawDropBox(g);
 		
 		Image btnPlay = new ImageIcon("res/Button/ButtonPlay.png").getImage();
-		playButton = new Rectangle(500, 0, Screen.buttonWidth, Screen.buttonHeight);
-		g.drawImage(btnPlay, 500, 0, Screen.buttonWidth, Screen.buttonHeight, null);
+		playButton = new Rectangle(10, 500, Screen.buttonWidth, Screen.buttonHeight);
+		g.drawImage(btnPlay, 10, 500, Screen.buttonWidth, Screen.buttonHeight, null);
 
 		
 

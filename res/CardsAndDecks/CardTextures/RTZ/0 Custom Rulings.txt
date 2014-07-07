@@ -1,0 +1,107 @@
+This text document provides a list of rulings for Fodimo's Zendikar block,
+meant to supplement the comprehensive rules where any questions may arise.
+It is ordered by mechanic or card, and by set.
+
+----------RTZ----------
+
+//Battered
+F101.1a: As long as any other opponent has less life than you, you
+are considered to be battered.
+
+//Intelect
+F102.1a: You may activate this ability at any time you could cast an
+instant.
+	1b: If there are no cards in your library, nothing happens. Also,
+why whould you even do it? There is no point to revealing a card that
+isn't there, and being able to cast it.
+	1c: You still pay any costs for the spell, and may pay any
+optional costs, such as kickers.
+
+----------PRF----------
+
+//Adaptations
+F120.1a: An adaptation is effectively a normal aura, except the adaptation
+is in exile instead of the field, and it tolorates a type change in its
+subject without becoming detached.
+	.1b: If the adapted permanent is exiled, returned to a hand,
+put into a graveyard, or put into a library, the adaptation is detached
+and put into its owner's graveyard. It no longer affects that creature.
+	.1c: The exiled adaptations are not permanents, and are not on
+the battlefield. Effects that destroy or otherwise target enchantments
+cannot target adaptations in exile.
+	.2a: A permanent may be adapted multiple times, as long as when
+the enchantment is cast the permanent is a legal target. The most recently
+cast adaptation applies after the others. Ex: A goblin (nonartifact creatue)
+that is adapted with sleek sprinter (now an artifact creature) is then adapted 
+with Eternal drain, it loses creature (becoming only and artifact, as Eternal
+Drain does).
+	.2b: If there are multiple adaptations on a creature, and one is
+removed, the most recently cast adaptation still applies, even if it's
+adapt criteria would no longer be met. Ex: with the previous example,
+if sleek sprinter were somehow removed, but the Eternal Drain wasn't,
+it is still just an artifact. Likewise, if instead Eternal drain were
+removed, it would become an artifact creature as described by Sleek
+Sprinter.
+
+//Enchanted Being
+	3a: If an aura that is also a creature enchants something that may be 
+legally enchanted by an aura creature, it is not detached and sacrificed. This
+overrides rule 303.4d in the comprehensive rules, shown below.
+		 rule 303.4d:
+		"An Aura that's also a creature can't enchant anything. If this occurs somehow,
+		 the Aura becomes unattached, then is put into its owner's graveyard."
+
+	1b: A permanent that becomes a player is immediately exiled, and
+does not recieve a turn, deck, life, or the ability to make choices. They 
+are exiled befrore any spell can be cast or ability resolved. It remains
+exiled, even once all adaptations have been removed.
+	1c: If an aura that is also a creature is made to enchant another
+creatue that is not specifically legally enchanted by an aura creature,
+meaning anything other than an enchanted being or something that copies
+its ability, rule 303.4d listed above still applies.
+
+//Self Perfection
+	4@: Please understand this card does an unusual thing, and intances will likely
+come up that are not adressed by these rulings. Just do what makes sense. When in
+doubt, flip a coin or roll a die.
+	4a: Creatures with infect do nothing to players with Self perfection.
+Damage is redirected to the player themself, but since they can't recieve
+poison counters, the damage is prevented.
+	4b: Player creatures can have their power and tougness modified by
+couners, spells, and abilities. This does not affect their life total, they
+are just bonuses that are added to the damage and the toughness.
+	4c: If their toughness is reduced to 0 or less, or the creature
+is put into another zone, they are no longer a creature, and Self Perfection
+is put into its owner's graveyard. They do not automatically lose, and
+the game continues as normal.
+	4d: Although difficult, if the creature is destoyed (For example,
+by deathtouch) the player loses the game.
+	4e: The player is attacked normally, and can block as normal. When the
+player attacks, they are treated as a normal creature as far as blockers are concerned.
+	4f: If they lose hexproof, anything that could target a creature or a player
+may target that player. They are considered to control that creature for those
+purposes.
+	4g: The player creature does not enter the battlefield, rather they simply
+become a creature, similar to Gideon. They do not trigger enter the battlefield
+effects.
+	4h: If the player gains or loses life, the creature's power and tougness is 
+increased or reduced similarly. This happens instantly, and spells and abilities cannot
+be used between the time life is gained or lost and when the creature's power and tougness
+change. 
+
+//"Compleation" adaptations
+	5a: Creatures that become the artifact creature with a set power and tougness
+and with the abilities do not lose their previous abilities or types, unless specified.
+
+
+//Quest
+F122.1a: If you cannot exile the creatues, the spell cannot be cast. If this happens
+after the enchantment is on the stack, it is countered.
+Example of the Quest mechanic:
+Quest 2
+Exile two creatures. Compleate the quest by doing whatever, and sacrifice it to itself.
+The two creatures come back, each with two +1/+1 counters on them.
+	.1b: If a creature leaves exile before the quest is compleated, they do
+not revieve the +1/+1 counters.
+	.1c: A quest is "Compleated" when an ability is activated on the quest that
+removes all quest counters and sacrifices it.

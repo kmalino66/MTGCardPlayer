@@ -528,3 +528,201 @@
 557:Forest.2:4:RTZ:Forest.2
 558:Shower of Flames:0:RTZ:Shower of Flames
 559:Shimmering Emergence:0:RTZ:Shimmering Emergence
+560:A New Saga Begins:0:PRF:A New Saga Begins
+561:Abandon Steel:6:PRF:Abandon Steel
+562:AEtherwind Glider:0:PRF:AEtherwind Glider
+563:Ally:5:PRF:Ally
+564:Ally:5:PRF:Ally
+565:Alter Priorities:0:PRF:Alter Priorities
+566:Ancient Awakening:1:PRF:Ancient Awakening
+567:Angel of Freedom:1:PRF:Angel of Freedom
+568:Aqueous Spellweaver:0:PRF:Aqueous Spellweaver
+569:Arcane Growth:1:PRF:Arcane Growth
+570:Artificial Insight:0:PRF:Artificial Insight
+571:Automatic Response:0:PRF:Automatic Response
+572:Baloth Sprinter:1:PRF:Baloth Sprinter
+573:Belt of Choice:0:PRF:Belt of Choice
+574:Blissful Bog:0:PRF:Blissful Bog
+575:Blood Vengence:1:PRF:Blood Vengence
+576:Boque High Archdemon:3:PRF:Boque High Archdemon
+577:Bramble Thorn:0:PRF:Bramble Thorn
+578:Burning Fury:2:PRF:Burning Fury
+579:Burning-Citadel Hellkite:3:PRF:Burning-Citadel Hellkite
+580:Call of Death:1:PRF:Call of Death
+581:Calm Coast:0:PRF:Calm Coast
+582:Captivity Shredder:3:PRF:Captivity Shredder
+583:Change of Heart:0:PRF:Change of Heart
+584:Collosal Lesson:1:PRF:Collosal Lesson
+585:Contain:0:PRF:Contain
+586:Crippling Strike:0:PRF:Crippling Strike
+587:Cruel Cannibal:1:PRF:Cruel Cannibal
+588:Crumble Defenses:0:PRF:Crumble Defenses
+589:Daring Adventure:1:PRF:Daring Adventure
+590:Dark Ambush:0:PRF:Dark Ambush
+591:Dawn of Victory:3:PRF:Dawn of Victory
+592:Deadly Ambush:0:PRF:Deadly Ambush
+593:Deathly Fury:2:PRF:Deathly Fury
+594:Desperate Plot:0:PRF:Desperate Plot
+595:Destiny of Divinity:0:PRF:Destiny of Divinity
+596:Destruction Staff:0:PRF:Destruction Staff
+597:Destructive Impulse:0:PRF:Destructive Impulse
+598:Devotion to the Cause:1:PRF:Devotion to the Cause
+599:Diabolic Adventure:1:PRF:Diabolic Adventure
+600:Dispose of the Unneeded:1:PRF:Dispose of the Unneeded
+601:Divine Fury:2:PRF:Divine Fury
+602:Dramatic Entrance:2:PRF:Dramatic Entrance
+603:Druid of the Haven:0:PRF:Druid of the Haven
+604:Dusk Wing:0:PRF:Dusk Wing
+605:Echo Cast:0:PRF:Echo Cast
+606:Efficient Assembly Center:2:PRF:Efficient Assembly Center
+607:Elf Captive:5:PRF:Elf Captive
+608:Elf Work Force:1:PRF:Elf Work Force
+609:Eliminate Error:0:PRF:Eliminate Error
+610:Elspeth Bringer of Justice:3:PRF:Elspeth Bringer of Justice
+611:Emrakul the Compleat:3:PRF:Emrakul the Compleat
+612:Enchanted Being:6:PRF:Enchanted Being
+613:Establish:6:PRF:Establish
+614:Eternal Drain:6:PRF:Eternal Drain
+615:Ethereal Treason:6:PRF:Ethereal Treason
+616:Extractor of Vengeance:1:PRF:Extractor of Vengeance
+617:Fatal Friend:0:PRF:Fatal Friend
+618:Final Banishment:2:PRF:Final Banishment
+619:Final Hope:2:PRF:Final Hope
+620:First Stage:6:PRF:First Stage
+621:Forest:4:PRF:Forest
+622:Fork of Might:0:PRF:Fork of Might
+623:Foul Setback:0:PRF:Foul Setback
+624:Fruitful Adventure:1:PRF:Fruitful Adventure
+625:Fruitless Field:0:PRF:Fruitless Field
+626:Furious Experimentation:2:PRF:Furious Experimentation
+627:Fury of the Storm:1:PRF:Fury of the Storm
+628:Giant Pumpkin:5:PRF:Giant Pumpkin
+629:Glistening Oil Cultist:0:PRF:Glistening Oil Cultist
+630:Glorious Adventure:1:PRF:Glorious Adventure
+631:Goblin Bandcaller:9:PRF:Goblin Bandcaller
+632:Goblin Captive:5:PRF:Goblin Captive
+633:Goblin Work Force:1:PRF:Goblin Work Force
+634:Greater than Human:2:PRF:Greater than Human
+635:Grinding Barrier:6:PRF:Grinding Barrier
+636:harnessed Hedron:0:PRF:harnessed Hedron
+637:Harvest for the Sacred Plant:0:PRF:Harvest for the Sacred Plant
+638:Heartfelt Moment:0:PRF:Heartfelt Moment
+639:Heros Welcome:0:PRF:Heros Welcome
+640:Horrific Tide:2:PRF:Horrific Tide
+641:Human Captive:5:PRF:Human Captive
+642:Human Work Force:1:PRF:Human Work Force
+643:Hunter Goliath:6:PRF:Hunter Goliath
+644:Imbue Mind:6:PRF:Imbue Mind
+645:Imperfect Newt:1:PRF:Imperfect Newt
+646:Invasion Specialist:6:PRF:Invasion Specialist
+647:Invincibility:1:PRF:Invincibility
+648:Ironblight:2:PRF:Ironblight
+649:Irrational Reflection:2:PRF:Irrational Reflection
+650:Island:4:PRF:Island
+651:Journey of Purity:0:PRF:Journey of Purity
+652:Kishra the Liberator:3:PRF:Kishra the Liberator
+653:Labyrinth of Riddles:1:PRF:Labyrinth of Riddles
+654:Lifeshard:1:PRF:Lifeshard
+655:Lowland Ravenger:0:PRF:Lowland Ravenger
+656:Magmatic Blob:1:PRF:Magmatic Blob
+657:Mana Sphere:0:PRF:Mana Sphere
+658:Mechanical Illusion:2:PRF:Mechanical Illusion
+659:Melt the Weak:1:PRF:Melt the Weak
+660:Mental Emancipation:1:PRF:Mental Emancipation
+661:Merfolk Captive:5:PRF:Merfolk Captive
+662:Merfolk Work Force:1:PRF:Merfolk Work Force
+663:Mind Plague:1:PRF:Mind Plague
+664:Mind Sieve:1:PRF:Mind Sieve
+665:Minor Assembly Plant:1:PRF:Minor Assembly Plant
+666:Mountain:4:PRF:Mountain
+667:Necissary Experimentation:2:PRF:Necissary Experimentation
+668:Newt Cycle:1:PRF:Newt Cycle
+669:Newt Vat:2:PRF:Newt Vat
+670:Newt:5:PRF:Newt
+671:Nexus Generator:2:PRF:Nexus Generator
+672:Oask the Hunter:2:PRF:Oask the Hunter
+673:Otherworldly Mutation:1:PRF:Otherworldly Mutation
+674:Pack Alpha:0:PRF:Pack Alpha
+675:Paruhal the Ethereal:3:PRF:Paruhal the Ethereal
+676:Path to Perfection:2:PRF:Path to Perfection
+677:Personal Vengance:2:PRF:Personal Vengance
+678:Petrify:6:PRF:Petrify
+679:Phyrexian Demolisher:2:PRF:Phyrexian Demolisher
+680:Plains:4:PRF:Plains
+681:Probing Scout:6:PRF:Probing Scout
+682:Production Worker:6:PRF:Production Worker
+683:Protective Peaks:0:PRF:Protective Peaks
+684:Protector of the Survivors:0:PRF:Protector of the Survivors
+685:Psionic Fury:2:PRF:Psionic Fury
+686:Pursuit of Banishment:1:PRF:Pursuit of Banishment
+687:Questing for Death:1:PRF:Questing for Death
+688:Questing for Destruction:1:PRF:Questing for Destruction
+689:Questing for Knowledge:1:PRF:Questing for Knowledge
+690:Questing for Territory:1:PRF:Questing for Territory
+691:Questing to Avenge:1:PRF:Questing to Avenge
+692:Question Method:0:PRF:Question Method
+693:Rahlof Rage Engine:2:PRF:Rahlof Rage Engine
+694:Razors Edge:0:PRF:Razors Edge
+695:Rebuild:2:PRF:Rebuild
+696:Rebuilt City:1:PRF:Rebuilt City
+697:Reclaim the Skies:0:PRF:Reclaim the Skies
+698:Reivol Efficient Taskmaster:2:PRF:Reivol Efficient Taskmaster
+699:Relentless Prowler:6:PRF:Relentless Prowler
+700:Rescue:0:PRF:Rescue
+701:Restless Shambler:0:PRF:Restless Shambler
+702:Restless Strider:6:PRF:Restless Strider
+703:Revolutionary Grunt:0:PRF:Revolutionary Grunt
+704:Righteous Cause:0:PRF:Righteous Cause
+705:Rupture of Eternity:0:PRF:Rupture of Eternity
+706:Savage Brutality:1:PRF:Savage Brutality
+707:Savage Fury:2:PRF:Savage Fury
+708:Scorned Hound:0:PRF:Scorned Hound
+709:Search for the Mythic Blood:0:PRF:Search for the Mythic Blood
+710:Seeking Flail:0:PRF:Seeking Flail
+711:Self Perfection:6:PRF:Self Perfection
+712:Serendipity:1:PRF:Serendipity
+713:Servant to the Higher:0:PRF:Servant to the Higher
+714:Shard of Dreams:0:PRF:Shard of Dreams
+715:Shared Bounty:0:PRF:Shared Bounty
+716:Shatter the Truth:2:PRF:Shatter the Truth
+717:Shield of Might:0:PRF:Shield of Might
+718:Shrine of Runes:2:PRF:Shrine of Runes
+719:Shutdown:3:PRF:Shutdown
+720:Sleek Airship:1:PRF:Sleek Airship
+721:Sleek Sprinter:6:PRF:Sleek Sprinter
+722:Soldier:5:PRF:Soldier
+723:Solitary Adventure:1:PRF:Solitary Adventure
+724:Spark Coil:1:PRF:Spark Coil
+725:Spawn of the Blind Eternities:1:PRF:Spawn of the Blind Eternities
+726:Steel Assasain:6:PRF:Steel Assasain
+727:Steel Crawler:0:PRF:Steel Crawler
+728:Steelclaw Grizzly Cub:0:PRF:Steelclaw Grizzly Cub
+729:Stonebreaker:0:PRF:Stonebreaker
+730:Stoneland Hydra:1:PRF:Stoneland Hydra
+731:Sturdy Leather Boots:0:PRF:Sturdy Leather Boots
+732:Swamp:4:PRF:Swamp
+733:Temporal Piston:2:PRF:Temporal Piston
+734:Terrains Resistance:6:PRF:Terrains Resistance
+735:Thoughtful Transfer:0:PRF:Thoughtful Transfer
+736:Threads of Manipulation:1:PRF:Threads of Manipulation
+737:Tome of Return:2:PRF:Tome of Return
+738:Tranquil Terrain:0:PRF:Tranquil Terrain
+739:Twisted Experimentation:2:PRF:Twisted Experimentation
+740:Uncontrolled Trickery:0:PRF:Uncontrolled Trickery
+741:Unequaled Gem of Power:2:PRF:Unequaled Gem of Power
+742:Unfortunate End:1:PRF:Unfortunate End
+743:Urzas Memorial:0:PRF:Urzas Memorial
+744:Vastwood Bear:0:PRF:Vastwood Bear
+745:Vile Experimentation:2:PRF:Vile Experimentation
+746:Warded Woods:0:PRF:Warded Woods
+747:Warsmith Rider:0:PRF:Warsmith Rider
+748:Wavecrest Seer:0:pRF:Wavecrest Seer
+749:Weaponize:6:PRF:Weaponize
+750:Weathered Gear:1:PRF:Weathered Gear
+751:Wild Experimentation:2:PRF:Wild Experimentation
+752:Winged Hauler:0:PRF:Winged Hauler
+753:Woodmorph:0:PRF:Woodmorph
+754:Wurm of Wastelands:0:PRF:Wurm of Wastelands
+755:Xar Defender of Perfection:2:PRF:Xar Defender of Perfection
+756:Young Blademaster:0:PRF:Young Blademaster
+757:Zombie:5:PRF:Zombie

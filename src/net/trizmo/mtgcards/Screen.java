@@ -188,6 +188,11 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		{
 			SceneDrawer.scene4(g);
 		}
+		
+		if(scene == 6)
+		{
+			
+		}
 
 
 
@@ -253,13 +258,34 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public void mouseClicked(MouseEvent e) {
 		if (scene == 0) ButtonHandler.scene0Click(e);
 		if (scene == 1) ButtonHandler.scene1Click(e);
-		if (scene == 2) CardHandler.doDraw(e);
-		Rectangle playButton = new Rectangle(500, 0, Screen.buttonWidth, Screen.buttonHeight);
-
-		if (scene == 3 && playButton.contains(e.getPoint())) {
+		
+		
+		
+		if (scene == 2){
+			if(e.getButton() == 2)
+			{
+				//CardHandler.zoom();
+			}else
+			{
+				CardHandler.doDraw(e);
+			}
 			
 		}
-		if (scene == 4 && playButton.contains(e.getPoint()))
+		
+		
+		
+		Rectangle playButton = new Rectangle(500, 0, Screen.buttonWidth, Screen.buttonHeight);
+		Rectangle playButton2 = new Rectangle(10, 500, Screen.buttonWidth, Screen.buttonHeight);
+		if (scene == 3) {
+			//dropBox[3].checkClicked(e);
+			
+			if(playButton.contains(e.getPoint()))
+			{
+				changeScene(6);
+				FileManager.loadDeck(dropBox[3].getClickedId());
+			}
+		}
+		if (scene == 4 && playButton2.contains(e.getPoint()))
 		{
 			changeScene(5);
 			sealedPlay(dropBox[2].getSelected());

@@ -45,21 +45,25 @@ public class DropBox {
 	
 	public void drawDropBox(Graphics g)
 	{
-		g.setColor(background);
-		g.fillRect(xPos, yPos, width, height);
-		g.setColor(foreground);
-		g.drawRect(xPos, yPos, width, height);
-		g.drawImage(downArrow, xPos + (width - height), yPos, height, height, null);
 		
-		g.setFont(new Font("TimesRoman", Font.PLAIN, height - 2));
-		g.setColor(foreground);
+		g.drawImage(new ImageIcon("res/General/choicebox.jpg").getImage(), xPos, yPos, width, height, null);
+		g.drawImage(new ImageIcon("res/General/DownButtonOfDoom.jpg").getImage(), xPos + width - 50, yPos, 50, 50, null);
+		g.setColor(Color.white);
+		g.setFont(new Font("TimesRoman", Font.PLAIN, height - 4));
+		
 		if(clickedObject > optionList.length - 1) clickedObject = 0;
-		g.drawString(optionList[clickedObject].getOption(), xPos + 10, yPos + height - 2);
+		g.drawString(optionList[clickedObject].getOption(), xPos + 10, (yPos + height - 4));
+		
 		if(opened)
 		{
 			int options = optionList.length;
 			g.setColor(background);
-			g.fillRect(xPos, yPos + height, width, height * options);
+			
+			for(int i = 0; i < options; i++)
+			{
+				g.drawImage(new ImageIcon("res/General/choicebox.jpg").getImage(), xPos + 10, (yPos + (height * 1)) + (i * height) - 10, null);
+			}
+			
 			for(int i = 0; i < options; i++)
 			{
 				g.setColor(foreground);
@@ -148,6 +152,11 @@ public class DropBox {
 		
 		return par1;
 		
+	}
+	
+	public void removeOptions()
+	{
+		optionList = null;
 	}
 	
 }

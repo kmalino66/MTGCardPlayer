@@ -1,2 +1,2 @@
-java -jar CardWriter.jar
+java -jar CardCoder.jar
 pause

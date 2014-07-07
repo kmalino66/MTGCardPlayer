@@ -8,4 +8,4 @@
 3:Hedronfall
 2:Canada
 1:Elf
-0:Test Deck
+0:Myriad
