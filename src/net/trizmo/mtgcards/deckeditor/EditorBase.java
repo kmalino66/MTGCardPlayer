@@ -16,8 +16,10 @@ public class EditorBase {
 	public static DropBox deckPick = new DropBox(10, 10, 600, 50);
 	public static DropBox setPick = new DropBox(10, 10, 600, 50);
 	public static DropBox cardPick = new DropBox(10, 60, 600, 50);
+	public static DeckManagerButton addCardButton = new DeckManagerButton(700, 10, Screen.cardWidth, Screen.cardWidth / 5, "ButtonAddCard", "ButtonCancel", 1);
+	public static DeckManagerButton ammountAddButton = new DeckManagerButton(Screen.width - Screen.cardWidth, Screen.cardHeight, Screen.cardWidth, Screen.cardWidth / 5, "ButtonChangeAmount", "ButtonAddCard", 1);
 	
-	public boolean addCard = false;
+	public static boolean addCard = false;
 	
 	public EditorBase()
 	{
@@ -40,12 +42,28 @@ public class EditorBase {
 			Screen.dropBox[3].drawDropBox(g);
 						
 			Image btnPlay = new ImageIcon("res/Button/ButtonPlay.png").getImage();
-			SceneDrawer.playButton = new Rectangle(500, 0, Screen.buttonWidth, Screen.buttonHeight);
-			g.drawImage(btnPlay, 500, 0, Screen.buttonWidth, Screen.buttonHeight, null);
+			SceneDrawer.playButton = new Rectangle(610, 0, Screen.buttonWidth, Screen.buttonHeight);
+			g.drawImage(btnPlay, 610, 0, Screen.buttonWidth, Screen.buttonHeight, null);
 		}
-	
 		
-
+		if(scene == 6) //Draw main editor
+		{
+			if(addCard)
+			{
+				addCardButton.setTextureNumber(2);
+				ammountAddButton.setTextureNumber(2);
+			}else
+			{
+				addCardButton.setTextureNumber(1);
+				ammountAddButton.setTextureNumber(1);
+			}
+			
+			addCardButton.drawButton(g);
+			ammountAddButton.drawButton(g);
+			setPick.drawDropBox(g);
+			cardPick.drawDropBox(g);
+			
+		}
 	
 	}
 	

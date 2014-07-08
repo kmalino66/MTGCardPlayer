@@ -11,19 +11,23 @@ import net.trizmo.mtgcards.Screen;
 
 public class DeckManagerButton {
 	
-	private Image buttonTexture;
+	private Image buttonTexture1;
+	private Image buttonTexture2;
 	private int xPos;
 	private int yPos;
 	private int width;
 	private int height;
+	private int textureNumber;
 	
-	public DeckManagerButton(int xPos, int yPos, int width, int height, String textureName)
+	public DeckManagerButton(int xPos, int yPos, int width, int height, String textureName1, String textureName2, int textureNumber)
 	{
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this.width = width;
 		this.height = height;
-		buttonTexture = new ImageIcon("res/Button/" + textureName + ".jpg").getImage();
+		buttonTexture1 = new ImageIcon("res/Button/" + textureName1 + ".jpg").getImage();
+		buttonTexture2 = new ImageIcon("res/Button/" + textureName2 + ".jpg").getImage();
+		this.textureNumber = textureNumber;
 	}
 	
 	public boolean getClicked(MouseEvent e)
@@ -43,6 +47,21 @@ public class DeckManagerButton {
 	
 	public void drawButton(Graphics g)
 	{
-		g.drawImage(buttonTexture, xPos, yPos, Screen.buttonWidth, Screen.buttonHeight, null);
+		if(textureNumber == 1)
+		{
+			g.drawImage(buttonTexture1, xPos, yPos, Screen.buttonWidth, Screen.buttonHeight, null);
+		}else {
+			g.drawImage(buttonTexture2, xPos, yPos, Screen.buttonWidth, Screen.buttonHeight, null);
+		}
+	}
+	
+	public int getTextureNumber()
+	{
+		return textureNumber;
+	}
+	
+	public void setTextureNumber(int textureNumber)
+	{
+		this.textureNumber = textureNumber;
 	}
 }

@@ -726,3 +726,4 @@
 755:Xar Defender of Perfection:2:PRF:Xar Defender of Perfection
 756:Young Blademaster:0:PRF:Young Blademaster
 757:Zombie:5:PRF:Zombie
+758:Olimun the Charger:2:PRF:Olimun the Charger

@@ -179,7 +179,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			StackManager.reformatStacks();
 		}
 
-		if(scene == 3) //Deck Manager
+		if(scene == 3) //Deck Manager Main
 		{
 			EditorBase.drawEditor(g, scene);
 		}
@@ -189,8 +189,9 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			SceneDrawer.scene4(g);
 		}
 		
-		if(scene == 6)
+		if(scene == 6)//Deck Manager edit
 		{
+			EditorBase.drawEditor(g, scene);
 			
 		}
 
