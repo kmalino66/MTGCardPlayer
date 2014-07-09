@@ -57,6 +57,7 @@ public class SceneDrawer {
 		//Restart and Mullagain buttons
 		g.drawImage(new ImageIcon("res/Button/ButtonReshuffle.png").getImage(), Screen.width - 200, 20, 100, 20, null);
 		g.drawImage(new ImageIcon("res/Button/ButtonMullagain.png").getImage(), Screen.width - 200, 40, 100, 20, null);
+		g.drawImage(new ImageIcon("res/Button/ButtonTapAllLands.png").getImage(), Screen.width - 200, 60, 100, 20, null);
 		
 	}
 	

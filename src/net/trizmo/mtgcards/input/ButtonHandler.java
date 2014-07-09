@@ -70,6 +70,8 @@ public class ButtonHandler {
 	
 	public static void scene2Click(MouseEvent e)
 	{
+		
+		//Check next turn button clicked
 		Rectangle rect = new Rectangle(Screen.width - 200, 0, 100, 20);
 		if(rect.contains(e.getPoint()))
 		{
@@ -83,17 +85,26 @@ public class ButtonHandler {
 			}
 		}
 		
+		//Check reshuffle button clicked
 		Rectangle rect1 = new Rectangle(Screen.width - 200, 20, 100, 20);
 		if(rect1.contains(e.getPoint()))
 		{
 			CardHandler.reshuffle(); //Reshuffles cards
 		}
 		
+		//Check mullagain button clicked
 		Rectangle rect2 = new Rectangle(Screen.width - 200, 40, 100, 20);
 		if(rect2.contains(e.getPoint()))
 		{
 			CardHandler.mullagain(Screen.mullagainNumber);
 			Screen.mullagainNumber++;
+		}
+		
+		//Check tap all lands button clicked
+		Rectangle rect3 = new Rectangle(Screen.width - 200, 60, 100, 20);
+		if(rect3.contains(e.getPoint()))
+		{
+			CardHandler.tapAllLands();
 		}
 	}
 	

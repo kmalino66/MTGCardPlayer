@@ -11,10 +11,12 @@ public class LibraryCard{
 	
 	private int XPOSITION = Screen.width - ((Screen.cardWidth + 30) * 3) + 30;
 	private int YPOSITION = Screen.height - (Screen.cardHeight + 15) + (int)(15 / 2);
+	private int rarity;
 
-	public LibraryCard(Image textureImage) {
+	public LibraryCard(Image textureImage, int rarity) {
 		
 		this.textureImage = textureImage;
+		this.rarity = rarity;
 		
 	}
 	
@@ -37,6 +39,10 @@ public class LibraryCard{
 	{
 		Rectangle rect = new Rectangle(XPOSITION, YPOSITION, Screen.width, Screen.height);
 		return rect.contains(e.getPoint());
+	}
+
+	public int getRarity() {
+		return rarity;
 	}
 
 }

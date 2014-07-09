@@ -10,6 +10,7 @@ public class PlayableCard {
 	private int y;
 	private int width;
 	private int height;
+	private int rarity;
 	
 	private boolean tapped;
 	private boolean isInLibrary;
@@ -20,7 +21,7 @@ public class PlayableCard {
 	
 	private Image textureImage;
 	
-	public PlayableCard(int x, int y, int width, int height, boolean tapped, boolean isInLibrary, boolean isInGraveyard, boolean isExiled, boolean isBattlefield, boolean isHand, Image textureImage) {
+	public PlayableCard(int x, int y, int width, int height, boolean tapped, boolean isInLibrary, boolean isInGraveyard, boolean isExiled, boolean isBattlefield, boolean isHand, int rarity, Image textureImage) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -32,6 +33,7 @@ public class PlayableCard {
 		this.isBattlefield = isBattlefield;
 		this.isHand = isHand;
 		this.textureImage = textureImage;
+		this.rarity = rarity;
 	}
 	
 	public int getX() 
@@ -98,5 +100,9 @@ public class PlayableCard {
 	public boolean getIsInHand()
 	{
 		return isHand;
+	}
+
+	public int getRarity() {
+		return rarity;
 	}
 }

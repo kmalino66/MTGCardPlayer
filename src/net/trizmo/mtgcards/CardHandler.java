@@ -69,7 +69,7 @@ public class CardHandler {
 					}
 				}
 
-				Screen.libraryCards[firstOpen] = new LibraryCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage());
+				Screen.libraryCards[firstOpen] = new LibraryCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage(), Screen.battlefieldCards[interactionCard.getArrayLocation()].getRarity());
 				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
 
 			}else if(spotLocations[1].contains(e.getPoint()))
@@ -82,7 +82,7 @@ public class CardHandler {
 					}
 				}
 
-				Screen.handCards[firstOpen] = new HandCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage(), firstOpen);
+				Screen.handCards[firstOpen] = new HandCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage(), firstOpen, Screen.battlefieldCards[interactionCard.getArrayLocation()].getRarity());
 				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
 
 			}else if(spotLocations[3].contains(e.getPoint()))
@@ -93,7 +93,7 @@ public class CardHandler {
 				}
 
 
-				Screen.graveyardCards[firstOpen] = new GraveyardCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage());
+				Screen.graveyardCards[firstOpen] = new GraveyardCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage(), Screen.battlefieldCards[interactionCard.getArrayLocation()].getRarity());
 				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
 
 			}else if(spotLocations[4].contains(e.getPoint()))
@@ -104,7 +104,7 @@ public class CardHandler {
 				}
 
 
-				Screen.exiledCards[firstOpen] = new ExiledCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage());
+				Screen.exiledCards[firstOpen] = new ExiledCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage(), Screen.battlefieldCards[interactionCard.getArrayLocation()].getRarity());
 				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
 
 			}
@@ -174,7 +174,7 @@ public class CardHandler {
 		{
 			if(Screen.libraryCards[i] == null)
 			{
-				Screen.libraryCards[i] = new LibraryCard(Screen.deckCard[index].getTextureImage());
+				Screen.libraryCards[i] = new LibraryCard(Screen.deckCard[index].getTextureImage(), Screen.deckCard[index].getRarity());
 				break;
 			}
 		}
@@ -186,7 +186,7 @@ public class CardHandler {
 		{
 			if(Screen.graveyardCards[i] == null)
 			{
-				Screen.graveyardCards[i] = new GraveyardCard(Screen.deckCard[index].getTextureImage());
+				Screen.graveyardCards[i] = new GraveyardCard(Screen.deckCard[index].getTextureImage(), Screen.deckCard[index].getRarity());
 				break;
 			}
 		}
@@ -198,7 +198,7 @@ public class CardHandler {
 		{
 			if(Screen.graveyardCards[i] == null)
 			{
-				Screen.exiledCards[i] = new ExiledCard(Screen.deckCard[index].getTextureImage());
+				Screen.exiledCards[i] = new ExiledCard(Screen.deckCard[index].getTextureImage(), Screen.deckCard[index].getRarity());
 				break;
 			}
 		}
@@ -211,7 +211,7 @@ public class CardHandler {
 			if(Screen.battlefieldCards[i] == null)
 			{
 				Screen.battlefieldCards[i] = new BattlefieldCard(Screen.deckCard[index].getTextureImage(), Screen.deckCard[index].getX(), 
-						Screen.deckCard[index].getY(), Screen.deckCard[index].getTapped());
+						Screen.deckCard[index].getY(),Screen.deckCard[index].getRarity(), Screen.deckCard[index].getTapped());
 				break;
 			}
 		}
@@ -223,7 +223,7 @@ public class CardHandler {
 		{
 			if(Screen.handCards[i] == null)
 			{
-				Screen.handCards[i] = new HandCard(Screen.deckCard[index].getTextureImage(), i);
+				Screen.handCards[i] = new HandCard(Screen.deckCard[index].getTextureImage(), i, Screen.deckCard[index].getRarity());
 				break;
 			}
 		}
@@ -387,7 +387,7 @@ public class CardHandler {
 			{
 				if(Screen.battlefieldCards[i] == null)
 				{
-					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.libraryCards[interactionCard.getArrayLocation()].getImage(), mouseX, mouseY, false);
+					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.libraryCards[interactionCard.getArrayLocation()].getImage(), mouseX, mouseY, Screen.libraryCards[interactionCard.getArrayLocation()].getRarity(), false);
 					Screen.libraryCards[interactionCard.getArrayLocation()] = null;
 					interactionCard = new CardInteract(2, i);
 					break;
@@ -401,7 +401,7 @@ public class CardHandler {
 			{
 				if(Screen.battlefieldCards[i] == null)
 				{
-					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.handCards[interactionCard.getArrayLocation()].getTextureImage(), mouseX, mouseY, false);
+					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.handCards[interactionCard.getArrayLocation()].getTextureImage(), mouseX, mouseY, Screen.handCards[interactionCard.getArrayLocation()].getRarity(), false);
 					Screen.handCards[interactionCard.getArrayLocation()] = null;
 					interactionCard = new CardInteract(2, i);
 					break;
@@ -438,7 +438,7 @@ public class CardHandler {
 			{
 				if(Screen.battlefieldCards[i] == null)
 				{
-					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.graveyardCards[interactionCard.getArrayLocation()].getImage(), mouseX, mouseY, false);
+					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.graveyardCards[interactionCard.getArrayLocation()].getImage(), mouseX, mouseY, Screen.graveyardCards[interactionCard.getArrayLocation()].getRarity(), false);
 					Screen.graveyardCards[interactionCard.getArrayLocation()] = null;
 					interactionCard = new CardInteract(2, i);
 					break;
@@ -452,7 +452,7 @@ public class CardHandler {
 			{
 				if(Screen.battlefieldCards[i] == null)
 				{
-					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.exiledCards[interactionCard.getArrayLocation()].getImage(), mouseX, mouseY, false);
+					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.exiledCards[interactionCard.getArrayLocation()].getImage(), mouseX, mouseY, Screen.exiledCards[interactionCard.getArrayLocation()].getRarity(),  false);
 					Screen.exiledCards[interactionCard.getArrayLocation()] = null;
 					interactionCard = new CardInteract(2, i);
 
@@ -527,7 +527,7 @@ public class CardHandler {
 				{
 					if(Screen.libraryCards[j] == null)
 					{
-						Screen.libraryCards[j] = new LibraryCard(Screen.handCards[i].getTextureImage());
+						Screen.libraryCards[j] = new LibraryCard(Screen.handCards[i].getTextureImage(), Screen.handCards[i].getRarity());
 						Screen.handCards[i] = null;
 						break;
 					}
@@ -604,6 +604,17 @@ public class CardHandler {
 		if(zoomCardTexture != null)
 		{
 			g.drawImage(zoomCardTexture, (Screen.width / 2) - Screen.cardWidth, (Screen.height / 2) - Screen.cardHeight, Screen.cardWidth * 2, Screen.cardHeight * 2, null);
+		}
+	}
+	
+	public static void tapAllLands()
+	{
+		for(int i = 0; i < Screen.battlefieldCards.length; i++)
+		{
+			if(Screen.battlefieldCards[i] != null && Screen.battlefieldCards[i].getRarity() == 4)
+			{
+				Screen.battlefieldCards[i].setTapped(true);
+			}
 		}
 	}
 }

@@ -10,6 +10,7 @@ public class StackManager {
 		{
 			if(Screen.battlefieldCards[i] == null && Screen.battlefieldCards[i+1] != null)
 			{
+				
 				Screen.battlefieldCards[i] = Screen.battlefieldCards[i+1];
 				Screen.battlefieldCards[i+1] = null;
 				if(i + 1 == CardHandler.interactionCard.getArrayLocation())
@@ -71,7 +72,7 @@ public class StackManager {
 				{
 					if(Screen.libraryCards[j] != null)
 					{
-						Screen.handCards[i] = new HandCard(Screen.libraryCards[j].getImage(), i);
+						Screen.handCards[i] = new HandCard(Screen.libraryCards[j].getImage(), i, Screen.libraryCards[j].getRarity());
 						Screen.libraryCards[j] = null;
 						break;
 					}

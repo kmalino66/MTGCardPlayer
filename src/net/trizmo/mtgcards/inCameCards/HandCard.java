@@ -11,12 +11,14 @@ public class HandCard {
 	private Image textureImage;
 	
 	private int index;
+	private int rarity;
 	
 	
-	public HandCard(Image textureImage, int index)
+	public HandCard(Image textureImage, int index, int rarity)
 	{
 		this.textureImage = textureImage;
 		this.index = index;
+		this.rarity = rarity;
 	}
 	
 	public Image getTextureImage()
@@ -39,5 +41,9 @@ public class HandCard {
 	{
 		Rectangle rect = new Rectangle((int)((Screen.cardWidth * index) * .9), Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), (int)(Screen.cardWidth * .9) , (int)(Screen.cardHeight * .9));
 		return rect.contains(e);
+	}
+
+	public int getRarity() {
+		return rarity;
 	}
 }

@@ -14,15 +14,17 @@ public class BattlefieldCard {
 	private int y;
 	private int tx;
 	private int ty;
+	private int rarity;
 
 	private boolean tapped;
 
-	public BattlefieldCard(Image textureImage, int x, int y, boolean tapped)
+	public BattlefieldCard(Image textureImage, int x, int y, int rarity, boolean tapped)
 	{
 		this.textureImage = textureImage;
 		this.x = x;
 		this.y = y;
 		this.tapped = tapped;
+		this.rarity = rarity;
 
 	}
 
@@ -33,6 +35,7 @@ public class BattlefieldCard {
 		this.x = battlefieldCard.getX();
 		this.y = battlefieldCard.getY();
 		this.tapped = battlefieldCard.getTapped();
+		this.rarity = battlefieldCard.getRarity();
 	
 		}else
 		{
@@ -40,6 +43,7 @@ public class BattlefieldCard {
 			this.tx = battlefieldCard.getTX();
 			this.ty = battlefieldCard.getTY();
 			this.tapped = battlefieldCard.getTapped();
+			this.rarity = battlefieldCard.getRarity();
 		}
 	}
 
@@ -128,6 +132,10 @@ public class BattlefieldCard {
 		}else{
 			return new Point(0,0);
 		}
+	}
+
+	public int getRarity() {
+		return rarity;
 	}
 
 }

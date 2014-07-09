@@ -271,7 +271,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		Rectangle playButton = new Rectangle(500, 0, Screen.buttonWidth, Screen.buttonHeight);
 		Rectangle playButton2 = new Rectangle(10, 500, Screen.buttonWidth, Screen.buttonHeight);
 		if (scene == 3) {
-			//dropBox[3].checkClicked(e);
 			
 			if(playButton.contains(e.getPoint()))
 			{
@@ -370,7 +369,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 						numInDeck = rand.nextInt(totalCardsInDeck);
 					}
 
-					deckCard[numInDeck] = new PlayableCard(0, 0, (int)(width * (187.5 / 1920)), (int)((width * (187.5 / 1920)) / .717), false, true, false, false, false, false, new ImageIcon("res/CardsAndDecks/CardTextures/" + deck[i].getSetName() + "/" + deck[i].getTextureName() + ".jpg").getImage());
+					deckCard[numInDeck] = new PlayableCard(0, 0, (int)(width * (187.5 / 1920)), (int)((width * (187.5 / 1920)) / .717), false, true, false, false, false, false, deck[i].getRarity(), new ImageIcon("res/CardsAndDecks/CardTextures/" + deck[i].getSetName() + "/" + deck[i].getTextureName() + ".jpg").getImage());
 					CardHandler.splitByState();
 				}
 			}
