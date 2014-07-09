@@ -536,4 +536,10 @@ public class CardHandler {
 		for(int i = 1; i < 8 - mNum; i++) StackManager.drawCard();
 	}
 
+	public static void zoom()
+	{
+		Point mousePoint = MouseInfo.getPointerInfo().getLocation();
+		
+		
+	}
 }

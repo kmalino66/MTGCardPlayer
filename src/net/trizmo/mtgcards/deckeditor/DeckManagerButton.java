@@ -25,8 +25,8 @@ public class DeckManagerButton {
 		this.yPos = yPos;
 		this.width = width;
 		this.height = height;
-		buttonTexture1 = new ImageIcon("res/Button/" + textureName1 + ".jpg").getImage();
-		buttonTexture2 = new ImageIcon("res/Button/" + textureName2 + ".jpg").getImage();
+		buttonTexture1 = new ImageIcon("res/Button/" + textureName1 + ".png").getImage();
+		buttonTexture2 = new ImageIcon("res/Button/" + textureName2 + ".png").getImage();
 		this.textureNumber = textureNumber;
 	}
 	

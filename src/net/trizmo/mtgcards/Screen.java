@@ -122,7 +122,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		lifeBoxes[3] = new Rectangle(width - 100, 160, 100, 20);
 		lifeBoxes[4] = new Rectangle(width - 100, 180, 100, 20);
 		lifeBoxes[5] = new Rectangle(width - 100, 200, 100, 20);
-
+		
 		thread.start();
 	}
 
@@ -259,13 +259,10 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public void mouseClicked(MouseEvent e) {
 		if (scene == 0) ButtonHandler.scene0Click(e);
 		if (scene == 1) ButtonHandler.scene1Click(e);
-		
-		
-		
 		if (scene == 2){
-			if(e.getButton() == 2)
+			if(e.getButton() == 2)//TODO card zoom
 			{
-				//CardHandler.zoom();
+				CardHandler.zoom(); 
 			}else
 			{
 				CardHandler.doDraw(e);
@@ -282,8 +279,9 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			
 			if(playButton.contains(e.getPoint()))
 			{
-				changeScene(6);
 				FileManager.loadDeck(dropBox[3].getClickedId());
+				EditorBase.prepare();
+				changeScene(6);
 			}
 		}
 		if (scene == 4 && playButton2.contains(e.getPoint()))

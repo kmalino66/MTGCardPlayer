@@ -120,6 +120,36 @@ public class DropBox {
 		}
 	}
 	
+	public boolean clickedBool(MouseEvent e)
+	{
+		
+		boolean par1 = false;
+		
+		if(!opened)
+		{
+			Rectangle rect = new Rectangle(xPos, yPos, width, height);
+			if(rect.contains(e.getPoint()))
+			{
+				par1 = true;
+			}
+		}else{
+			for(int i = 0; i < optionList.length; i++)
+			{
+				Rectangle rect = new Rectangle(xPos, (yPos + (height * (i +1))), width, height);
+				if(rect.contains(e.getPoint()))
+				{
+					par1 = true;
+					break;
+				}
+				
+			}
+			
+			
+		}
+		
+		return par1;
+	}
+	
 	public boolean getOpened()
 	{
 		return opened;

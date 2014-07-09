@@ -6,6 +6,7 @@ import java.awt.event.MouseMotionListener;
 
 import net.trizmo.mtgcards.CardHandler;
 import net.trizmo.mtgcards.Screen;
+import net.trizmo.mtgcards.deckeditor.EditorBase;
 
 public class MouseHandler implements MouseListener, MouseMotionListener{
 	
@@ -34,6 +35,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
 			if(Screen.dropBox[i] != null && Screen.dropBox[i].getOptions() != null) Screen.dropBox[i].checkClicked(arg0);
 			
 		}
+		
+		if(screen.scene == 6) EditorBase.handleClick(arg0);
 		
 	}
 
