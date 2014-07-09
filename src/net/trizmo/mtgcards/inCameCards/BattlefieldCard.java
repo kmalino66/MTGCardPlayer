@@ -88,6 +88,17 @@ public class BattlefieldCard {
 			return rect.contains(e.getPoint());
 		}
 	}
+	
+	public boolean contains(Point e)
+	{
+		if(!tapped){
+			Rectangle rect = new Rectangle(x, y,  Screen.cardWidth, Screen.cardHeight);
+			return rect.contains(e);
+		}else{
+			Rectangle rect = new Rectangle(x - (Screen.cardHeight - Screen.cardWidth) / 2, y - (Screen.cardHeight - Screen.cardWidth) / 2, Screen.cardHeight, Screen.cardWidth);
+			return rect.contains(e);
+		}
+	}
 
 	public void setPos(int xPos, int yPos)
 	{

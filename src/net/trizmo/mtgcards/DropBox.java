@@ -3,7 +3,6 @@ package net.trizmo.mtgcards;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
@@ -12,7 +11,6 @@ import javax.swing.ImageIcon;
 public class DropBox {
 
 	private Color foreground, background;
-	private Image downArrow = new ImageIcon("res/Button/downArrow.png").getImage();
 	private DropBoxEntry[] optionList;
 	
 	
@@ -169,14 +167,13 @@ public class DropBox {
 	{
 		String[] par1 = null;
 		
-		try {
+		if(optionList != null) 
+		{
 			par1 = new String[optionList.length];
 			for(int i = 0; i < optionList.length; i++)
 			{
 				par1[i] = optionList[i].getOption();
 			}
-		} catch (NullPointerException e)
-		{
 			
 		}
 		

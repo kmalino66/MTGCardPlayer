@@ -1,5 +1,7 @@
 package net.trizmo.mtgcards;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -24,6 +26,8 @@ public class CardHandler {
 	public static int firstOpen;
 	public static boolean alreadyScanned = false;
 	public static Point par1Point = new Point(0,0);
+
+	private static Image zoomCardTexture;
 
 	public static void mousePressed(MouseEvent e)
 	{
@@ -418,14 +422,14 @@ public class CardHandler {
 					break;
 				}
 			}
-			
+
 			if(!alreadyScanned){
 
 				par1Point = new Point(Screen.battlefieldCards[interactionCard.getArrayLocation()].getPosOnCard(mouseX, mouseY));
 				alreadyScanned = true;
 			}
-			
-				Screen.battlefieldCards[interactionCard.getArrayLocation()].setPos((int)(mouseX - par1Point.getX()), (int) (mouseY - par1Point.getY()));
+
+			Screen.battlefieldCards[interactionCard.getArrayLocation()].setPos((int)(mouseX - par1Point.getX()), (int) (mouseY - par1Point.getY()));
 
 			break;
 		case 3:
@@ -539,7 +543,67 @@ public class CardHandler {
 	public static void zoom()
 	{
 		Point mousePoint = MouseInfo.getPointerInfo().getLocation();
-		
-		
+
+		if(zoomCardTexture != null)
+		{
+			zoomCardTexture = null;
+		}else{
+
+			//Check exiled cards for zoom
+			for(int i = Screen.exiledCards.length - 1; i >= 0; i--)
+			{
+				if(Screen.exiledCards[i] != null)
+				{
+					if(Screen.exiledCards[i].contains(mousePoint))
+					{
+						zoomCardTexture = Screen.exiledCards[i].getImage();
+						break;
+					}else {
+						break;
+					}
+				}
+			}
+
+			for(int i = Screen.graveyardCards.length - 1; i >= 0; i--)
+			{
+				if(Screen.graveyardCards[i] != null)
+				{
+					if(Screen.graveyardCards[i].contains(mousePoint))
+					{
+						zoomCardTexture = Screen.graveyardCards[i].getImage();
+						break;
+					}else {
+						break;
+					}
+				}
+			}
+
+			for(int i = Screen.handCards.length - 1; i >= 0; i--)
+			{
+				if(Screen.handCards[i] != null)
+				{
+					if(Screen.handCards[i].contains(mousePoint))
+					{
+						zoomCardTexture = Screen.handCards[i].getTextureImage();
+						break;
+					}
+				}
+			}
+
+			for(int i = 0; i < Screen.battlefieldCards.length; i++)
+			{
+				if(Screen.battlefieldCards[i].contains(mousePoint)) zoomCardTexture = Screen.battlefieldCards[i].getImage();
+			}
+
+
+		}
+	}
+	
+	public static void drawZoomCard(Graphics g)
+	{
+		if(zoomCardTexture != null)
+		{
+			g.drawImage(zoomCardTexture, (Screen.width / 2) - Screen.cardWidth, (Screen.height / 2) - Screen.cardHeight, Screen.cardWidth * 2, Screen.cardHeight * 2, null);
+		}
 	}
 }

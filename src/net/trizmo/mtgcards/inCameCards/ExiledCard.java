@@ -1,6 +1,7 @@
 package net.trizmo.mtgcards.inCameCards;
 
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
@@ -38,5 +39,11 @@ public class ExiledCard {
 	{
 		Rectangle rect = new Rectangle(XPOSITION, YPOSITION, Screen.cardWidth, Screen.cardHeight);
 		return rect.contains(e.getPoint());
+	}
+	
+	public boolean contains(Point e)
+	{
+		Rectangle rect = new Rectangle(XPOSITION, YPOSITION, Screen.cardWidth, Screen.cardHeight);
+		return rect.contains(e);
 	}
 }

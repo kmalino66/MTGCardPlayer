@@ -36,7 +36,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
 			
 		}
 		
-		if(screen.scene == 6) EditorBase.handleClick(arg0);
+		if(Screen.scene == 6) EditorBase.handleClick(arg0);
 		
 	}
 

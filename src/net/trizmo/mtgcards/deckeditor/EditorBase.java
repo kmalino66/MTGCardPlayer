@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
-import net.trizmo.mtgcards.CoutHandler;
 import net.trizmo.mtgcards.Deck;
 import net.trizmo.mtgcards.DeckNames;
 import net.trizmo.mtgcards.DropBox;
@@ -47,6 +46,7 @@ public class EditorBase {
 				deckCards[i] = null;
 			}
 		}
+		@SuppressWarnings("unused")
 		Deck[] par1temp = Screen.deck;
 		System.out.println(Screen.deck.length);
 		for(int i = 0; i < Screen.deck.length; i++)

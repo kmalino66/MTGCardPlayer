@@ -28,11 +28,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public static final double versionNumber = 1.1;
 	public static final int versionID = 2;
 	public static final String versionName = "Player Beta v1.1"; 
-	/**
-	 * TODO Other useful buttons
-	 * TODO Card Zoom
-	 * TODO Draw life text
-	 */
 
 	Thread thread = new Thread(this);
 	Frame frame;
@@ -162,6 +157,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			CardDrawer.drawGraveyard(g);
 			CardDrawer.drawHand(g);
 			CardDrawer.drawBattlefield(g);
+			CardHandler.drawZoomCard(g);
 
 			g.drawImage(dice, Screen.width - 100, 0, 100, 100, null);
 
@@ -260,7 +256,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		if (scene == 0) ButtonHandler.scene0Click(e);
 		if (scene == 1) ButtonHandler.scene1Click(e);
 		if (scene == 2){
-			if(e.getButton() == 2)//TODO card zoom
+			if(e.getButton() == 2)
 			{
 				CardHandler.zoom(); 
 			}else

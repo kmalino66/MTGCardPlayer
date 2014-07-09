@@ -1,6 +1,7 @@
 package net.trizmo.mtgcards.inCameCards;
 
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
@@ -34,4 +35,9 @@ public class HandCard {
 		return rect.contains(e.getPoint());
 	}
 	
+	public boolean contains(Point e)
+	{
+		Rectangle rect = new Rectangle((int)((Screen.cardWidth * index) * .9), Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), (int)(Screen.cardWidth * .9) , (int)(Screen.cardHeight * .9));
+		return rect.contains(e);
+	}
 }
