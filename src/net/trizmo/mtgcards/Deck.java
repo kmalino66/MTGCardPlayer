@@ -30,6 +30,17 @@ public class Deck extends Card{
 		return ammountOfCard;
 	}
 	
+	public int adjustCardAmmount(int delta)
+	{
+		ammountOfCard += delta;
+		return ammountOfCard;
+	}
+	
+	public void setCardAmount(int cardAmount)
+	{
+		ammountOfCard = cardAmount;
+	}
+	
 	public int getRarity() {
 		return rarity;
 	}

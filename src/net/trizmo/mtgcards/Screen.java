@@ -59,9 +59,10 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public static Rectangle[] lifeBoxes = new Rectangle[6];
 	public static Token[] tokens;
 	public static Card[] commonCards, uncommonCards, rareCards, mythicRareCards, specialCards;
-	public static Card[][] sealedPacks = null;
 	public static String[] sets = null;
 
+	public static Pack[] sealedPacks;
+	
 	public static MouseEvent mEvent;
 	public static Font customFont;
 	public static Image dice;
@@ -177,17 +178,22 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 
 		if(scene == 3) //Deck Manager Main
 		{
+			g.drawImage(background, 0, 0, width, height, null);
 			EditorBase.drawEditor(g, scene);
 		}
 
 		if(scene == 4)
 		{
+			g.drawImage(background, 0, 0, width, height, null);
 			SceneDrawer.scene4(g);
+
 		}
 		
 		if(scene == 6)//Deck Manager edit
 		{
+			g.drawImage(background, 0, 0, width, height, null);
 			EditorBase.drawEditor(g, scene);
+
 			
 		}
 
@@ -283,7 +289,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		{
 			changeScene(5);
 			sealedPlay(dropBox[2].getSelected());
-			//SealedPlayManager.formatForDeck();
+			SealedPlayManager.formatForDeck(sealedPacks);
 		}
 	}
 
@@ -484,6 +490,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 							break;
 						}
 					}
+					break;
 				case 1:
 					for(int j = 0; j < uncommonCards.length; j++)
 					{
@@ -493,6 +500,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 							break;
 						}
 					}
+					break;
 				case 2:
 					for(int j = 0; j < rareCards.length; j++)
 					{
@@ -502,6 +510,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 							break;
 						}
 					}
+					break;
 				case 3:
 					for( int j = 0; j < mythicRareCards.length; j++)
 					{
@@ -511,6 +520,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 							break;
 						}
 					}
+					break;
 				case 6:
 					for( int j = 0; j < specialCards.length; j++)
 					{
@@ -520,6 +530,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 							break;
 						}
 					}
+					break;
 				}
 			}
 
@@ -528,8 +539,10 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 				specialCards = null;
 			}
 
-			sealedPacks = SealedPlayManager.createPacks(commonCards, uncommonCards, rareCards, mythicRareCards, specialCards);
 		}
+		
+		sealedPacks = SealedPlayManager.createPacks(commonCards, uncommonCards, rareCards, mythicRareCards, specialCards);
+
 	}
 
 	public static String[] getSets()
