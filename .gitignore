@@ -215,7 +215,3 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-
-#My Options
-*.dropbox
-*.gitignore

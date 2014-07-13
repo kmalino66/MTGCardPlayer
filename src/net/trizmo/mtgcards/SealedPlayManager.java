@@ -70,7 +70,7 @@ public class SealedPlayManager {
 					}
 				}
 				
-				if(found = false)
+				if(!found)
 				{
 					totalSealedCards = expandDeckArray(totalSealedCards);
 					totalSealedCards[totalSealedCards.length - 1] = new Deck(par1CardsInPack[j].getId(), par1CardsInPack[j].getName(), par1CardsInPack[j].getRarity(), par1CardsInPack[j].getSetName(), par1CardsInPack[j].getTextureName(), 1);
