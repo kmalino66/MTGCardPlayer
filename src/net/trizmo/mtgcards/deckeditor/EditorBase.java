@@ -28,7 +28,7 @@ public class EditorBase {
 	public static DeckManagerButton closeButton	= new DeckManagerButton((Screen.width / 2) - 251, Screen.height / 2, 502, 100, "ButtonClose", "", 1);
 	public static DeckManagerButton addButton = new DeckManagerButton((Screen.width / 2) - 251, (Screen.height / 2) - 100, 201, 100, "ButtonPlus", "", 1);
 	public static DeckManagerButton minusButton = new DeckManagerButton((Screen.width / 2) + 50, (Screen.height / 2) - 100, 201, 100, "ButtonMinus", "", 1);
-	public static DeckManagerButton saveButton = new DeckManagerButton(0, Screen.height - ((Screen.cardWidth / 5) * 2), Screen.cardWidth * 2, (Screen.cardWidth / 5) * 2, "ButtonClose", "", 1);
+	public static DeckManagerButton saveButton = new DeckManagerButton(0, Screen.height - ((Screen.cardWidth / 5) * 2), Screen.cardWidth * 2, (Screen.cardWidth / 5) * 2, "ButtonSave", "", 1);
 	public static DeckManagerCard[] deckCards;
 
 	public static boolean addCard = false;
@@ -56,6 +56,7 @@ public class EditorBase {
 				deckCards[i] = null;
 			}
 		}
+		
 		@SuppressWarnings("unused")
 		Deck[] par1temp = Screen.deck;
 		System.out.println(Screen.deck.length);
@@ -69,7 +70,6 @@ public class EditorBase {
 				}
 			}
 		}
-
 
 	}
 
@@ -139,8 +139,6 @@ public class EditorBase {
 				addButton.drawButton(g);
 				minusButton.drawButton(g);
 				closeButton.drawButton(g);
-
-
 
 			}
 
@@ -218,6 +216,7 @@ public class EditorBase {
 		}
 	}
 
+	//Called whenever there is a click on the deck editor scenes.
 	public static void handleClick(MouseEvent e)
 	{
 		setPick.checkClicked(e);
@@ -283,13 +282,14 @@ public class EditorBase {
 				}
 			}
 		}
-		
+		//TODO Make a save button for the deck editor.
 		if(saveButton.getClicked(e))
 		{
 			FileManager.saveDeck(Screen.chosenDeck);
 		}
 	}
 
+	//Searches for how many of the selected card is in the deck.
 	public static int searchAmountOfCardsInDeck()
 	{
 		Deck[] par1Deck = Screen.deck;
@@ -316,6 +316,7 @@ public class EditorBase {
 		return 0;
 	}
 
+	//Gets the id for the currently selected card
 	public static int searchSelectedCardId()
 	{
 		if(setPick.getSelected() != null && cardPick.getSelected() != null)
@@ -331,6 +332,7 @@ public class EditorBase {
 		return 0;
 	}
 
+	//Expands the deck array by 1 to allow for a new card being added to the deck.
 	public static void expandDeck(int cardId)
 	{
 		int arrayMod = -1;
