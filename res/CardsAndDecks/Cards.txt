@@ -716,7 +716,7 @@
 745:Vile Experimentation:2:PRF:Vile Experimentation
 746:Warded Woods:0:PRF:Warded Woods
 747:Warsmith Rider:0:PRF:Warsmith Rider
-748:Wavecrest Seer:0:pRF:Wavecrest Seer
+748:Wavecrest Seer:0:PRF:Wavecrest Seer
 749:Weaponize:6:PRF:Weaponize
 750:Weathered Gear:1:PRF:Weathered Gear
 751:Wild Experimentation:2:PRF:Wild Experimentation

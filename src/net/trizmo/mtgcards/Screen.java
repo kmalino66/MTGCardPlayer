@@ -79,6 +79,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public static int mullagainNumber = 0;
 	public static int frameX;
 	public static int frameY;
+	public static int chosenDeck = -1;
 
 	public static int lifeAmmount;
 
@@ -99,6 +100,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 
 		this.frame.addMouseListener(new MouseHandler(this));
 		this.frame.addMouseMotionListener(new MouseHandler(this));
+		this.frame.addMouseWheelListener(new MouseHandler(this));
 		this.frame.addKeyListener(new KeyHandler(this));
 
 		buttonWidth = this.frame.getWidth() / 3;
@@ -281,6 +283,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			if(playButton.contains(e.getPoint()))
 			{
 				FileManager.loadDeck(dropBox[3].getClickedId());
+				chosenDeck = dropBox[3].getClickedId();
 				EditorBase.prepare();
 				changeScene(6);
 			}

@@ -49,9 +49,9 @@ public class DeckManagerButton {
 	{
 		if(textureNumber == 1)
 		{
-			g.drawImage(buttonTexture1, xPos, yPos, Screen.buttonWidth, Screen.buttonHeight, null);
+			g.drawImage(buttonTexture1, xPos, yPos, width, height, null);
 		}else {
-			g.drawImage(buttonTexture2, xPos, yPos, Screen.buttonWidth, Screen.buttonHeight, null);
+			g.drawImage(buttonTexture2, xPos, yPos, width, height, null);
 		}
 	}
 	

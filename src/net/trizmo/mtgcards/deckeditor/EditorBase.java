@@ -1,5 +1,7 @@
 package net.trizmo.mtgcards.deckeditor;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -7,9 +9,12 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
+import net.trizmo.mtgcards.Card;
+import net.trizmo.mtgcards.CoutHandler;
 import net.trizmo.mtgcards.Deck;
 import net.trizmo.mtgcards.DeckNames;
 import net.trizmo.mtgcards.DropBox;
+import net.trizmo.mtgcards.FileManager;
 import net.trizmo.mtgcards.SceneDrawer;
 import net.trizmo.mtgcards.Screen;
 
@@ -19,10 +24,15 @@ public class EditorBase {
 	public static DropBox setPick = new DropBox(10, 10, 600, 50);
 	public static DropBox cardPick = new DropBox(10, 60, 600, 50);
 	public static DeckManagerButton addCardButton = new DeckManagerButton(700, 10, Screen.cardWidth, Screen.cardWidth / 5, "ButtonAddCard", "ButtonCancel", 1);
-	public static DeckManagerButton ammountAddButton = new DeckManagerButton(Screen.width - Screen.cardWidth, Screen.cardHeight, Screen.cardWidth, Screen.cardWidth / 5, "ButtonChangeAmount", "ButtonAddCard", 1);
+	public static DeckManagerButton ammountAddButton = new DeckManagerButton(Screen.width - (Screen.cardWidth * 2), Screen.cardHeight * 2, Screen.cardWidth * 2, (Screen.cardWidth / 5) * 2, "ButtonChangeAmount", "ButtonAddCard", 1);
+	public static DeckManagerButton closeButton	= new DeckManagerButton((Screen.width / 2) - 251, Screen.height / 2, 502, 100, "ButtonClose", "", 1);
+	public static DeckManagerButton addButton = new DeckManagerButton((Screen.width / 2) - 251, (Screen.height / 2) - 100, 201, 100, "ButtonPlus", "", 1);
+	public static DeckManagerButton minusButton = new DeckManagerButton((Screen.width / 2) + 50, (Screen.height / 2) - 100, 201, 100, "ButtonMinus", "", 1);
+	public static DeckManagerButton saveButton = new DeckManagerButton(0, Screen.height - ((Screen.cardWidth / 5) * 2), Screen.cardWidth * 2, (Screen.cardWidth / 5) * 2, "ButtonClose", "", 1);
 	public static DeckManagerCard[] deckCards;
 
 	public static boolean addCard = false;
+	public static boolean quantityChangeScreen;
 
 	public static void prepare()
 	{
@@ -76,6 +86,8 @@ public class EditorBase {
 	public static void drawEditor(Graphics g, int scene)
 	{
 
+		g.setColor(Color.white);
+
 		if(scene == 3) {
 			Screen.dropBox[3].drawDropBox(g);
 
@@ -119,6 +131,52 @@ public class EditorBase {
 
 				}
 			}
+
+
+			if(quantityChangeScreen)
+			{
+				g.fillRect((Screen.width / 2) - 251, (Screen.height / 2) - 100, 502, 200);
+				addButton.drawButton(g);
+				minusButton.drawButton(g);
+				closeButton.drawButton(g);
+
+
+
+			}
+
+			if(setPick.getSelected() != null && cardPick.getSelected() != null)
+			{
+				for(int i = 0; i < Screen.cardList.length; i++)
+				{
+					if(Screen.cardList[i] != null && Screen.cardList[i].getName().equals(cardPick.getSelected()))
+					{
+						String par1TextureName = Screen.cardList[i].getTextureName();
+						String par1SetName = Screen.cardList[i].getSetName();
+
+						g.drawImage(new ImageIcon("res/CardsAndDecks/CardTextures/" + par1SetName + "/" + par1TextureName + ".jpg").getImage(), Screen.width - (Screen.cardWidth * 2), 0, Screen.cardWidth * 2, Screen.cardHeight * 2, null);
+
+						if(quantityChangeScreen)
+						{
+							g.setColor(Color.black);
+							boolean par1IsCard = false;
+							for(int j = 0; j < Screen.deck.length; j++)
+							{
+								if(Screen.deck[j].getCardId() == Screen.cardList[i].getId())
+								{
+									g.drawString(Screen.deck[j].getAmmountOfCard() + "", (Screen.width / 2) - 10, (Screen.height / 2) - 90);
+									par1IsCard = true;
+								}
+							}
+							if(!par1IsCard)
+							{
+								g.drawString("0", (Screen.width / 2) - 10, (Screen.height / 2) - 90);
+							}
+						}
+					}
+				}
+			}
+			
+			saveButton.drawButton(g);
 		}
 
 	}
@@ -165,15 +223,139 @@ public class EditorBase {
 		setPick.checkClicked(e);
 		cardPick.checkClicked(e);
 
-		if(setPick.clickedBool(e))
-		{
-			addCardsToDropbox(addCard);
-		}
-
 		if(addCardButton.getClicked(e))
 		{
 			addCardScreen();
 		}
+
+		if(ammountAddButton.getClicked(e))
+		{
+			quantityChangeScreen = true;
+		}
+
+		if(quantityChangeScreen)
+		{
+			if(closeButton.getClicked(e))
+			{
+				quantityChangeScreen = false;
+			}
+
+			if(addButton.getClicked(e))
+			{
+				int amount = searchAmountOfCardsInDeck();
+
+				if(amount > 0)
+				{
+					int selectedId = searchSelectedCardId();
+
+					for(int i = 0; i < Screen.deck.length; i++)
+					{
+						if(Screen.deck[i].getCardId() == selectedId)
+						{
+							Screen.deck[i].adjustCardAmmount(1);
+						}
+					}
+				}else {
+					int selectedId = searchSelectedCardId();
+					expandDeck(selectedId);
+				}
+				
+			}
+
+			if(minusButton.getClicked(e))
+			{
+				int amount = searchAmountOfCardsInDeck();
+
+				if(amount > 0)
+				{
+					int selectedId = searchSelectedCardId();
+
+					for(int i = 0; i < Screen.deck.length; i++)
+					{
+						if(Screen.deck[i].getCardId() == selectedId)
+						{
+							Screen.deck[i].adjustCardAmmount(-1);
+						}
+					}
+				}else
+				{
+
+				}
+			}
+		}
+		
+		if(saveButton.getClicked(e))
+		{
+			FileManager.saveDeck(Screen.chosenDeck);
+		}
+	}
+
+	public static int searchAmountOfCardsInDeck()
+	{
+		Deck[] par1Deck = Screen.deck;
+		if(setPick.getSelected() != null && cardPick.getSelected() != null)
+		{
+			for(int i = 0; i < Screen.cardList.length; i++)
+			{
+				if(Screen.cardList[i] != null);
+				{
+
+					for(int j = 0; j < Screen.deck.length; j++)
+					{
+						if(Screen.cardList[i] != null && Screen.deck[j].getCardId() == Screen.cardList[i].getId())
+						{
+							if( Screen.cardList[i].getName().equals(cardPick.getSelected())){
+								return Screen.deck[j].getAmmountOfCard();
+
+							}
+						}
+					}
+				}
+			}
+		}
+		return 0;
+	}
+
+	public static int searchSelectedCardId()
+	{
+		if(setPick.getSelected() != null && cardPick.getSelected() != null)
+		{
+			for(int i = 0; i < Screen.cardList.length; i++)
+			{
+				if(Screen.cardList[i] != null && Screen.cardList[i].getSetName().equals(setPick.getSelected()) && Screen.cardList[i].getName().equals(cardPick.getSelected()))
+				{
+					return Screen.cardList[i].getId();
+				}
+			}
+		}
+		return 0;
+	}
+
+	public static void expandDeck(int cardId)
+	{
+		int arrayMod = -1;
+		Deck[] par1Deck = new Deck[Screen.deck.length + 1];
+
+		for(int i = 0; i < Screen.deck.length; i++)
+		{
+			par1Deck[i] = Screen.deck[i];
+		}
+
+		for(int i = 0; i < Screen.cardList.length; i++)
+		{
+			if(Screen.cardList[i] != null && Screen.cardList[i].getId() == cardId)
+			{
+				arrayMod = i;
+			}
+		}
+		if(Screen.cardList[arrayMod] != null) {
+			par1Deck[par1Deck.length - 1] = new Deck(cardId, Screen.cardList[arrayMod].getName(), Screen.cardList[arrayMod].getRarity(), Screen.cardList[arrayMod].getSetName(), Screen.cardList[arrayMod].getTextureName(), 1);
+		}
+		Screen.deck = null;
+
+		Screen.deck = par1Deck;
+		
+
 	}
 
 }

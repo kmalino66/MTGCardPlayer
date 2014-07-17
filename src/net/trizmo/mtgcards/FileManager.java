@@ -1,6 +1,8 @@
 package net.trizmo.mtgcards;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class FileManager {
@@ -311,6 +313,35 @@ public class FileManager {
 
 		}
 
+	}
+	
+	public static void saveDeck(int deckId)
+	{
+		try {
+			File file = new File("res/CardsAndDecks/" + deckId + ".txt");
+			file.delete();
+			file.createNewFile();
+			
+			FileWriter par1File = new FileWriter("res/CardsAndDecks/" + deckId + ".txt");
+			PrintWriter printer = new PrintWriter(par1File, false);
+			
+			for(int i = 0; i < Screen.deck.length; i++)
+			{
+				if(Screen.deck[i].getAmmountOfCard() > 0)
+				{
+					printer.println(Screen.deck[i].getCardId() + ":" + Screen.deck[i].getAmmountOfCard());
+				}
+			}
+			
+			par1File.close();
+			printer.close();
+		
+		} catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 }
