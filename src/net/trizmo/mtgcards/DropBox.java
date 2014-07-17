@@ -117,18 +117,19 @@ public class DropBox {
 					opened = true;
 				}
 			}else{
-				for(int i = 0; i < optionList.length; i++)
+				for(int i = 0; i < optionList.length - scrollAmount; i++)
 				{
-					Rectangle rect = new Rectangle(xPos, (yPos + (height * (i +1))), width, height);
+					Rectangle rect = new Rectangle(xPos, (yPos + (height * ((i) +1))), width, height);
 					if(rect.contains(e.getPoint()))
 					{
-						clickedObject = i;
+						clickedObject = i + scrollAmount;
 						break;
 					}
 
 				}
 
 				opened = false;
+				scrollAmount = 0;
 
 			}
 		}

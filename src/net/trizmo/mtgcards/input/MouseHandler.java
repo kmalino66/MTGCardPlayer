@@ -39,6 +39,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 		}
 		
 		//Sends the click event over to the EditorBase to deal with the interaction.
+		if(Screen.scene == 3) EditorBase.handleClick3(arg0);
 		if(Screen.scene == 6) EditorBase.handleClick(arg0);
 		
 	}

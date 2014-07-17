@@ -29,10 +29,12 @@ public class EditorBase {
 	public static DeckManagerButton addButton = new DeckManagerButton((Screen.width / 2) - 251, (Screen.height / 2) - 100, 201, 100, "ButtonPlus", "", 1);
 	public static DeckManagerButton minusButton = new DeckManagerButton((Screen.width / 2) + 50, (Screen.height / 2) - 100, 201, 100, "ButtonMinus", "", 1);
 	public static DeckManagerButton saveButton = new DeckManagerButton(0, Screen.height - ((Screen.cardWidth / 5) * 2), Screen.cardWidth * 2, (Screen.cardWidth / 5) * 2, "ButtonSave", "", 1);
+	public static DeckManagerButton newDeckButton = new DeckManagerButton(610 + Screen.buttonWidth, 0, Screen.buttonWidth, Screen.buttonHeight, "ButtonNewDeck", "", 1);
 	public static DeckManagerCard[] deckCards;
 
 	public static boolean addCard = false;
 	public static boolean quantityChangeScreen;
+	public static boolean newDeckScreen = false;
 
 	public static void prepare()
 	{
@@ -56,7 +58,7 @@ public class EditorBase {
 				deckCards[i] = null;
 			}
 		}
-		
+
 		@SuppressWarnings("unused")
 		Deck[] par1temp = Screen.deck;
 		System.out.println(Screen.deck.length);
@@ -94,6 +96,12 @@ public class EditorBase {
 			Image btnPlay = new ImageIcon("res/Button/ButtonPlay.png").getImage();
 			SceneDrawer.playButton = new Rectangle(610, 0, Screen.buttonWidth, Screen.buttonHeight);
 			g.drawImage(btnPlay, 610, 0, Screen.buttonWidth, Screen.buttonHeight, null);
+			newDeckButton.drawButton(g);
+
+			if(newDeckScreen)
+			{
+				//TODO Make a textBox to enter the desired deck name and then hit enter to input the name.
+			}
 		}
 
 		if(scene == 6) //Draw main editor
@@ -173,7 +181,7 @@ public class EditorBase {
 					}
 				}
 			}
-			
+
 			saveButton.drawButton(g);
 		}
 
@@ -258,7 +266,7 @@ public class EditorBase {
 					int selectedId = searchSelectedCardId();
 					expandDeck(selectedId);
 				}
-				
+
 			}
 
 			if(minusButton.getClicked(e))
@@ -282,7 +290,6 @@ public class EditorBase {
 				}
 			}
 		}
-		//TODO Make a save button for the deck editor.
 		if(saveButton.getClicked(e))
 		{
 			FileManager.saveDeck(Screen.chosenDeck);
@@ -356,8 +363,18 @@ public class EditorBase {
 		Screen.deck = null;
 
 		Screen.deck = par1Deck;
-		
 
+
+	}
+
+	//Handles the click event for the new deck button on scene 3
+	public static void handleClick3(MouseEvent e)
+	{
+		if(newDeckButton.getClicked(e))
+		{
+			//Sets the value of newDeckScreen to true to tell the drawing function to draw the new deck "panel"
+			newDeckScreen = true;
+		}
 	}
 
 }

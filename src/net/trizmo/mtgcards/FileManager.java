@@ -129,7 +129,11 @@ public class FileManager {
 
 			inputScanner = new Scanner(readerInput);
 
-			deckAmmount = inputScanner.nextInt();
+			while(inputScanner.hasNext())
+			{
+				String par1Temp = inputScanner.nextLine();
+				deckAmmount++;
+			}
 
 
 			try {
@@ -158,8 +162,6 @@ public class FileManager {
 			readerInput = new InputStreamReader(fileInput);
 
 			inputScanner = new Scanner(readerInput);
-			@SuppressWarnings("unused")
-			String temp = inputScanner.nextLine();
 			for(int i = 0; i < deckAmt; i++){
 				String rawLine = inputScanner.nextLine();
 
@@ -342,6 +344,23 @@ public class FileManager {
 		}
 		
 		
+	}
+	
+	public static void createNewDeck(String deckName) throws IOException
+	{
+		FileWriter par1File = new FileWriter("res/CardsAndDecks/Decks.txt");
+		PrintWriter printer = new PrintWriter(par1File, true);
+		
+		printer.println("");
+		printer.print(Screen.deckAmmount + ":" + deckName);
+		
+		par1File.close();
+		printer.close();
+		
+		File newDeckFile = new File("res/CardsAndDecks/" + Screen.deckAmmount + ".txt");
+		newDeckFile.createNewFile();
+		
+		Screen.deckAmmount++;
 	}
 	
 }
