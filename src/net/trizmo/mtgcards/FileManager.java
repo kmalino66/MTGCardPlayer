@@ -1,8 +1,6 @@
 package net.trizmo.mtgcards;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Scanner;
 
 public class FileManager {
@@ -131,6 +129,7 @@ public class FileManager {
 
 			while(inputScanner.hasNext())
 			{
+				@SuppressWarnings("unused")
 				String par1Temp = inputScanner.nextLine();
 				deckAmmount++;
 			}

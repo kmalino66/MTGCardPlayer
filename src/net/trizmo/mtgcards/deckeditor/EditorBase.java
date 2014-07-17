@@ -1,7 +1,6 @@
 package net.trizmo.mtgcards.deckeditor;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -9,8 +8,6 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
-import net.trizmo.mtgcards.Card;
-import net.trizmo.mtgcards.CoutHandler;
 import net.trizmo.mtgcards.Deck;
 import net.trizmo.mtgcards.DeckNames;
 import net.trizmo.mtgcards.DropBox;
@@ -299,7 +296,6 @@ public class EditorBase {
 	//Searches for how many of the selected card is in the deck.
 	public static int searchAmountOfCardsInDeck()
 	{
-		Deck[] par1Deck = Screen.deck;
 		if(setPick.getSelected() != null && cardPick.getSelected() != null)
 		{
 			for(int i = 0; i < Screen.cardList.length; i++)

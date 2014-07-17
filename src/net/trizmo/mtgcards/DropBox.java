@@ -63,7 +63,7 @@ public class DropBox {
 
 			for(int i = scrollAmount; i < options; i++)
 			{
-				g.drawImage(new ImageIcon("res/General/choicebox.jpg").getImage(), xPos + 10, (yPos + (height * 1)) + ((i - scrollAmount) * height) - 10, null);
+				g.drawImage(new ImageIcon("res/General/choicebox.jpg").getImage(), xPos, (yPos + (height * 1)) + ((i - scrollAmount) * height), null);
 			}
 
 			for(int i = scrollAmount; i < options; i++)

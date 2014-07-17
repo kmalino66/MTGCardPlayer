@@ -7,8 +7,6 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
-import net.trizmo.mtgcards.Screen;
-
 public class DeckManagerButton {
 	
 	private Image buttonTexture1;
