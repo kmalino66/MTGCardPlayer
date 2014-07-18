@@ -12,9 +12,12 @@ public class LibraryCard{
 	private int XPOSITION = Screen.width - ((Screen.cardWidth + 30) * 3) + 30;
 	private int YPOSITION = Screen.height - (Screen.cardHeight + 15) + (int)(15 / 2);
 	private int rarity;
+	
+	private String cardName;
 
-	public LibraryCard(Image textureImage, int rarity) {
+	public LibraryCard(String cardName, Image textureImage, int rarity) {
 		
+		this.cardName = cardName;
 		this.textureImage = textureImage;
 		this.rarity = rarity;
 		
@@ -43,6 +46,11 @@ public class LibraryCard{
 
 	public int getRarity() {
 		return rarity;
+	}
+	
+	public String getCardName()
+	{
+		return cardName;
 	}
 
 }

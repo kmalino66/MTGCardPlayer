@@ -13,9 +13,11 @@ public class HandCard {
 	private int index;
 	private int rarity;
 	
+	private String cardName;
 	
-	public HandCard(Image textureImage, int index, int rarity)
+	public HandCard(String cardName, Image textureImage, int index, int rarity)
 	{
+		this.cardName = cardName;
 		this.textureImage = textureImage;
 		this.index = index;
 		this.rarity = rarity;
@@ -45,5 +47,10 @@ public class HandCard {
 
 	public int getRarity() {
 		return rarity;
+	}
+	
+	public String getCardName()
+	{
+		return cardName;
 	}
 }

@@ -14,8 +14,12 @@ public class SceneDrawer {
 	public static int pictureHeight;
 	public static Rectangle playButton;
 	
+	public static DropBox[] cardSearch = new DropBox[3];
+	
 	public static void scene2(Graphics g)
 	{
+		//Removes all options from the dropboxes and adds the ones that are still in the array back in.
+		addDropBoxOptions();
 		barHeight = Screen.cardHeight + 15;
 		boxWidth = Screen.cardWidth + 30;
 		pictureHeight = boxWidth / (275 / 50);
@@ -36,6 +40,7 @@ public class SceneDrawer {
 		g.fillRect(Screen.width - (15 * 2) - (boxWidth * 2), Screen.height - barHeight, 15, barHeight);
 
 		//Library
+		//TODO Add a Dropbox to Look through library
 		g.drawImage(new ImageIcon("res/Background/Library.png").getImage(), Screen.width - (boxWidth * 3) - 30, Screen.height - barHeight - pictureHeight,
 				boxWidth, pictureHeight, null);
 		g.fillRect(Screen.width - (15 * 3) - (boxWidth * 3), Screen.height - barHeight, 15, barHeight);
@@ -68,9 +73,44 @@ public class SceneDrawer {
 		Image btnPlay = new ImageIcon("res/Button/ButtonPlay.png").getImage();
 		playButton = new Rectangle(10, 500, Screen.buttonWidth, Screen.buttonHeight);
 		g.drawImage(btnPlay, 10, 500, Screen.buttonWidth, Screen.buttonHeight, null);
-
+	}
+	
+	//Initializes the dropboxes for use.
+	public static void preapareDropBoxesFor2()
+	{
+		//The idea is that when a card is selected, that card will leave the pile it was in and go to the battlefield.
+		//cardSearch[0] is the dropbox to search though the exiled cards.
+		cardSearch[0] = new DropBox(Screen.width - boxWidth, Screen.height - barHeight - pictureHeight, boxWidth, pictureHeight);
 		
+		//cardSearch[1] is the dropbox to search through the graveyard of cards.
+		cardSearch[1] = new DropBox(Screen.width - (boxWidth * 2) - 15, Screen.height - barHeight - pictureHeight, boxWidth, pictureHeight);
+		
+		//cardSearch[2] is the dropbox to search through the library for a card.
+		cardSearch[2] = new DropBox(Screen.width - (boxWidth * 3) - 30, Screen.height - barHeight - pictureHeight, boxWidth, pictureHeight);
+	}
 
+	//Removes the options from the dropboxes and adds the cards in the piles back.
+	public static void addDropBoxOptions()
+	{
+		//Remove the options from the dropboxes
+		cardSearch[0].removeOptions();
+		cardSearch[1].removeOptions();
+		cardSearch[2].removeOptions();
+		
+		for(int i = 0; i < Screen.exiledCards.length; i++)
+		{
+			cardSearch[0].addOption(Screen.exiledCards[i].getCardName());
+		}
+		
+		for(int i = o; i < Screen.graveyardCards.length; i++)
+		{
+			cardSearch[1].addOption(Screen.graveyardCards[i].getCardName());
+		}
+		
+		for(int i = 0; i < Screen.libraryCards.length; i++)
+		{
+			cardSearch[2].addOption(Screen.libraryCards[i].getCardName());
+		}
 	}
 	
 }

@@ -15,8 +15,11 @@ public class ExiledCard {
 	private int YPOSITION = Screen.height - (Screen.cardHeight + 15) + (int)(15 / 2);
 	private int rarity;
 	
-	public ExiledCard(Image textureImage, int rarity)
+	private String cardName;
+	
+	public ExiledCard(String cardName, Image textureImage, int rarity)
 	{
+		this.cardName = cardName;
 		this.textureImage = textureImage;
 		this.rarity = rarity;
 	}
@@ -50,5 +53,10 @@ public class ExiledCard {
 
 	public int getRarity() {
 		return rarity;
+	}
+	
+	public String getCardName()
+	{
+		return cardName;
 	}
 }

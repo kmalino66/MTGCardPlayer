@@ -369,6 +369,8 @@ public class EditorBase {
 		if(newDeckButton.getClicked(e))
 		{
 			//Sets the value of newDeckScreen to true to tell the drawing function to draw the new deck "panel"
+			
+			//TODO Create the new deck screen
 			newDeckScreen = true;
 		}
 	}

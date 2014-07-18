@@ -14,8 +14,11 @@ private Image textureImage;
 	private int YPOSITION = Screen.height - (Screen.cardHeight+ 15) + (int)(15 / 2);
 	private int rarity;
 	
-	public GraveyardCard(Image textureImage, int rarity)
+	private String cardName;
+	
+	public GraveyardCard(String cardName, Image textureImage, int rarity)
 	{
+		this.cardName = cardName;
 		this.textureImage = textureImage;
 		this.rarity = rarity;
 	}
@@ -49,6 +52,11 @@ private Image textureImage;
 
 	public int getRarity() {
 		return rarity;
+	}
+	
+	public String getCardName()
+	{
+		return cardName;
 	}
 }
 

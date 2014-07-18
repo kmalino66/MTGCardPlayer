@@ -128,10 +128,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public void paintComponent(Graphics g)
 	{
 
-
 		g.clearRect(0, 0, this.frame.getWidth(), this.frame.getHeight());
-
-
 
 		if(scene == 0) //Main menu
 		{
@@ -196,13 +193,9 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			g.drawImage(background, 0, 0, width, height, null);
 			EditorBase.drawEditor(g, scene);
 
-			
 		}
 
-
-
 		ButtonHandler.sceneFinder(scene, g, width, height, buttonWidth, buttonHeight);
-
 	}
 
 	//Loads all needed resources.
@@ -214,7 +207,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		DropBoxHandler.createDropBoxes();
 		lifeAmmount = 20;
 		running = true;
-
+	
 	}
 
 	//The main running method, start to everything.	
@@ -252,7 +245,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 
 				repaint();
 			}
-
 		}
 
 		stopGame();
@@ -273,8 +265,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			}
 			
 		}
-		
-		
 		
 		Rectangle playButton = new Rectangle(500, 0, Screen.buttonWidth, Screen.buttonHeight);
 		Rectangle playButton2 = new Rectangle(10, 500, Screen.buttonWidth, Screen.buttonHeight);
@@ -300,6 +290,10 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		scene = newScene;
 		System.out.println("[Event] The scene has changed to:" + scene);
 
+		if(newScene == 2)
+		{
+			SceneDrawer.preapareDropBoxesFor2();
+		}
 		if(newScene == 4) {
 			sets = getSets();
 
@@ -357,7 +351,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			whiteText = false;
 		}
 
-
 		FileManager.loadDeck(dropBox[0].getClickedId());
 		shuffleCards();
 		changeScene(2);
@@ -382,8 +375,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 					CardHandler.splitByState();
 				}
 			}
-
-
 		}
 
 		for(int j = 0; j < 7; j++)
@@ -437,8 +428,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 
 		public void keySPACE()
 		{
-
-
 		}
 	}
 

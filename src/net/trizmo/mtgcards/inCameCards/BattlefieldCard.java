@@ -15,11 +15,14 @@ public class BattlefieldCard {
 	private int tx;
 	private int ty;
 	private int rarity;
+	
+	private String cardName;
 
 	private boolean tapped;
 
-	public BattlefieldCard(Image textureImage, int x, int y, int rarity, boolean tapped)
+	public BattlefieldCard(String cardName, Image textureImage, int x, int y, int rarity, boolean tapped)
 	{
+		this.cardName = cardName;
 		this.textureImage = textureImage;
 		this.x = x;
 		this.y = y;
@@ -136,6 +139,11 @@ public class BattlefieldCard {
 
 	public int getRarity() {
 		return rarity;
+	}
+	
+	public String getCardName()
+	{
+		return cardName;
 	}
 
 }
