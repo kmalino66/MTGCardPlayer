@@ -72,7 +72,7 @@ public class StackManager {
 				{
 					if(Screen.libraryCards[j] != null)
 					{
-						Screen.handCards[i] = new HandCard(Screen.libraryCards[j].getImage(), i, Screen.libraryCards[j].getRarity());
+						Screen.handCards[i] = new HandCard(Screen.libraryCards[j].getCardName(), Screen.libraryCards[j].getImage(), i, Screen.libraryCards[j].getRarity());
 						Screen.libraryCards[j] = null;
 						break;
 					}

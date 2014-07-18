@@ -168,6 +168,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			{
 				g.setColor(Color.BLACK);
 			}
+			g.setFont(new Font(g.getFont().getFontName(), Font.PLAIN, 25));
 			g.drawString("" + (lifeAmmount) + "", Screen.width - 60, 50);
 
 			//dropBox[2].drawDropBox(g);
@@ -371,7 +372,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 						numInDeck = rand.nextInt(totalCardsInDeck);
 					}
 
-					deckCard[numInDeck] = new PlayableCard(0, 0, (int)(width * (187.5 / 1920)), (int)((width * (187.5 / 1920)) / .717), false, true, false, false, false, false, deck[i].getRarity(), new ImageIcon("res/CardsAndDecks/CardTextures/" + deck[i].getSetName() + "/" + deck[i].getTextureName() + ".jpg").getImage());
+					deckCard[numInDeck] = new PlayableCard(deck[i].getCardName(), 0, 0, (int)(width * (187.5 / 1920)), (int)((width * (187.5 / 1920)) / .717), false, true, false, false, false, false, deck[i].getRarity(), new ImageIcon("res/CardsAndDecks/CardTextures/" + deck[i].getSetName() + "/" + deck[i].getTextureName() + ".jpg").getImage());
 					CardHandler.splitByState();
 				}
 			}

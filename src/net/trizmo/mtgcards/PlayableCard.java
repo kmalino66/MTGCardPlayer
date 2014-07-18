@@ -19,9 +19,12 @@ public class PlayableCard {
 	private boolean isBattlefield;
 	private boolean isHand;
 	
+	private String cardName;
+	
 	private Image textureImage;
 	
-	public PlayableCard(int x, int y, int width, int height, boolean tapped, boolean isInLibrary, boolean isInGraveyard, boolean isExiled, boolean isBattlefield, boolean isHand, int rarity, Image textureImage) {
+	public PlayableCard(String cardName, int x, int y, int width, int height, boolean tapped, boolean isInLibrary, boolean isInGraveyard, boolean isExiled, boolean isBattlefield, boolean isHand, int rarity, Image textureImage) {
+		this.cardName = cardName;
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -104,5 +107,9 @@ public class PlayableCard {
 
 	public int getRarity() {
 		return rarity;
+	}
+
+	public String getCardName() {
+		return cardName;
 	}
 }

@@ -161,6 +161,8 @@ public class FileManager {
 			readerInput = new InputStreamReader(fileInput);
 
 			inputScanner = new Scanner(readerInput);
+			
+			
 			for(int i = 0; i < deckAmt; i++){
 				String rawLine = inputScanner.nextLine();
 
