@@ -13,7 +13,7 @@ public class StackManager {
 				
 				Screen.battlefieldCards[i] = Screen.battlefieldCards[i+1];
 				Screen.battlefieldCards[i+1] = null;
-				if(i + 1 == CardHandler.interactionCard.getArrayLocation())
+				if(CardHandler.interactionCard != null && i + 1 == CardHandler.interactionCard.getArrayLocation())
 				{
 					CardHandler.interactionCard = new CardInteract(2, i);
 				}

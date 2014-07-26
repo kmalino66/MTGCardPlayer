@@ -8,6 +8,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
+import net.trizmo.mtgcards.deckeditor.DeckManagerButton;
 import net.trizmo.mtgcards.inCameCards.BattlefieldCard;
 import net.trizmo.mtgcards.inCameCards.ExiledCard;
 import net.trizmo.mtgcards.inCameCards.GraveyardCard;
@@ -25,30 +26,37 @@ public class CardHandler {
 
 	public static int firstOpen;
 	public static boolean alreadyScanned = false;
+	public static boolean moved;
 	public static Point par1Point = new Point(0,0);
 
 	private static Image zoomCardTexture;
+
+	public static DeckManagerButton[] counterButtons;
+	
+	public static boolean zoomBattle;
 
 	public static void mousePressed(MouseEvent e)
 	{
 
 		mouseDown = true;
-		if(Screen.scene == 2) interactionCard = getInteractCard(e);
-		Rectangle rect = new Rectangle(Screen.width - 100, 100, 100, 120);
+		if(!Screen.zoom ){
+			if(Screen.scene == 2) interactionCard = getInteractCard(e);
+			Rectangle rect = new Rectangle(Screen.width - 100, 100, 100, 120);
 
-		if(Screen.scene == 2)
-		{
-			if(rect.contains(e.getPoint()))
+			if(Screen.scene == 2)
 			{
-				LifeHandler.changeLife(e);
+				if(rect.contains(e.getPoint()))
+				{
+					LifeHandler.changeLife(e);
+				}
+				rect = null;
 			}
-			rect = null;
 		}
 	}
-
 	public static void mouseDragged(MouseEvent e)
 	{
 		if(interactionCard != null){
+			moved = true;
 			moveCard();
 		}
 	}
@@ -56,7 +64,7 @@ public class CardHandler {
 	public static void mouseReleased(MouseEvent e)
 	{
 		mouseDown = false;
-		if(interactionCard != null && Screen.scene == 2)
+		if(interactionCard != null && Screen.scene == 2 && e.getButton() != 2 && moved)
 		{
 
 			if(spotLocations[0].contains(e.getPoint()))
@@ -111,6 +119,7 @@ public class CardHandler {
 			interactionCard = null;
 
 		}
+		moved = false;
 	}
 	public static void splitByState()
 	{
@@ -383,6 +392,7 @@ public class CardHandler {
 		switch(interactionCard.getLocation())
 		{
 		case 0:
+			//Transfer a library card to the battlefield for movement.
 			for(int i = 0; i < Screen.battlefieldCards.length; i++)
 			{
 				if(Screen.battlefieldCards[i] == null)
@@ -396,11 +406,12 @@ public class CardHandler {
 
 			break;
 		case 1:
-
+			//Transfer a hand card to the battlefield for movement
 			for(int i = 0; i < Screen.battlefieldCards.length; i++)
 			{
 				if(Screen.battlefieldCards[i] == null)
 				{
+
 					Screen.battlefieldCards[i] = new BattlefieldCard(Screen.handCards[interactionCard.getArrayLocation()].getCardName(), Screen.handCards[interactionCard.getArrayLocation()].getTextureImage(), mouseX, mouseY, Screen.handCards[interactionCard.getArrayLocation()].getRarity(), false);
 					Screen.handCards[interactionCard.getArrayLocation()] = null;
 					interactionCard = new CardInteract(2, i);
@@ -410,8 +421,7 @@ public class CardHandler {
 
 			break;
 		case 2:
-
-
+			//Transfer a battlefield card to a battlefield card to bring it to the front and move it
 			for(int i = 0; i < Screen.battlefieldCards.length; i++)
 			{
 				if(Screen.battlefieldCards[i] == null && i != interactionCard.getArrayLocation() - 1)
@@ -433,7 +443,7 @@ public class CardHandler {
 
 			break;
 		case 3:
-
+			//Transfer a graveyard card to the battlefield for movement
 			for(int i = 0; i < Screen.battlefieldCards.length; i++)
 			{
 				if(Screen.battlefieldCards[i] == null)
@@ -447,7 +457,7 @@ public class CardHandler {
 
 			break;
 		case 4:
-
+			//Transfer an exiled card to the battlefield for movement.
 			for(int i = 0; i < Screen.battlefieldCards.length; i++)
 			{
 				if(Screen.battlefieldCards[i] == null)
@@ -557,6 +567,7 @@ public class CardHandler {
 					if(Screen.exiledCards[i].contains(mousePoint))
 					{
 						zoomCardTexture = Screen.exiledCards[i].getImage();
+						zoomBattle = false;
 						break;
 					}else {
 						break;
@@ -571,6 +582,7 @@ public class CardHandler {
 					if(Screen.graveyardCards[i].contains(mousePoint))
 					{
 						zoomCardTexture = Screen.graveyardCards[i].getImage();
+						zoomBattle = false;
 						break;
 					}else {
 						break;
@@ -585,6 +597,7 @@ public class CardHandler {
 					if(Screen.handCards[i].contains(mousePoint))
 					{
 						zoomCardTexture = Screen.handCards[i].getTextureImage();
+						zoomBattle = false;
 						break;
 					}
 				}
@@ -592,21 +605,30 @@ public class CardHandler {
 
 			for(int i = 0; i < Screen.battlefieldCards.length; i++)
 			{
-				if(Screen.battlefieldCards[i].contains(mousePoint)) zoomCardTexture = Screen.battlefieldCards[i].getImage();
+				if(Screen.battlefieldCards[i] != null && Screen.battlefieldCards[i].contains(mousePoint)) zoomCardTexture = Screen.battlefieldCards[i].getImage();
+				zoomBattle = true;
 			}
 
 
 		}
 	}
-	
+
 	public static void drawZoomCard(Graphics g)
 	{
 		if(zoomCardTexture != null)
 		{
-			g.drawImage(zoomCardTexture, (Screen.width / 2) - Screen.cardWidth, (Screen.height / 2) - Screen.cardHeight, Screen.cardWidth * 2, Screen.cardHeight * 2, null);
+			Screen.zoom = true;
+			g.drawImage(zoomCardTexture, (Screen.width / 2) - Screen.cardWidth, (Screen.height / 2) - Screen.cardHeight * 2, Screen.cardWidth * 2, Screen.cardHeight * 2, null);
+			
+			
+			if(zoomBattle) for(int i = 0; i < counterButtons.length; i++) counterButtons[i].drawButton(g);
+			
+		}else
+		{
+			Screen.zoom = false;
 		}
 	}
-	
+
 	public static void tapAllLands()
 	{
 		for(int i = 0; i < Screen.battlefieldCards.length; i++)

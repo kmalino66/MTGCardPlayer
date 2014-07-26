@@ -14,6 +14,7 @@ import net.trizmo.mtgcards.DropBox;
 import net.trizmo.mtgcards.FileManager;
 import net.trizmo.mtgcards.SceneDrawer;
 import net.trizmo.mtgcards.Screen;
+import net.trizmo.mtgcards.TypeBox;
 
 public class EditorBase {
 
@@ -28,8 +29,9 @@ public class EditorBase {
 	public static DeckManagerButton saveButton = new DeckManagerButton(0, Screen.height - ((Screen.cardWidth / 5) * 2), Screen.cardWidth * 2, (Screen.cardWidth / 5) * 2, "ButtonSave", "", 1);
 	public static DeckManagerButton newDeckButton = new DeckManagerButton(610 + Screen.buttonWidth, 0, Screen.buttonWidth, Screen.buttonHeight, "ButtonNewDeck", "", 1);
 	public static DeckManagerCard[] deckCards;
+	public static TypeBox deckNameBox = new TypeBox(0, 0, 250, 100, Color.BLACK, Color.WHITE);
 
-	public static boolean addCard = false;
+	public static boolean addCard;
 	public static boolean quantityChangeScreen;
 	public static boolean newDeckScreen = false;
 
@@ -98,6 +100,8 @@ public class EditorBase {
 			if(newDeckScreen)
 			{
 				//TODO Make a textBox to enter the desired deck name and then hit enter to input the name.
+				g.drawRect(0, 0, 250, 200);
+				deckNameBox.drawTypeBox(g);
 			}
 		}
 
@@ -181,7 +185,8 @@ public class EditorBase {
 
 			saveButton.drawButton(g);
 		}
-
+		
+		
 	}
 
 	public static void addDeckNames(DeckNames[] deckNames)

@@ -269,7 +269,7 @@
 269:Rootbound Crag:2:Lands:Rootbound Crag
 270:Sulfur Falls:2:Lands:Sulfur Falls
 300:Adaptive Tusker:0:RTZ:Adaptive Tusker
-301:AEther Shift:2:RTZ:AEther Shift
+301:AEther Shift:2:RTZ:Ather Shift
 302:Alternate Plan:0:RTZ:Alternate Plan
 303:Aluria Angel of Preservation:3:RTZ:Aluria Angel of Preservation
 304:Amulet of Mystic Connection:2:RTZ:Amulet of Mystic Connection
@@ -292,7 +292,7 @@
 321:Blood Conjurer:1:RTZ:Blood Conjurer
 322:Blood Countess:1:RTZ:Blood Countess
 323:Blood-Mad Kor:1:RTZ:Blood-Mad Kor
-324:Blood-Crystal Emblem:0:RTZ:Blood-Crystal Emblem
+324:Blood-Crystal Emblem:0:RTZ:Blood Crystal Emblem
 325:Boundless Desire:2:RTZ:Boundless Desire
 326:Breath of Shadow:0:RTZ:Breath of Shadow
 327:Breeding Pits:1:RTZ:Breeding Pits
@@ -530,7 +530,7 @@
 559:Shimmering Emergence:0:RTZ:Shimmering Emergence
 560:A New Saga Begins:0:PRF:A New Saga Begins
 561:Abandon Steel:6:PRF:Abandon Steel
-562:AEtherwind Glider:0:PRF:AEtherwind Glider
+562:AEtherwind Glider:0:PRF:Etherwind Glider
 563:Ally:5:PRF:Ally
 564:Ally:5:PRF:Ally
 565:Alter Priorities:0:PRF:Alter Priorities

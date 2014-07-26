@@ -53,7 +53,7 @@ public class DropBox {
 		g.setFont(new Font("TimesRoman", Font.PLAIN, height - 4));
 
 		if(optionList == null || clickedObject > optionList.length - 1) clickedObject = 0;
-		if(optionList != null) g.drawString(optionList[clickedObject].getOption(), xPos + 10, (yPos + height - 4));
+		if(optionList != null && optionList[clickedObject].getOption() != null) g.drawString(optionList[clickedObject].getOption(), xPos + 10, (yPos + height - 4));
 
 		if(opened)
 		{

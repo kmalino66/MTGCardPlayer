@@ -86,6 +86,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public boolean isNewScene = false;
 	public static boolean running = false;
 	public static boolean whiteText = false;
+	public static boolean zoom;
 
 	private static final long serialVersionUID = 1L;
 
@@ -121,10 +122,22 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		lifeBoxes[4] = new Rectangle(width - 100, 180, 100, 20);
 		lifeBoxes[5] = new Rectangle(width - 100, 200, 100, 20);
 		
+		//Create the buttons for editing the counters in zoomed mode on the player.
+		CardHandler.counterButtons = new DeckManagerButton[6];
+		int par1ButtonWidth = (cardWidth * 2) / 6;
+		CardHandler.counterButtons[0] = new DeckManagerButton((width / 2) - (cardWidth), height / 2, par1ButtonWidth, par1ButtonWidth / 2, "ButtonPlus", "", 1);
+		CardHandler.counterButtons[1] = new DeckManagerButton((width / 2) - (cardWidth) + par1ButtonWidth, height / 2, par1ButtonWidth, par1ButtonWidth / 2, "ButtonMinus", "", 1);
+		CardHandler.counterButtons[2] = new DeckManagerButton((width / 2) - (cardWidth) + (par1ButtonWidth * 2), height / 2, par1ButtonWidth, par1ButtonWidth / 2, "ButtonPlus", "", 1);
+		CardHandler.counterButtons[3] = new DeckManagerButton((width / 2) - (cardWidth) + (par1ButtonWidth * 3), height / 2, par1ButtonWidth, par1ButtonWidth / 2, "ButtonMinus", "", 1);
+		CardHandler.counterButtons[4] = new DeckManagerButton((width / 2) - (cardWidth) + (par1ButtonWidth * 4), height / 2, par1ButtonWidth, par1ButtonWidth / 2, "ButtonPlus", "", 1);
+		CardHandler.counterButtons[5] = new DeckManagerButton((width / 2) - (cardWidth) + (par1ButtonWidth * 5), height / 2, par1ButtonWidth, par1ButtonWidth / 2, "ButtonMinus", "", 1);
+		
 		thread.start();
 	}
 
+	
 	//Paints stuff on the screen.
+	@Override
 	public void paintComponent(Graphics g)
 	{
 
@@ -149,7 +162,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		}
 
 		if(scene == 2) { //Game Player
-
+			
 			g.drawImage(background, 0, 0, width, height, null);
 			SceneDrawer.scene2(g);
 			CardDrawer.drawLibrary(g);
@@ -212,6 +225,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	}
 
 	//The main running method, start to everything.	
+	@Override
 	public void run() 
 	{
 		System.out.println("[Success] Frame Created");
@@ -260,7 +274,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			if(e.getButton() == 2)
 			{
 				CardHandler.zoom(); 
-			}else
+			}else if(!zoom)
 			{
 				CardHandler.doDraw(e);
 			}
@@ -583,4 +597,5 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		return par1String;
 
 	}
+	
 }

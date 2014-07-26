@@ -10,13 +10,11 @@ import net.trizmo.mtgcards.Screen;
 public class BattlefieldCard {
 	private Image textureImage;
 
-	private int x;
-	private int y;
-	private int tx;
-	private int ty;
-	private int rarity;
+	private int x, y, tx, ty, rarity;
 	
 	private String cardName;
+	
+	public static CounterAttribute counterInfo;
 
 	private boolean tapped;
 
@@ -28,10 +26,19 @@ public class BattlefieldCard {
 		this.y = y;
 		this.tapped = tapped;
 		this.rarity = rarity;
-
+		counterInfo = new CounterAttribute();
+	}
+	
+	public BattlefieldCard(String cardName, Image textureImage, int x, int y, int rarity, boolean tapped, CounterAttribute counterInfo)
+	{
+		this(cardName, textureImage, x, y, rarity, tapped);
+		
+		this.counterInfo = counterInfo;
 	}
 
 	public BattlefieldCard(BattlefieldCard battlefieldCard) {
+		this.cardName = battlefieldCard.getCardName();
+		
 		if(!battlefieldCard.getTapped())
 		{
 		this.textureImage = battlefieldCard.textureImage;
@@ -145,5 +152,5 @@ public class BattlefieldCard {
 	{
 		return cardName;
 	}
-
+	
 }

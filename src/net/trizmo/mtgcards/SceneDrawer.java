@@ -7,6 +7,10 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+import net.trizmo.mtgcards.inCameCards.BattlefieldCard;
+import net.trizmo.mtgcards.inCameCards.GraveyardCard;
+import net.trizmo.mtgcards.inCameCards.HandCard;
+
 public class SceneDrawer {
 
 	public static int barHeight;
@@ -116,6 +120,9 @@ public class SceneDrawer {
 		{
 			if(Screen.graveyardCards[i] != null)
 			{
+				GraveyardCard[] par1 = Screen.graveyardCards;
+				BattlefieldCard[] par2 = Screen.battlefieldCards;
+				HandCard[] par3 = Screen.handCards;
 				cardSearch[1].addOption(Screen.graveyardCards[i].getCardName());
 			}
 		}

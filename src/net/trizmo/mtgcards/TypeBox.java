@@ -41,8 +41,16 @@ public class TypeBox {
 	
 	public void drawTypeBox(Graphics g)
 	{
+		g.setColor(backgroundColor);
 		g.fillRect(xPos, yPos, width, height);
-		g.drawString(text, xPos, yPos);
+		
+		g.setColor(foregroundColor);
+		g.drawString(text, xPos + 5, yPos);
+	}
+	
+	public String getText()
+	{
+		return text;
 	}
 	
 }

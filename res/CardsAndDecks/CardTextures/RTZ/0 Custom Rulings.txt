@@ -5,7 +5,7 @@ It is ordered by mechanic or card, and by set.
 ----------RTZ----------
 
 //Battered
-F101.1a: As long as any other opponent has less life than you, you
+F101.1a: As long as any other opponent has more life than you, you
 are considered to be battered.
 
 //Intelect
@@ -16,6 +16,11 @@ why whould you even do it? There is no point to revealing a card that
 isn't there, and being able to cast it.
 	1c: You still pay any costs for the spell, and may pay any
 optional costs, such as kickers.
+
+//Hedron
+F103.1a: All previously printed hedron creatures now have the Hedron
+creature type instead. (Ex. Hedron scrabbler is now a Hedron in place of
+a construct)
 
 ----------PRF----------
 
@@ -51,7 +56,7 @@ overrides rule 303.4d in the comprehensive rules, shown below.
 		"An Aura that's also a creature can't enchant anything. If this occurs somehow,
 		 the Aura becomes unattached, then is put into its owner's graveyard."
 
-	1b: A permanent that becomes a player is immediately exiled, and
+	3b: A permanent that becomes a player is immediately exiled, and
 does not recieve a turn, deck, life, or the ability to make choices. They 
 are exiled befrore any spell can be cast or ability resolved. It remains
 exiled, even once all adaptations have been removed.
@@ -92,6 +97,8 @@ change.
 //"Compleation" adaptations
 	5a: Creatures that become the artifact creature with a set power and tougness
 and with the abilities do not lose their previous abilities or types, unless specified.
+	5b: They retain any continual power/toughness alterations, such as auras or
+counters.
 
 
 //Quest

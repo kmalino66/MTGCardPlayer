@@ -1,5 +1,8 @@
 package net.trizmo.mtgcards;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -33,6 +36,9 @@ public class CardDrawer {
 	{
 		int cardWidth = Screen.cardWidth;
 		int cardHeight = Screen.cardHeight;
+		
+		Font par1Font = new Font("TimesNewRoman", Font.PLAIN, 18);
+		g.setFont(par1Font);
 
 		for(int i = 0; i < Screen.battlefieldCards.length; i++)
 		{
@@ -53,6 +59,9 @@ public class CardDrawer {
 
 					g2d.rotate(Math.toRadians(90), cardWidth / 2, cardHeight / 2);
 					g2d.drawImage(textureImage, tx, ty, cardWidth, cardHeight, null);
+					
+					g.setColor(Color.white);
+					g.drawString(Screen.battlefieldCards[i].counterInfo.getPowerModifier() + "/" + Screen.battlefieldCards[i].counterInfo.getToughnessModifier() + "   " + Screen.battlefieldCards[i].counterInfo.getCounters() + "c", x, y + cardWidth + 5 + 18);
 
 					g2d.dispose();
 					
@@ -60,6 +69,8 @@ public class CardDrawer {
 
 				}else{
 					g.drawImage(Screen.battlefieldCards[i].getImage(), x, y, Screen.cardWidth, Screen.cardHeight, null);
+					g.setColor(Color.white);
+					g.drawString(Screen.battlefieldCards[i].counterInfo.getPowerModifier() + "/" + Screen.battlefieldCards[i].counterInfo.getToughnessModifier() + "   " + Screen.battlefieldCards[i].counterInfo.getCounters() + "c", x, y + cardHeight + 5 + 18);
 				}
 			}
 		}
