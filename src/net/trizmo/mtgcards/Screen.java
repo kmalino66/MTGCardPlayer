@@ -60,7 +60,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public static Token[] tokens;
 	public static Card[] commonCards, uncommonCards, rareCards, mythicRareCards, specialCards;
 	public static String[] sets = null;
-
 	public static Pack[] sealedPacks;
 	
 	public static MouseEvent mEvent;
@@ -274,9 +273,12 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			if(e.getButton() == 2)
 			{
 				CardHandler.zoom(); 
-			}else if(!zoom)
+			}else if(CardHandler.zoomCard == null)
 			{
 				CardHandler.doDraw(e);
+			}else if(CardHandler.zoomCard != null)
+			{
+				CardHandler.checkCounterButtons(e);
 			}
 			
 		}

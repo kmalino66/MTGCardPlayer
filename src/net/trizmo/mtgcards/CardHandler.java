@@ -14,6 +14,7 @@ import net.trizmo.mtgcards.inCameCards.ExiledCard;
 import net.trizmo.mtgcards.inCameCards.GraveyardCard;
 import net.trizmo.mtgcards.inCameCards.HandCard;
 import net.trizmo.mtgcards.inCameCards.LibraryCard;
+import net.trizmo.mtgcards.inCameCards.ZoomCard;
 import net.trizmo.mtgcards.input.ButtonHandler;
 
 public class CardHandler {
@@ -29,11 +30,9 @@ public class CardHandler {
 	public static boolean moved;
 	public static Point par1Point = new Point(0,0);
 
-	private static Image zoomCardTexture;
+	public static ZoomCard zoomCard;
 
 	public static DeckManagerButton[] counterButtons;
-	
-	public static boolean zoomBattle;
 
 	public static void mousePressed(MouseEvent e)
 	{
@@ -554,20 +553,23 @@ public class CardHandler {
 	{
 		Point mousePoint = MouseInfo.getPointerInfo().getLocation();
 
-		if(zoomCardTexture != null)
+		if(zoomCard != null)
 		{
-			zoomCardTexture = null;
+			
+			if(zoomCard.getPlace().equals("battlefield"))
+			{
+				Screen.battlefieldCards[zoomCard.getArrayIndex()].setCounterInfo(zoomCard.getCounterInfo());
+			}
+			zoomCard = null;
+			
 		}else{
-
-			//Check exiled cards for zoom
 			for(int i = Screen.exiledCards.length - 1; i >= 0; i--)
 			{
 				if(Screen.exiledCards[i] != null)
 				{
 					if(Screen.exiledCards[i].contains(mousePoint))
 					{
-						zoomCardTexture = Screen.exiledCards[i].getImage();
-						zoomBattle = false;
+						zoomCard = new ZoomCard(Screen.exiledCards[i].getImage(), "exile", i);
 						break;
 					}else {
 						break;
@@ -581,8 +583,7 @@ public class CardHandler {
 				{
 					if(Screen.graveyardCards[i].contains(mousePoint))
 					{
-						zoomCardTexture = Screen.graveyardCards[i].getImage();
-						zoomBattle = false;
+						zoomCard = new ZoomCard(Screen.graveyardCards[i].getImage(), "graveyard", i);
 						break;
 					}else {
 						break;
@@ -596,8 +597,7 @@ public class CardHandler {
 				{
 					if(Screen.handCards[i].contains(mousePoint))
 					{
-						zoomCardTexture = Screen.handCards[i].getTextureImage();
-						zoomBattle = false;
+						zoomCard = new ZoomCard(Screen.handCards[i].getTextureImage(), "hand", i);
 						break;
 					}
 				}
@@ -605,24 +605,22 @@ public class CardHandler {
 
 			for(int i = 0; i < Screen.battlefieldCards.length; i++)
 			{
-				if(Screen.battlefieldCards[i] != null && Screen.battlefieldCards[i].contains(mousePoint)) zoomCardTexture = Screen.battlefieldCards[i].getImage();
-				zoomBattle = true;
+				if(Screen.battlefieldCards[i] != null && Screen.battlefieldCards[i].contains(mousePoint)) zoomCard = new ZoomCard(Screen.battlefieldCards[i].getImage(), Screen.battlefieldCards[i].counterInfo, "battlefield", i);
 			}
-
-
 		}
+
 	}
 
 	public static void drawZoomCard(Graphics g)
 	{
-		if(zoomCardTexture != null)
+		if(zoomCard != null)
 		{
 			Screen.zoom = true;
-			g.drawImage(zoomCardTexture, (Screen.width / 2) - Screen.cardWidth, (Screen.height / 2) - Screen.cardHeight * 2, Screen.cardWidth * 2, Screen.cardHeight * 2, null);
-			
-			
-			if(zoomBattle) for(int i = 0; i < counterButtons.length; i++) counterButtons[i].drawButton(g);
-			
+			g.drawImage(zoomCard.getImage(), (Screen.width / 2) - Screen.cardWidth, (Screen.height / 2) - Screen.cardHeight * 2, Screen.cardWidth * 2, Screen.cardHeight * 2, null);
+
+
+			if(zoomCard.getPlace().equals("battlefield")) for(int i = 0; i < counterButtons.length; i++) counterButtons[i].drawButton(g);
+
 		}else
 		{
 			Screen.zoom = false;
@@ -638,5 +636,40 @@ public class CardHandler {
 				Screen.battlefieldCards[i].setTapped(true);
 			}
 		}
+	}
+
+	public static void checkCounterButtons(MouseEvent e)
+	{
+		int par1 = 9;
+		for(int i = 0; i < counterButtons.length; i++)
+		{
+			if(counterButtons[i].getClicked(e))
+			{
+				par1 = i;
+			}
+		}
+
+		//power/toughness counter
+		switch(par1)
+		{
+		case 0: 
+			zoomCard.getCounterInfo().addPower();
+			break;
+		case 1:
+			zoomCard.getCounterInfo().subPower();
+			break;
+		case 2:
+			zoomCard.getCounterInfo().addToughness();
+			break;
+		case 3:
+			zoomCard.getCounterInfo().subToughness();
+			break;
+		case 4:
+			zoomCard.getCounterInfo().addCounter();
+			break;
+		case 5:
+			zoomCard.getCounterInfo().subCounter();
+		}
+
 	}
 }

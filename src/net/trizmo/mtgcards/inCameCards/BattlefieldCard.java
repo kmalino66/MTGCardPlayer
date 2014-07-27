@@ -153,4 +153,9 @@ public class BattlefieldCard {
 		return cardName;
 	}
 	
+	public void setCounterInfo(CounterAttribute counterInfo)
+	{
+		this.counterInfo = counterInfo;
+	}
+	
 }
