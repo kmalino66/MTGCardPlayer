@@ -54,7 +54,7 @@ public class CardHandler {
 	}
 	public static void mouseDragged(MouseEvent e)
 	{
-		if(interactionCard != null){
+		if(interactionCard != null && zoomCard == null){
 			moved = true;
 			moveCard();
 		}
@@ -605,7 +605,7 @@ public class CardHandler {
 
 			for(int i = 0; i < Screen.battlefieldCards.length; i++)
 			{
-				if(Screen.battlefieldCards[i] != null && Screen.battlefieldCards[i].contains(mousePoint)) zoomCard = new ZoomCard(Screen.battlefieldCards[i].getImage(), Screen.battlefieldCards[i].counterInfo, "battlefield", i);
+				if(Screen.battlefieldCards[i] != null && Screen.battlefieldCards[i].contains(mousePoint)) zoomCard = new ZoomCard(Screen.battlefieldCards[i].getImage(), Screen.battlefieldCards[i].getCounterInfo(), "battlefield", i);
 			}
 		}
 

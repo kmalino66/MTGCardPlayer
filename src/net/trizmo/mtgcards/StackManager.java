@@ -17,6 +17,10 @@ public class StackManager {
 				{
 					CardHandler.interactionCard = new CardInteract(2, i);
 				}
+				if(CardHandler.zoomCard != null && CardHandler.zoomCard.getPlace().equals("battlefield") && CardHandler.zoomCard.getArrayIndex() == i + 1)
+				{
+					CardHandler.zoomCard.setArrayIndex(i);
+				}
 			}
 		}
 		

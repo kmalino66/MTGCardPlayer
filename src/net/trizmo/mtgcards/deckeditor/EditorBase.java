@@ -204,13 +204,13 @@ public class EditorBase {
 		if(!par1Boolean)
 		{
 
-			for(int i = 0; i < deckCards.length; i++)
+			for(int i = 0; i < Screen.deck.length; i++)
 			{
 				String pickedSet = setPick.getSelected();
 
-				if(deckCards[i] != null && deckCards[i].getSetName().equals(pickedSet) && deckCards[i].getAmountOfCard() > 0)
+				if(deckCards[i] != null && deckCards[i].getSetName().equals(pickedSet) && Screen.deck[i].getAmmountOfCard() > 0)
 				{
-					cardPick.addOption(deckCards[i].getCardName());
+					cardPick.addOption(Screen.deck[i].getCardName());
 				}
 			}
 		}else {

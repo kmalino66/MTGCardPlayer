@@ -90,6 +90,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	//Creates the screen.
+	
 	public Screen(Frame frame) 
 	{
 
@@ -266,6 +267,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	}
 
 	//Works when mouse clicked, thought i wouldn't remember
+	
 	public void mouseClicked(MouseEvent e) {
 		if (scene == 0) ButtonHandler.scene0Click(e);
 		if (scene == 1) ButtonHandler.scene1Click(e);
@@ -586,7 +588,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 						par1String[length - 1] = setName;
 						break;
 					}
-
 
 				}
 			}else if(setName != null){

@@ -26,8 +26,6 @@ public class ZoomCard {
 		this.index = index;
 	}
 	
-	//TODO Create getters and setters./
-	
 	public int getArrayIndex()
 	{
 		return index;
@@ -46,5 +44,10 @@ public class ZoomCard {
 	public String getPlace()
 	{
 		return place;
+	}
+	
+	public void setArrayIndex(int index)
+	{
+		this.index = index;
 	}
 }

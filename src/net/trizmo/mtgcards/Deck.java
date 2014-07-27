@@ -8,6 +8,8 @@ public class Deck extends Card{
 	
 	private String cardName;
 	private String textureName;
+	
+	private boolean sideboard;
 
 	public Deck(int cardId, String cardName, int rarity, String setName, String textureName, int ammountOfCard) {
 		super(cardId, cardName, rarity, setName, textureName);	
@@ -16,6 +18,13 @@ public class Deck extends Card{
 		this.rarity = rarity;
 		this.textureName = textureName;
 		this.ammountOfCard = ammountOfCard;
+		this.sideboard = false;
+	}
+	
+	public Deck(int cardId, String cardName, int rarity, String setName, String textureName, int ammountOfCard, boolean sideboard)
+	{
+		this(cardId, cardName, rarity, setName, textureName, ammountOfCard);
+		this.sideboard = sideboard;
 	}
 	
 	public int getCardId() {

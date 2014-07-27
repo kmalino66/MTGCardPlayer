@@ -14,7 +14,7 @@ public class BattlefieldCard {
 	
 	private String cardName;
 	
-	public static CounterAttribute counterInfo;
+	private CounterAttribute counterInfo;
 
 	private boolean tapped;
 
@@ -38,7 +38,7 @@ public class BattlefieldCard {
 
 	public BattlefieldCard(BattlefieldCard battlefieldCard) {
 		this.cardName = battlefieldCard.getCardName();
-		
+		this.counterInfo = battlefieldCard.getCounterInfo();
 		if(!battlefieldCard.getTapped())
 		{
 		this.textureImage = battlefieldCard.textureImage;
@@ -156,6 +156,10 @@ public class BattlefieldCard {
 	public void setCounterInfo(CounterAttribute counterInfo)
 	{
 		this.counterInfo = counterInfo;
+	}
+	public CounterAttribute getCounterInfo()
+	{
+		return counterInfo;
 	}
 	
 }
