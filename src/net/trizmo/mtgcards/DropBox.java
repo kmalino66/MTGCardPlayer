@@ -125,7 +125,6 @@ public class DropBox {
 						clickedObject = i + scrollAmount;
 						break;
 					}
-
 				}
 
 				opened = false;
@@ -156,10 +155,7 @@ public class DropBox {
 					par1 = true;
 					break;
 				}
-
 			}
-
-
 		}
 
 		return par1;
@@ -196,7 +192,6 @@ public class DropBox {
 			{
 				par1[i] = optionList[i].getOption();
 			}
-
 		}
 
 		return par1;
@@ -213,7 +208,6 @@ public class DropBox {
 		int par1Int = e.getWheelRotation();
 		scrollAmount += par1Int;
 	}
-
 }
 
 class DropBoxEntry {
@@ -242,6 +236,4 @@ class DropBoxEntry {
 		this.optionId = optionId;
 		option = optionString;
 	}
-
-
 }

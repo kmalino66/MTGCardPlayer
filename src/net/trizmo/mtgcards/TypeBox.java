@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class TypeBox {
-	@SuppressWarnings("unused")
 	private Color foregroundColor = Color.black;
-	@SuppressWarnings("unused")
 	private Color backgroundColor = Color.white;
 	
 	private int xPos;

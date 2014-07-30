@@ -36,11 +36,8 @@ public class FileManager {
 
 				id1 = full[0];
 				id = Integer.parseInt(id1);
-
 				name = full[1];
-
 				rarity = Integer.parseInt(full[2]);
-
 				setName = full[3];
 
 				try{
@@ -54,7 +51,6 @@ public class FileManager {
 				
 				if(Screen.cardList[id] == null)
 				{
-
 					Screen.cardList[id] = new Card(id, name, rarity, setName, textureName);
 					
 				}else
@@ -62,7 +58,6 @@ public class FileManager {
 					System.out.println("Error: Two cards have the same id.");
 					System.out.println(id);
 				}
-
 			}
 			try {
 				fileInput.close();
@@ -113,8 +108,6 @@ public class FileManager {
 			e.printStackTrace();
 			return 1;
 		}
-
-
 	}
 
 	public static int getDeckAmmount() {
@@ -133,7 +126,6 @@ public class FileManager {
 				String par1Temp = inputScanner.nextLine();
 				deckAmmount++;
 			}
-
 
 			try {
 				fileInput.close();
@@ -299,7 +291,6 @@ public class FileManager {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-
 				}
 
 				try {
@@ -312,10 +303,7 @@ public class FileManager {
 			}catch(FileNotFoundException e){
 				e.printStackTrace();
 			}
-
-
 		}
-
 	}
 	
 	public static void saveDeck(int deckId)
@@ -343,8 +331,6 @@ public class FileManager {
 		{
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	public static void createNewDeck(String deckName) throws IOException
@@ -363,5 +349,4 @@ public class FileManager {
 		
 		Screen.deckAmmount++;
 	}
-	
 }

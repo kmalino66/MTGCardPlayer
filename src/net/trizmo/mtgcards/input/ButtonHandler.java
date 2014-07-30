@@ -8,6 +8,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 import net.trizmo.mtgcards.CardHandler;
+import net.trizmo.mtgcards.LifeHandler;
+import net.trizmo.mtgcards.PoisonCounterHandler;
 import net.trizmo.mtgcards.Screen;
 import net.trizmo.mtgcards.StackManager;
 
@@ -106,6 +108,19 @@ public class ButtonHandler {
 		{
 			CardHandler.tapAllLands();
 		}
+		
+		/*Rectangle rect4 = new Rectangle(Screen.width - 100, 0, 100, 100);
+		if(rect4.contains(e.getPoint()))
+		{
+			LifeHandler.changeLife(e);
+		}
+		
+		Rectangle rect5 = new Rectangle(Screen.width - 100, 100, 100, 100);
+		if(rect5.contains(e.getPoint()))
+		{
+			Screen.poisonCounter.changeCounter(e);
+		}*/
+		
 	}
 	
 	public static void scene3Click(MouseEvent e)

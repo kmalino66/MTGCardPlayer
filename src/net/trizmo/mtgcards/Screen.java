@@ -56,11 +56,11 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public static LibraryCard[] libraryCards;
 	public static HandCard[] handCards;
 	public static DropBox[] dropBox = new DropBox[10];
-	public static Rectangle[] lifeBoxes = new Rectangle[6];
 	public static Token[] tokens;
 	public static Card[] commonCards, uncommonCards, rareCards, mythicRareCards, specialCards;
 	public static String[] sets = null;
 	public static Pack[] sealedPacks;
+	public static PoisonCounterHandler poisonCounter;
 	
 	public static MouseEvent mEvent;
 	public static Font customFont;
@@ -115,13 +115,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		CardHandler.spotLocations[3] = new Rectangle(Screen.width - ((Screen.cardWidth + 30) * 2) - 15, Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
 		CardHandler.spotLocations[4] = new Rectangle(Screen.width - (Screen.cardWidth + 30), Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
 
-		lifeBoxes[0] = new Rectangle(width - 100, 100, 100, 20);
-		lifeBoxes[1] = new Rectangle(width - 100, 120, 100, 20);
-		lifeBoxes[2] = new Rectangle(width - 100, 140, 100, 20);
-		lifeBoxes[3] = new Rectangle(width - 100, 160, 100, 20);
-		lifeBoxes[4] = new Rectangle(width - 100, 180, 100, 20);
-		lifeBoxes[5] = new Rectangle(width - 100, 200, 100, 20);
-		
 		//Create the buttons for editing the counters in zoomed mode on the player.
 		CardHandler.counterButtons = new DeckManagerButton[6];
 		int par1ButtonWidth = (cardWidth * 2) / 6;
@@ -172,19 +165,19 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			CardDrawer.drawBattlefield(g);
 			CardHandler.drawZoomCard(g);
 
-			g.drawImage(dice, Screen.width - 100, 0, 100, 100, null);
+			LifeHandler.drawComponent(g);
 
-			if(whiteText)
+			poisonCounter.drawComponent(g);
+			
+			if(LifeHandler.open)
 			{
-				g.setColor(Color.white);
-			}else
+				poisonCounter.drawComponent(g);
+				LifeHandler.drawComponent(g);
+			} else
 			{
-				g.setColor(Color.BLACK);
+				LifeHandler.drawComponent(g);
+				poisonCounter.drawComponent(g);
 			}
-			g.setFont(new Font(g.getFont().getFontName(), Font.PLAIN, 25));
-			g.drawString("" + (lifeAmmount) + "", Screen.width - 60, 50);
-
-			//dropBox[2].drawDropBox(g);
 
 			StackManager.reformatStacks();
 		}
@@ -219,6 +212,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		FileManager.getDeckNames();
 		//FileManager.checkDeckFormat();
 		DropBoxHandler.createDropBoxes();
+		poisonCounter =  new PoisonCounterHandler(0);
 		lifeAmmount = 20;
 		running = true;
 	
@@ -257,13 +251,11 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 				CardHandler.spotLocations[3] = new Rectangle(Screen.width - ((Screen.cardWidth + 30) * 2) - 15, Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
 				CardHandler.spotLocations[4] = new Rectangle(Screen.width - (Screen.cardWidth + 30), Screen.height - ((Screen.cardHeight + 15) - (15 / 2)), Screen.cardWidth + 30, Screen.cardHeight + 15);
 
-
 				repaint();
 			}
 		}
 
 		stopGame();
-
 	}
 
 	//Works when mouse clicked, thought i wouldn't remember
@@ -283,6 +275,8 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 				CardHandler.checkCounterButtons(e);
 			}
 			
+			if(!poisonCounter.getOpen()) LifeHandler.changeLife(e);
+			if(!LifeHandler.open) poisonCounter.changeCounter(e);
 		}
 		
 		Rectangle playButton = new Rectangle(500, 0, Screen.buttonWidth, Screen.buttonHeight);
@@ -375,7 +369,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		changeScene(2);
 	}
 
-
 	public static void shuffleCards() {
 		deckCard = new PlayableCard[totalCardsInDeck];
 		CoutHandler.event("Initialized the deck of " + totalCardsInDeck + " cards");
@@ -402,7 +395,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		}
 
 		deckCard = null;
-
 	}
 
 	public static void openDeckArray(int length)
@@ -477,7 +469,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 
 				}
 			}
-
 		}
 		commonCards = new Card[common];
 		uncommonCards = new Card[uncommon];
@@ -588,17 +579,14 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 						par1String[length - 1] = setName;
 						break;
 					}
-
 				}
 			}else if(setName != null){
 				par1String = new String[1];
 				par1String[0] = setName;
 			}
-
 		}
 
 		return par1String;
 
 	}
-	
 }

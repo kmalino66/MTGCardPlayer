@@ -1,7 +1,6 @@
 package net.trizmo.mtgcards;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -109,8 +108,7 @@ public class CardHandler {
 				{
 					if (Screen.exiledCards[i] == null) firstOpen = i;
 				}
-
-
+				
 				Screen.exiledCards[firstOpen] = new ExiledCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getCardName(), Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage(), Screen.battlefieldCards[interactionCard.getArrayLocation()].getRarity());
 				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
 
@@ -261,8 +259,6 @@ public class CardHandler {
 		}else{
 			return null;
 		}
-
-
 	}
 
 	public static CardInteract checkLibraryClicked(MouseEvent e)
@@ -307,7 +303,6 @@ public class CardHandler {
 		{
 			return null;
 		}
-
 	}
 
 	public static CardInteract checkBattlefieldClicked(MouseEvent e)
@@ -608,7 +603,6 @@ public class CardHandler {
 				if(Screen.battlefieldCards[i] != null && Screen.battlefieldCards[i].contains(mousePoint)) zoomCard = new ZoomCard(Screen.battlefieldCards[i].getImage(), Screen.battlefieldCards[i].getCounterInfo(), "battlefield", i);
 			}
 		}
-
 	}
 
 	public static void drawZoomCard(Graphics g)

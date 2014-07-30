@@ -58,4 +58,8 @@ public class Deck extends Card{
 		return textureName;
 	}
 
+	public boolean getSideboard()
+	{
+		return sideboard;
+	}
 }

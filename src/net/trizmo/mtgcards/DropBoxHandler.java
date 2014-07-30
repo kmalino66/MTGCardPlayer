@@ -22,10 +22,5 @@ public class DropBoxHandler {
 		Screen.dropBox[1].addOption("Green");
 		Screen.dropBox[1].addOption("Red");
 		Screen.dropBox[1].addOption("White");
-		
-		
-		
 	}
-
-
 }

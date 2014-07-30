@@ -2,14 +2,11 @@ package net.trizmo.mtgcards;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
-
-import net.trizmo.mtgcards.inCameCards.BattlefieldCard;
 
 public class CardDrawer {
 	public static void drawLibrary(Graphics g)
@@ -66,9 +63,7 @@ public class CardDrawer {
 					g.drawString(Screen.battlefieldCards[i].getCounterInfo().getPowerModifier() + "/" + Screen.battlefieldCards[i].getCounterInfo().getToughnessModifier() + "   " + Screen.battlefieldCards[i].getCounterInfo().getCounters() + "c", x, y + cardWidth + 5 + 18);
 
 					g2d.dispose();
-					
-					
-
+				
 				}else{
 					g.drawImage(Screen.battlefieldCards[i].getImage(), x, y, Screen.cardWidth, Screen.cardHeight, null);
 					g.setColor(Color.white);

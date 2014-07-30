@@ -7,10 +7,6 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-import net.trizmo.mtgcards.inCameCards.BattlefieldCard;
-import net.trizmo.mtgcards.inCameCards.GraveyardCard;
-import net.trizmo.mtgcards.inCameCards.HandCard;
-
 public class SceneDrawer {
 
 	public static int barHeight;
@@ -39,30 +35,19 @@ public class SceneDrawer {
 
 		g.setColor(Color.black);
 		//Exiled
-		//g.drawImage(new ImageIcon("res/Background/exiled.png").getImage(), Screen.width - boxWidth, Screen.height - barHeight - pictureHeight, boxWidth, pictureHeight, null);
 		g.fillRect(Screen.width - 15 - boxWidth, Screen.height - barHeight, 15, barHeight);
 
 		//Graveyard
-		//g.drawImage(new ImageIcon("res/Background/graveyard.png").getImage(), Screen.width - (boxWidth * 2) - 15, Screen.height - barHeight - pictureHeight, boxWidth, pictureHeight, null);
 		g.fillRect(Screen.width - (15 * 2) - (boxWidth * 2), Screen.height - barHeight, 15, barHeight);
 
 		//Library
-		//g.drawImage(new ImageIcon("res/Background/Library.png").getImage(), Screen.width - (boxWidth * 3) - 30, Screen.height - barHeight - pictureHeight,boxWidth, pictureHeight, null);
 		g.fillRect(Screen.width - (15 * 3) - (boxWidth * 3), Screen.height - barHeight, 15, barHeight);
 
 		//Life box
 		g.fillRect(Screen.width - 100, 0, 100, 125);
 
-		//Next turn button
-
+		//Buttons for next turn and life
 		g.drawImage(new ImageIcon("res/Button/ButtonNextTurn.png").getImage(), Screen.width - 200, 0, null);
-
-		g.drawImage(new ImageIcon("res/Button/plus10.png").getImage(), Screen.width - 100, 100, 100, 20, null);
-		g.drawImage(new ImageIcon("res/Button/plus5.png").getImage(), Screen.width - 100, 120, 100, 20, null);
-		g.drawImage(new ImageIcon("res/Button/plus1.png").getImage(), Screen.width - 100, 140, 100, 20, null);
-		g.drawImage(new ImageIcon("res/Button/minus1.png").getImage(), Screen.width - 100, 160, 100, 20, null);
-		g.drawImage(new ImageIcon("res/Button/minus5.png").getImage(), Screen.width - 100, 180, 100, 20, null);
-		g.drawImage(new ImageIcon("res/Button/minus10.png").getImage(), Screen.width - 100, 200, 100, 20, null);
 
 		//Restart and Mullagain buttons
 		g.drawImage(new ImageIcon("res/Button/ButtonReshuffle.png").getImage(), Screen.width - 200, 20, 100, 20, null);
@@ -120,9 +105,6 @@ public class SceneDrawer {
 		{
 			if(Screen.graveyardCards[i] != null)
 			{
-				GraveyardCard[] par1 = Screen.graveyardCards;
-				BattlefieldCard[] par2 = Screen.battlefieldCards;
-				HandCard[] par3 = Screen.handCards;
 				cardSearch[1].addOption(Screen.graveyardCards[i].getCardName());
 			}
 		}
@@ -135,5 +117,4 @@ public class SceneDrawer {
 			}
 		}
 	}
-
 }

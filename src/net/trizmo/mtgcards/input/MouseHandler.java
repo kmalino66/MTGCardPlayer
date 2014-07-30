@@ -7,6 +7,7 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
 import net.trizmo.mtgcards.CardHandler;
+import net.trizmo.mtgcards.LifeHandler;
 import net.trizmo.mtgcards.Screen;
 import net.trizmo.mtgcards.deckeditor.EditorBase;
 
@@ -85,6 +86,12 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 				EditorBase.deckPick.scroll(e);
 			}
 			
+		}
+		
+		if(Screen.scene == 2)
+		{
+			LifeHandler.changeIndex(e);
+			Screen.poisonCounter.changeIndex(e);
 		}
 	}
 

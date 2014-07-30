@@ -12,5 +12,4 @@ public class DeckManager {
 
 		CoutHandler.success(Screen.totalCardsInDeck + " cards in the deck");
 	}
-
 }
