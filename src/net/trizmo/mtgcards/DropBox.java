@@ -20,6 +20,7 @@ public class DropBox {
 	private int scrollAmount;
 
 	private boolean opened;
+	private boolean secret = false;
 
 	public DropBox(int xPos, int yPos, int width, int height){
 		this.xPos = xPos;
@@ -52,9 +53,12 @@ public class DropBox {
 		g.setColor(Color.white);
 		g.setFont(new Font("TimesRoman", Font.PLAIN, height - 4));
 
-		if(optionList == null || clickedObject > optionList.length - 1) clickedObject = 0;
-		if(optionList != null && optionList[clickedObject].getOption() != null) g.drawString(optionList[clickedObject].getOption(), xPos + 10, (yPos + height - 4));
-
+		if(optionList == null || clickedObject > optionList.length - 1) clickedObject = -1;
+		
+		if(!secret) {
+			if(optionList != null && clickedObject > -1 && optionList[clickedObject].getOption() != null) g.drawString(optionList[clickedObject].getOption(), xPos + 10, (yPos + height - 4));
+		}
+		
 		if(opened)
 		{
 			if(scrollAmount < 0) scrollAmount = 0;
@@ -173,6 +177,9 @@ public class DropBox {
 
 	public String getSelected()
 	{
+		if(clickedObject == -1) return null;
+		
+		
 		if(optionList != null)
 		{
 			return optionList[clickedObject].getOption();
@@ -208,6 +215,15 @@ public class DropBox {
 		int par1Int = e.getWheelRotation();
 		scrollAmount += par1Int;
 	}
+
+	public void setHiddenDefault(boolean b) {
+		this.secret = b;
+	}
+	
+	public void setSelectedToNull()
+	{
+		clickedObject = -1;
+	}
 }
 
 class DropBoxEntry {
@@ -236,4 +252,5 @@ class DropBoxEntry {
 		this.optionId = optionId;
 		option = optionString;
 	}
-}
+	
+	}

@@ -158,6 +158,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			
 			g.drawImage(background, 0, 0, width, height, null);
 			SceneDrawer.scene2(g);
+
 			CardDrawer.drawLibrary(g);
 			CardDrawer.drawExiled(g);
 			CardDrawer.drawGraveyard(g);
@@ -180,6 +181,9 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			}
 
 			StackManager.reformatStacks();
+			
+			SceneDrawer.drawDropBoxesFor2(g);
+			SceneDrawer.checkCardSelected();
 		}
 
 		if(scene == 3) //Deck Manager Main
@@ -270,6 +274,11 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			}else if(CardHandler.zoomCard == null)
 			{
 				CardHandler.doDraw(e);
+				
+				for(int i = 0; i < SceneDrawer.cardSearch.length; i++){
+					SceneDrawer.cardSearch[i].checkClicked(e);
+				}
+				
 			}else if(CardHandler.zoomCard != null)
 			{
 				CardHandler.checkCounterButtons(e);
@@ -288,6 +297,16 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 				FileManager.loadDeck(dropBox[3].getClickedId());
 				chosenDeck = dropBox[3].getClickedId();
 				EditorBase.prepare();
+				
+				for(int i = 0; i < FileManager.sealedDeckIds.length; i++)
+				{
+					if(chosenDeck == FileManager.sealedDeckIds[i])
+					{
+						EditorBase.secondarySealed = true;
+						EditorBase.editingSealedDeck = true;
+					}
+				}
+				
 				changeScene(6);
 			}
 		}
@@ -295,7 +314,11 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		{
 			changeScene(5);
 			sealedPlay(dropBox[2].getSelected());
-			SealedPlayManager.formatForDeck(sealedPacks);
+			
+			deck = SealedPlayManager.formatForDeck(sealedPacks);
+			EditorBase.prepare(deck);
+			
+			changeScene(6);
 		}
 	}
 
@@ -544,7 +567,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		}
 		
 		sealedPacks = SealedPlayManager.createPacks(commonCards, uncommonCards, rareCards, mythicRareCards, specialCards);
-
+		
 	}
 
 	public static String[] getSets()

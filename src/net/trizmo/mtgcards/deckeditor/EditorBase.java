@@ -30,11 +30,15 @@ public class EditorBase {
 	public static DeckManagerButton newDeckButton = new DeckManagerButton(610 + Screen.buttonWidth, 0, Screen.buttonWidth, Screen.buttonHeight, "ButtonNewDeck", "", 1);
 	public static DeckManagerCard[] deckCards;
 	public static TypeBox deckNameBox = new TypeBox(0, 0, 250, 100, Color.BLACK, Color.WHITE);
+	public static Deck[] cardsFromSealed;
 
 	public static boolean addCard;
 	public static boolean quantityChangeScreen;
 	public static boolean newDeckScreen = false;
-
+	public static boolean displaySave;
+	public static boolean editingSealedDeck = false;
+	public static boolean secondarySealed = false;
+	
 	public static void prepare()
 	{
 		addCard = false;
@@ -52,14 +56,12 @@ public class EditorBase {
 		{
 			if(Screen.cardList[i] != null) 
 			{
-				deckCards[i] = new DeckManagerCard(Screen.cardList[i].getId(), Screen.cardList[i].getName(), Screen.cardList[i].getSetName(), 0);
+				deckCards[i] = new DeckManagerCard(Screen.cardList[i].getId(), Screen.cardList[i].getName(), Screen.cardList[i].getSetName(), 0, Screen.cardList[i].getRarity());
 			}else {
 				deckCards[i] = null;
 			}
 		}
 
-		@SuppressWarnings("unused")
-		Deck[] par1temp = Screen.deck;
 		System.out.println(Screen.deck.length);
 		for(int i = 0; i < Screen.deck.length; i++)
 		{
@@ -72,6 +74,13 @@ public class EditorBase {
 			}
 		}
 
+	}
+
+	public static void prepare(Deck[] sealed)
+	{
+		prepare();
+		cardsFromSealed = sealed;
+		editingSealedDeck = true;
 	}
 
 	public static void addCardScreen()
@@ -107,6 +116,9 @@ public class EditorBase {
 
 		if(scene == 6) //Draw main editor
 		{
+
+			showAmountOfCardsInDeck(g);
+
 			addCardsToDropbox(addCard);
 			if(addCard)
 			{
@@ -184,9 +196,18 @@ public class EditorBase {
 			}
 
 			saveButton.drawButton(g);
+
+			if(displaySave)
+			{
+				g.setColor(Color.white);
+				g.fillRect(Screen.width / 2 - 125, Screen.height / 2 - 50 , 250, 100);
+
+				g.setColor(Color.black);
+				g.drawString("Deck Saved", Screen.width / 2 - 120, Screen.height / 2);
+			}
 		}
-		
-		
+
+
 	}
 
 	public static void addDeckNames(DeckNames[] deckNames)
@@ -200,25 +221,42 @@ public class EditorBase {
 	public static void addCardsToDropbox(boolean par1Boolean)
 	{
 		cardPick.removeOptions();
+		String pickedSet = setPick.getSelected();
 
-		if(!par1Boolean)
+		
+		if(editingSealedDeck && par1Boolean)
+		{
+			for(int i = 0; i < Screen.cardList.length; i++)
+			{
+
+
+				if(Screen.cardList[i] != null && Screen.cardList[i].getSetName().equals(pickedSet) && Screen.cardList[i].getRarity() == 4)
+				{
+					cardPick.addOption(Screen.cardList[i].getName());
+				}
+			}
+
+			for(int i = 0; i < cardsFromSealed.length; i++)
+			{
+				if(cardsFromSealed[i].getSetName().equals(pickedSet)) cardPick.addOption(cardsFromSealed[i].getCardName());
+			}
+		}else if(!par1Boolean)
 		{
 
 			for(int i = 0; i < Screen.deck.length; i++)
 			{
-				String pickedSet = setPick.getSelected();
 
-				if(deckCards[i] != null && deckCards[i].getSetName().equals(pickedSet) && Screen.deck[i].getAmmountOfCard() > 0)
+				if(deckCards[i] != null && Screen.deck[i].getSetName().equals(pickedSet) && Screen.deck[i].getAmmountOfCard() > 0)
 				{
 					cardPick.addOption(Screen.deck[i].getCardName());
 				}
 			}
 		}else {
 			for(int i = 0; i < deckCards.length; i++)
-			{
-				String pickedSet = setPick.getSelected();
 
-				if(deckCards[i] != null && deckCards[i].getSetName().equals(pickedSet))
+			{
+
+				if(deckCards[i] != null && deckCards[i].getSetName().equals(pickedSet) && deckCards[i].getRarity() != 5)
 				{
 					cardPick.addOption(deckCards[i].getCardName());
 				}
@@ -226,75 +264,97 @@ public class EditorBase {
 		}
 	}
 
+
 	//Called whenever there is a click on the deck editor scenes.
 	public static void handleClick(MouseEvent e)
 	{
-		setPick.checkClicked(e);
-		cardPick.checkClicked(e);
-
-		if(addCardButton.getClicked(e))
+		if(displaySave)
 		{
-			addCardScreen();
-		}
+			displaySave = false;
+		}else{
+			setPick.checkClicked(e);
+			cardPick.checkClicked(e);
 
-		if(ammountAddButton.getClicked(e))
-		{
-			quantityChangeScreen = true;
-		}
-
-		if(quantityChangeScreen)
-		{
-			if(closeButton.getClicked(e))
+			if(addCardButton.getClicked(e))
 			{
-				quantityChangeScreen = false;
+				addCardScreen();
 			}
 
-			if(addButton.getClicked(e))
+			if(ammountAddButton.getClicked(e))
 			{
-				int amount = searchAmountOfCardsInDeck();
+				quantityChangeScreen = true;
+			}
 
-				if(amount > 0)
+			if(quantityChangeScreen)
+			{
+				if(closeButton.getClicked(e))
 				{
-					int selectedId = searchSelectedCardId();
+					quantityChangeScreen = false;
+				}
 
-					for(int i = 0; i < Screen.deck.length; i++)
+				if(addButton.getClicked(e))
+				{
+					int amount = searchAmountOfCardsInDeck();
+
+					if(amount > 0)
 					{
-						if(Screen.deck[i].getCardId() == selectedId)
+						int selectedId = searchSelectedCardId();
+
+						for(int i = 0; i < Screen.deck.length; i++)
 						{
-							Screen.deck[i].adjustCardAmmount(1);
+							if(Screen.deck[i].getCardId() == selectedId)
+							{
+								if(editingSealedDeck && checkSealed(selectedId, Screen.deck[i].getAmmountOfCard()))
+								{
+									Screen.deck[i].adjustCardAmmount(1);
+
+								}else if(!editingSealedDeck || Screen.deck[i].getRarity() == 4)
+								{
+									Screen.deck[i].adjustCardAmmount(1);
+								}
+							}
 						}
+					}else {
+						int selectedId = searchSelectedCardId();
+						expandDeck(selectedId);
 					}
+
+				}
+
+				if(minusButton.getClicked(e))
+				{
+					int amount = searchAmountOfCardsInDeck();
+
+					if(amount > 0)
+					{
+						int selectedId = searchSelectedCardId();
+
+						for(int i = 0; i < Screen.deck.length; i++)
+						{
+							if(Screen.deck[i].getCardId() == selectedId)
+							{
+								Screen.deck[i].adjustCardAmmount(-1);
+							}
+						}
+					}else
+					{
+
+					}
+				}
+			}
+			if(saveButton.getClicked(e))
+			{
+				if(!editingSealedDeck)
+				{
+				FileManager.saveDeck(Screen.chosenDeck);
+				}else if(editingSealedDeck && secondarySealed)
+				{
+					FileManager.saveDeck(Screen.chosenDeck);
 				}else {
-					int selectedId = searchSelectedCardId();
-					expandDeck(selectedId);
+					//FileManager.saveNewSealedDeck();
 				}
-
+				displaySave = true;
 			}
-
-			if(minusButton.getClicked(e))
-			{
-				int amount = searchAmountOfCardsInDeck();
-
-				if(amount > 0)
-				{
-					int selectedId = searchSelectedCardId();
-
-					for(int i = 0; i < Screen.deck.length; i++)
-					{
-						if(Screen.deck[i].getCardId() == selectedId)
-						{
-							Screen.deck[i].adjustCardAmmount(-1);
-						}
-					}
-				}else
-				{
-
-				}
-			}
-		}
-		if(saveButton.getClicked(e))
-		{
-			FileManager.saveDeck(Screen.chosenDeck);
 		}
 	}
 
@@ -374,10 +434,43 @@ public class EditorBase {
 		if(newDeckButton.getClicked(e))
 		{
 			//Sets the value of newDeckScreen to true to tell the drawing function to draw the new deck "panel"
-			
+
 			//TODO Create the new deck screen
 			newDeckScreen = true;
 		}
 	}
 
+	public static void showAmountOfCardsInDeck(Graphics g)
+	{
+		int par1CardAmount = 0;
+
+		Deck[] deck = Screen.deck;
+
+		for(int i = 0; i < deck.length; i++)
+		{
+			if(deck[i] != null && deck[i].getAmmountOfCard() > 0 && !deck[i].getSideboard() && deck[i].getRarity() != 5)
+			{
+				par1CardAmount += deck[i].getAmmountOfCard();
+			}
+		}
+
+		g.drawString("Amount of cards in deck (sideboard not included): " + par1CardAmount, 10, Screen.height / 2);
+		deck = null;
+
+	}
+
+	public static boolean checkSealed(int selectedId, int amountOfCard)
+	{
+		boolean good = true;
+
+		for(int i = 0; i < cardsFromSealed.length; i++)
+		{
+			if(cardsFromSealed[i].getCardId() == selectedId && cardsFromSealed[i].getAmmountOfCard() == amountOfCard)
+			{
+				good = false;
+			}
+		}
+
+		return good;
+	}
 }

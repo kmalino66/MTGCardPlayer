@@ -26,35 +26,3 @@ Decks.txt:
 <cardId>:<amount of that card>
 
 /CardTextures/
-Have the name of the picture be <cardId>.png
-The preferred size is: 
-
-271:5:ZEN::
-272:5:ZEN::
-273:5:ZEN::
-274:5:ZEN::
-275:5:ZEN::
-276:5:ZEN::
-277:5:ZEN::
-278:5:ZEN::
-279:5:ZEN::
-280:5:ZEN::
-281:5:ZEN::
-282:5:ZEN::
-283:5:ZEN::
-284:5:ZEN::
-285:5:ZEN::
-286:5:ZEN::
-287:5:ZEN::
-288:5:ZEN::
-289:5:ZEN::
-290:5:ZEN::
-291:5:ZEN::
-292:5:ZEN::
-293:5:ZEN::
-294:5:ZEN::
-295:5:ZEN::
-296:5:ZEN::
-297:5:ZEN::
-298:5:ZEN::
-299:5:ZEN::

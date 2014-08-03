@@ -8,6 +8,7 @@ import java.awt.event.MouseWheelListener;
 
 import net.trizmo.mtgcards.CardHandler;
 import net.trizmo.mtgcards.LifeHandler;
+import net.trizmo.mtgcards.SceneDrawer;
 import net.trizmo.mtgcards.Screen;
 import net.trizmo.mtgcards.deckeditor.EditorBase;
 
@@ -32,6 +33,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 
 	public void mouseClicked(MouseEvent arg0) {
 		screen.mouseClicked(arg0);
+		
+		
 		
 		for(int i = 0; i < Screen.dropBox.length; i++)
 		{
@@ -92,6 +95,11 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 		{
 			LifeHandler.changeIndex(e);
 			Screen.poisonCounter.changeIndex(e);
+			
+			for(int i = 0; i < SceneDrawer.cardSearch.length; i++)
+			{
+				SceneDrawer.cardSearch[i].scroll(e);
+			}
 		}
 	}
 

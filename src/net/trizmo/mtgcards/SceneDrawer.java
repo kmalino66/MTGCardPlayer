@@ -3,9 +3,13 @@ package net.trizmo.mtgcards;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.MouseInfo;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
+
+import net.trizmo.mtgcards.inCameCards.BattlefieldCard;
+import net.trizmo.mtgcards.inCameCards.LibraryCard;
 
 public class SceneDrawer {
 
@@ -28,10 +32,6 @@ public class SceneDrawer {
 		g.fillRect(0, Screen.height- (15 + Screen.cardHeight), Screen.width, barHeight);
 
 		g.setColor(Color.black);
-
-		cardSearch[0].drawDropBox(g);
-		cardSearch[1].drawDropBox(g);
-		cardSearch[2].drawDropBox(g);
 
 		g.setColor(Color.black);
 		//Exiled
@@ -83,6 +83,12 @@ public class SceneDrawer {
 
 		//cardSearch[2] is the dropbox to search through the library for a card.
 		cardSearch[2] = new DropBox(Screen.width - (boxWidth * 3) - 30, Screen.height - barHeight - pictureHeight, boxWidth, pictureHeight);
+		
+		for(int i = 0; i < cardSearch.length; i++)
+		{
+			cardSearch[i].setHiddenDefault(true);
+			cardSearch[i].setSelectedToNull();
+		}
 	}
 
 	//Removes the options from the dropboxes and adds the cards in the piles back.
@@ -116,5 +122,94 @@ public class SceneDrawer {
 				cardSearch[2].addOption(Screen.libraryCards[i].getCardName());
 			}
 		}
+	}
+	
+	public static void drawDropBoxesFor2(Graphics g)
+	{
+		cardSearch[0].drawDropBox(g);
+		cardSearch[1].drawDropBox(g);
+		cardSearch[2].drawDropBox(g);
+	}
+	
+	public static void checkCardSelected()
+	{
+		String par1String = null;
+		int dropBoxNumber = 4;
+		for(int i = 0; i < cardSearch.length; i++)
+		{
+			if(cardSearch[i].getSelected() != null)
+			{
+				par1String = cardSearch[i].getSelected();
+				cardSearch[i].setSelectedToNull();
+				dropBoxNumber = i;
+			}
+		}
+		
+		switch(dropBoxNumber)
+		{
+		case 0:
+			//Card picked from exiled cards.
+			for(int i = 0; i < Screen.exiledCards.length; i++)
+			{
+				if(Screen.exiledCards[i] != null && par1String.equals(Screen.exiledCards[i].getCardName()))
+				{
+					for(int j = 0; j < Screen.battlefieldCards.length; j++)
+					{
+						if(Screen.battlefieldCards[j] == null)
+						{
+							Screen.battlefieldCards[j] = new BattlefieldCard(Screen.exiledCards[i].getCardName(), Screen.exiledCards[i].getImage(), 10, 10, Screen.exiledCards[i].getRarity(), false);
+							Screen.exiledCards[i] = null;
+							break;
+						}
+					}
+				}
+			}
+			
+			CoutHandler.error("Card " + par1String + " not found in the exiled cards pile");
+			break;
+			
+		case 1:
+			//Card picked from the graveyard cards.
+			for(int i = 0; i < Screen.graveyardCards.length; i++)
+			{
+				if(Screen.graveyardCards[i] != null && Screen.graveyardCards[i].getCardName().equals(par1String))
+				{
+					for(int j = 0; j < Screen.battlefieldCards.length; j++)
+					{
+						if(Screen.battlefieldCards[j] == null)
+						{
+							Screen.battlefieldCards[j] = new BattlefieldCard(Screen.graveyardCards[i].getCardName(), Screen.graveyardCards[i].getImage(), 10, 10, Screen.graveyardCards[i].getRarity(), false);
+							Screen.graveyardCards[i] = null;
+							break;
+						}
+					}
+				}
+			}
+			
+			CoutHandler.error("Card " + par1String + " not found in the graveyard cards pile");
+			break;
+			
+		case 2:
+			//Card picked from the library.
+			for(int i = 0; i < Screen.libraryCards.length; i++)
+			{
+				if(Screen.libraryCards[i] != null && Screen.libraryCards[i].getCardName().equals(par1String))
+				{
+					for(int j = 0; j < Screen.battlefieldCards.length; j++)
+					{
+						if(Screen.battlefieldCards[j] == null && Screen.libraryCards[i] != null)
+						{
+							LibraryCard[] par1Temp = Screen.libraryCards;
+							Screen.battlefieldCards[j] = new BattlefieldCard(Screen.libraryCards[i].getCardName(), Screen.libraryCards[i].getImage(), 10, 10, Screen.libraryCards[i].getRarity(), false);
+							Screen.libraryCards[i] = null;
+						}
+					}
+				}
+			}
+			
+			CoutHandler.error("Card " + par1String + " not fount in the library.");
+			break;
+		}
+		
 	}
 }

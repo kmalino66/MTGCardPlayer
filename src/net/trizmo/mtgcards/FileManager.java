@@ -11,7 +11,9 @@ public class FileManager {
 	static InputStreamReader readerInput;
 	static Scanner inputScanner;
 	static int cardAmm;
-
+	
+	public static int[] sealedDeckIds;
+	
 	public static void loadCards()
 	{
 
@@ -162,6 +164,11 @@ public class FileManager {
 				deckId = Integer.parseInt(split[0]);
 				deckName = split[1];
 				CoutHandler.event("Deck: " + deckId + " with the name of " + deckName + " has been found!");
+				
+				if(split.length > 2 && split[2].equals("sealed"))
+				{
+					addToSealedList(deckId);
+				}
 
 				if(Screen.deckNames[deckId] == null){
 					Screen.deckNames[deckId] = new DeckNames(deckId, deckName);
@@ -349,4 +356,34 @@ public class FileManager {
 		
 		Screen.deckAmmount++;
 	}
+	
+	public static void addToSealedList(int deckId)
+	{
+		if(sealedDeckIds == null)
+		{
+			sealedDeckIds = new int[1];
+			sealedDeckIds[0] = deckId;
+		}else
+		{
+			int[] par1 = new int[sealedDeckIds.length + 1];
+			par1[sealedDeckIds.length] = deckId;
+			
+			sealedDeckIds = null;
+			sealedDeckIds = par1;
+			par1 = null;
+		}
+	}
+	
+	/*public static void saveNewSealedDeck(boolean sealed)
+	{
+		try {
+			File file = new File("res/CardsAndDecks/" + Screen.deckAmmount + ".txt");
+			file.createNewFile();
+			
+			FileWriter par1FileWriter = new FileWriter("res/CardsAndDecks/" + Screen.deckAmmount + ".txt");
+			PrintWriter printer = new PrintWriter(par1FileWriter, false);
+			
+			for(int i = 0; i <)
+		}
+	}*/
 }
