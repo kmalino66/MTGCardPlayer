@@ -95,6 +95,8 @@ public class EditorBase {
 
 	public static void drawEditor(Graphics g, int scene)
 	{
+		
+		if(editingSealedDeck) cardsFromSealed = Screen.sealedBack;
 
 		g.setColor(Color.white);
 
@@ -296,7 +298,7 @@ public class EditorBase {
 				{
 					int amount = searchAmountOfCardsInDeck();
 
-					if(amount > 0)
+					if(amount > 0 || editingSealedDeck)
 					{
 						int selectedId = searchSelectedCardId();
 
@@ -351,7 +353,7 @@ public class EditorBase {
 				{
 					FileManager.saveDeck(Screen.chosenDeck);
 				}else {
-					//FileManager.saveNewSealedDeck();
+					FileManager.saveNewSealedDeck(Screen.deck, cardsFromSealed);
 				}
 				displaySave = true;
 			}

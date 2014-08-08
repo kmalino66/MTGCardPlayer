@@ -27,6 +27,7 @@ public class CardHandler {
 	public static int firstOpen;
 	public static boolean alreadyScanned = false;
 	public static boolean moved;
+	public static boolean terminate = false;
 	public static Point par1Point = new Point(0,0);
 
 	public static ZoomCard zoomCard;
@@ -62,7 +63,7 @@ public class CardHandler {
 	public static void mouseReleased(MouseEvent e)
 	{
 		mouseDown = false;
-		if(interactionCard != null && Screen.scene == 2 && e.getButton() != 2 && moved)
+		if(interactionCard != null && Screen.scene == 2 && e.getButton() != 2 && moved && interactionCard.getLocation() != 5)
 		{
 
 			if(spotLocations[0].contains(e.getPoint()))
@@ -108,15 +109,53 @@ public class CardHandler {
 				{
 					if (Screen.exiledCards[i] == null) firstOpen = i;
 				}
-				
+
 				Screen.exiledCards[firstOpen] = new ExiledCard(Screen.battlefieldCards[interactionCard.getArrayLocation()].getCardName(), Screen.battlefieldCards[interactionCard.getArrayLocation()].getImage(), Screen.battlefieldCards[interactionCard.getArrayLocation()].getRarity());
 				Screen.battlefieldCards[interactionCard.getArrayLocation()] = null;
 
 			}
 			interactionCard = null;
 
+		}else if(interactionCard != null && moved && e.getButton() != 2 && Screen.scene == 2 && interactionCard.getLocation() == 5)
+		{
+			for(int i = 0; i < spotLocations.length; i++)
+			{
+				if(spotLocations[i] != null && spotLocations[i].contains(e.getPoint())){
+					terminate = true;
+				}
+			}
+			
+			if(terminate)
+			{
+				Screen.tokenBattlefield[interactionCard.getArrayLocation()] = null;
+				
+				StackManager.shiftTokenBattlefield();
+				Screen.tokenBattlefield = shrinkTokenBattlefield(Screen.tokenBattlefield);
+				
+				terminate = false;
+			}
+			
+			interactionCard = null;
 		}
 		moved = false;
+	}
+	private static BattlefieldCard[] shrinkTokenBattlefield(BattlefieldCard[] tokenBattlefield) {
+
+		BattlefieldCard[] newBattlefield = new BattlefieldCard[tokenBattlefield.length - 1];
+		
+		for(int i = 0; i < newBattlefield.length; i++)
+		{
+			for(int j = 0; j < tokenBattlefield.length; j++)
+			{
+				if(newBattlefield[i] == null && tokenBattlefield[j] != null)
+				{
+					newBattlefield[i] = tokenBattlefield[j];
+					tokenBattlefield[j] = null;
+				}
+			}
+		}
+		return newBattlefield;
+		
 	}
 	public static void splitByState()
 	{
@@ -238,16 +277,19 @@ public class CardHandler {
 	public static CardInteract getInteractCard(MouseEvent e)
 	{
 
-		CardInteract par1, par2, par3, par4, par5;
+		CardInteract par1, par2, par3, par4, par5, par6;
 
 		par1 = checkLibraryClicked(e);
 		par2 = checkHandClicked(e);
 		par3 = checkBattlefieldClicked(e);
 		par4 = checkGraveyardClicked(e);
 		par5 = checkExileClicked(e);
+		par6 = checkTokenBattlefieldClicked(e);
 
 		if(par3 != null){
 			return par3;
+		}else if (par6 != null){
+			return par6;
 		}else if (par2 != null){
 			return par2;
 		}else if (par1 != null){
@@ -328,6 +370,28 @@ public class CardHandler {
 		{
 			return null;
 		}
+	}
+
+	public static CardInteract checkTokenBattlefieldClicked(MouseEvent e)
+	{
+		int index = -1;
+		if(Screen.tokenBattlefield!= null) for(int i = Screen.tokenBattlefield.length - 1; i >= 0; i--)
+		{
+			if(Screen.tokenBattlefield[i] != null && Screen.tokenBattlefield[i].contains(e))
+			{
+				index = i;
+				break;
+			}
+		}
+
+		if(index != -1)
+		{
+			return new CardInteract(5, index);
+		}else
+		{
+			return null;
+		}
+
 	}
 
 	public static CardInteract checkGraveyardClicked(MouseEvent e)
@@ -464,12 +528,33 @@ public class CardHandler {
 				}
 			}
 			break;
+		case 5:
+			//Move a token to the front when being moved
+			
+			BattlefieldCard currentCard = Screen.tokenBattlefield[interactionCard.getArrayLocation()];
+			Screen.tokenBattlefield[interactionCard.getArrayLocation()] = null;
+			
+			StackManager.shiftTokenBattlefield();
+			
+			Screen.tokenBattlefield[Screen.tokenBattlefield.length - 1] = currentCard;
+			interactionCard = new CardInteract(5, Screen.tokenBattlefield.length - 1);
+			
+			if(!alreadyScanned){
+
+				par1Point = new Point(Screen.tokenBattlefield[interactionCard.getArrayLocation()].getPosOnCard(mouseX, mouseY));
+				alreadyScanned = true;
+			}
+			
+			Screen.tokenBattlefield[interactionCard.getArrayLocation()].setPos((int)(mouseX - par1Point.getX()), (int)(mouseY - par1Point.getY()));
+			
 		}
 	}
 
 	public static void doDraw(MouseEvent e)
 	{
 		CardInteract par1 = checkBattlefieldClicked(e);
+		CardInteract par2 = checkTokenBattlefieldClicked(e);
+		
 		if(par1 != null){
 			if(par1.getLocation() == 2)
 			{
@@ -483,6 +568,21 @@ public class CardHandler {
 
 				}
 			}
+		}else if(par2 != null){
+			
+			if(par2.getLocation() == 5)
+			{
+
+				if(Screen.tokenBattlefield[par2.getArrayLocation()].getTapped())
+				{
+					Screen.tokenBattlefield[par2.getArrayLocation()].setTapped(false);
+				}else
+				{
+					Screen.tokenBattlefield[par2.getArrayLocation()].setTapped(true);
+
+				}
+			}
+			
 		}else{
 			ButtonHandler.scene2Click(e);
 
@@ -550,13 +650,13 @@ public class CardHandler {
 
 		if(zoomCard != null)
 		{
-			
+
 			if(zoomCard.getPlace().equals("battlefield"))
 			{
 				Screen.battlefieldCards[zoomCard.getArrayIndex()].setCounterInfo(zoomCard.getCounterInfo());
 			}
 			zoomCard = null;
-			
+
 		}else{
 			for(int i = Screen.exiledCards.length - 1; i >= 0; i--)
 			{
@@ -597,6 +697,11 @@ public class CardHandler {
 					}
 				}
 			}
+			
+			for(int i = 0; i < Screen.tokenBattlefield.length; i++)
+			{
+				if(Screen.tokenBattlefield[i] != null && Screen.tokenBattlefield[i].contains(mousePoint)) zoomCard = new ZoomCard(Screen.tokenBattlefield[i].getImage(), Screen.tokenBattlefield[i].getCounterInfo(), "token", i);
+			}
 
 			for(int i = 0; i < Screen.battlefieldCards.length; i++)
 			{
@@ -613,7 +718,7 @@ public class CardHandler {
 			g.drawImage(zoomCard.getImage(), (Screen.width / 2) - Screen.cardWidth, (Screen.height / 2) - Screen.cardHeight * 2, Screen.cardWidth * 2, Screen.cardHeight * 2, null);
 
 
-			if(zoomCard.getPlace().equals("battlefield")) for(int i = 0; i < counterButtons.length; i++) counterButtons[i].drawButton(g);
+			if(zoomCard.getPlace().equals("battlefield") || zoomCard.getPlace().equals("token")) for(int i = 0; i < counterButtons.length; i++) counterButtons[i].drawButton(g);
 
 		}else
 		{

@@ -1,5 +1,8 @@
 package net.trizmo.mtgcards;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -26,8 +29,9 @@ public class Frame extends JFrame {
 
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		this.setExtendedState(MAXIMIZED_BOTH);
-
+		Dimension hi = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(0,0);
+		this.setSize(hi);
 		this.setUndecorated(true);
 		this.setResizable(false);
 		this.setVisible(true);

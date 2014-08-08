@@ -8,8 +8,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 import net.trizmo.mtgcards.CardHandler;
-import net.trizmo.mtgcards.LifeHandler;
-import net.trizmo.mtgcards.PoisonCounterHandler;
 import net.trizmo.mtgcards.Screen;
 import net.trizmo.mtgcards.StackManager;
 

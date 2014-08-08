@@ -113,6 +113,47 @@ public class CardDrawer {
 			}
 		}
 	}
+
+	public static void drawTokenBattlefield(Graphics g) {
+		int cardWidth = Screen.cardWidth;
+		int cardHeight = Screen.cardHeight;
+		
+		Font par1Font = new Font("TimesNewRoman", Font.PLAIN, 18);
+		g.setFont(par1Font);
+
+		if(Screen.tokenBattlefield != null) for(int i = 0; i < Screen.tokenBattlefield.length; i++)
+		{
+			if(Screen.tokenBattlefield[i] != null){
+				int x = Screen.tokenBattlefield[i].getX();
+				int y = Screen.tokenBattlefield[i].getY();
+				int tx = Screen.tokenBattlefield[i].getTX();
+				int ty = Screen.tokenBattlefield[i].getTY();
+
+				if(Screen.tokenBattlefield[i].getTapped())
+				{
+					
+					BufferedImage textureImage = new BufferedImage(cardWidth, cardHeight, BufferedImage.TYPE_INT_ARGB);
+
+					textureImage.getGraphics().drawImage(Screen.tokenBattlefield[i].getImage(), 0, 0, cardWidth, cardHeight, null);
+
+					Graphics2D g2d = (Graphics2D)g.create();
+
+					g2d.rotate(Math.toRadians(90), cardWidth / 2, cardHeight / 2);
+					g2d.drawImage(textureImage, tx, ty, cardWidth, cardHeight, null);
+					
+					g.setColor(Color.white);
+					g.drawString(Screen.tokenBattlefield[i].getCounterInfo().getPowerModifier() + "/" + Screen.tokenBattlefield[i].getCounterInfo().getToughnessModifier() + "   " + Screen.tokenBattlefield[i].getCounterInfo().getCounters() + "c", x, y + cardWidth + 5 + 18);
+
+					g2d.dispose();
+				
+				}else{
+					g.drawImage(Screen.tokenBattlefield[i].getImage(), x, y, Screen.cardWidth, Screen.cardHeight, null);
+					g.setColor(Color.white);
+					g.drawString(Screen.tokenBattlefield[i].getCounterInfo().getPowerModifier() + "/" + Screen.tokenBattlefield[i].getCounterInfo().getToughnessModifier() + "   " + Screen.tokenBattlefield[i].getCounterInfo().getCounters() + "c", x, y + cardHeight + 5 + 18);
+				}
+			}
+		}
+	}
 	
 	
 }

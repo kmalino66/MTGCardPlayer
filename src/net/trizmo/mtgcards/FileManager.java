@@ -374,8 +374,16 @@ public class FileManager {
 		}
 	}
 	
-	/*public static void saveNewSealedDeck(boolean sealed)
+	/**
+	 * Used to save a sealed deck.
+	 * 
+	 * @param inPlay - A Deck[] array with the cards that should be saved to be in the deck.
+	 * @param sealedDeck - A Deck[] array with the cards that the user got through the sealed generator.
+	 */
+	public static void saveNewSealedDeck(Deck[] inPlay, Deck[] sealedDeck)
 	{
+		
+		SealedCardInfo[] finalSeal = null;
 		try {
 			File file = new File("res/CardsAndDecks/" + Screen.deckAmmount + ".txt");
 			file.createNewFile();
@@ -383,7 +391,24 @@ public class FileManager {
 			FileWriter par1FileWriter = new FileWriter("res/CardsAndDecks/" + Screen.deckAmmount + ".txt");
 			PrintWriter printer = new PrintWriter(par1FileWriter, false);
 			
-			for(int i = 0; i <)
+			for(int i = 0; i < sealedDeck.length; i++)
+			{
+				for(int j = 0; j < inPlay.length; j++)
+				{
+					if(sealedDeck[i].getCardId() == inPlay[j].getCardId())
+					{
+						if(finalSeal == null)
+						{
+							finalSeal = new SealedCardInfo[1];
+							finalSeal[0] = new SealedCardInfo(sealedDeck[i].getCardId(), inPlay[j].getAmmountOfCard(), sealedDeck[i].getAmmountOfCard());
+						}
+					}
+				}
+			}
+			
+		}catch (IOException e)
+		{
+			
 		}
-	}*/
+	}
 }

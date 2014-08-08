@@ -85,4 +85,22 @@ public class StackManager {
 			}
 		}
 	}
+	
+	public static void shiftTokenBattlefield()
+	{
+		for(int magic = 0; magic < Screen.tokenBattlefield.length; magic++)
+		{
+			if(Screen.tokenBattlefield[magic] == null)
+			{
+				for(int par1Magic = magic; par1Magic < Screen.tokenBattlefield.length; par1Magic++)
+				{
+					if(Screen.tokenBattlefield[par1Magic] != null && Screen.tokenBattlefield[magic] == null)
+					{
+						Screen.tokenBattlefield[magic] = Screen.tokenBattlefield[par1Magic];
+						Screen.tokenBattlefield[par1Magic] = null;
+					}
+				}
+			}
+		}
+	}
 }

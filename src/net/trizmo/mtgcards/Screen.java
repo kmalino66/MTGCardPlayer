@@ -48,9 +48,10 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 
 	public static Card[] cardList = new Card[cardAmmount];
 	public static Deck[] deck;
+	public static Deck[] sealedBack;
 	public static DeckNames[] deckNames = new DeckNames[deckAmmount];
 	public static PlayableCard[] deckCard;
-	public static BattlefieldCard[] battlefieldCards;
+	public static BattlefieldCard[] battlefieldCards, tokenBattlefield;
 	public static ExiledCard[] exiledCards;
 	public static GraveyardCard[] graveyardCards;
 	public static LibraryCard[] libraryCards;
@@ -163,6 +164,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			CardDrawer.drawExiled(g);
 			CardDrawer.drawGraveyard(g);
 			CardDrawer.drawHand(g);
+			CardDrawer.drawTokenBattlefield(g);
 			CardDrawer.drawBattlefield(g);
 			CardHandler.drawZoomCard(g);
 
@@ -183,6 +185,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			StackManager.reformatStacks();
 			
 			SceneDrawer.drawDropBoxesFor2(g);
+			SceneDrawer.tokenChoice.drawDropBox(g);
 			SceneDrawer.checkCardSelected();
 		}
 
@@ -279,6 +282,8 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 					SceneDrawer.cardSearch[i].checkClicked(e);
 				}
 				
+				SceneDrawer.tokenChoice.checkClicked(e);
+				
 			}else if(CardHandler.zoomCard != null)
 			{
 				CardHandler.checkCounterButtons(e);
@@ -291,7 +296,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		Rectangle playButton = new Rectangle(500, 0, Screen.buttonWidth, Screen.buttonHeight);
 		Rectangle playButton2 = new Rectangle(10, 500, Screen.buttonWidth, Screen.buttonHeight);
 		if (scene == 3) {
-			
 			if(playButton.contains(e.getPoint()))
 			{
 				FileManager.loadDeck(dropBox[3].getClickedId());
@@ -316,6 +320,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			sealedPlay(dropBox[2].getSelected());
 			
 			deck = SealedPlayManager.formatForDeck(sealedPacks);
+			sealedBack = deck;
 			EditorBase.prepare(deck);
 			
 			changeScene(6);

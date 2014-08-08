@@ -5,15 +5,13 @@ import javax.swing.ImageIcon;
 public class Token {
 
 	private String name;
-	private int power;
-	private int toughness;
+	private String setName;
 	private String textureName;
 	
-	public Token(String name, int power, int toughness, String textureName)
+	public Token(String name, String setName, String textureName)
 	{
 		this.name = name;
-		this.power = power;
-		this.toughness = toughness;
+		this.setName = setName;
 		this.textureName = textureName;
 	}
 	
@@ -22,18 +20,13 @@ public class Token {
 		return name;
 	}
 	
-	public int getPower()
+	public String getSetName()
 	{
-		return power;
-	}
-	
-	public int getToughness()
-	{
-		return toughness;
+		return setName;
 	}
 	
 	public ImageIcon getTextureImage()
 	{
-		return new ImageIcon("res/Tokens/TokenTexture/" + textureName +".png");
+		return new ImageIcon("res/CardsAndDecks/CardTextures/" + setName + "/" + textureName + ".jpg");
 	}
 }

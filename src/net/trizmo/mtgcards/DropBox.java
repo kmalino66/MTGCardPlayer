@@ -49,7 +49,7 @@ public class DropBox {
 	{
 
 		g.drawImage(new ImageIcon("res/General/choicebox.jpg").getImage(), xPos, yPos, width, height, null);
-		g.drawImage(new ImageIcon("res/General/DownButtonOfDoom.jpg").getImage(), xPos + width - 50, yPos, 50, 50, null);
+		g.drawImage(new ImageIcon("res/General/DownButtonOfDoom.jpg").getImage(), xPos + width - height, yPos, height, height, null);
 		g.setColor(Color.white);
 		g.setFont(new Font("TimesRoman", Font.PLAIN, height - 4));
 
