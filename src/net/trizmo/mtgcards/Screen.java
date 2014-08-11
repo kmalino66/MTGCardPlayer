@@ -25,9 +25,9 @@ import net.trizmo.mtgcards.deckeditor.*;
 
 public class Screen extends JPanel implements Runnable, ActionListener {
 
-	public static final double versionNumber = 1.1;
-	public static final int versionID = 2;
-	public static final String versionName = "Player Beta v1.1"; 
+	public static final double versionNumber = 2.0;
+	public static final int versionID = 3;
+	public static final String versionName = "Player Beta v2.0"; 
 
 	Thread thread = new Thread(this);
 	Frame frame;
@@ -48,7 +48,6 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 
 	public static Card[] cardList = new Card[cardAmmount];
 	public static Deck[] deck;
-	public static Deck[] sealedBack;
 	public static DeckNames[] deckNames = new DeckNames[deckAmmount];
 	public static PlayableCard[] deckCard;
 	public static BattlefieldCard[] battlefieldCards, tokenBattlefield;
@@ -62,7 +61,8 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	public static String[] sets = null;
 	public static Pack[] sealedPacks;
 	public static PoisonCounterHandler poisonCounter;
-	
+	public static DropBox[] sealedSetSelect = new DropBox[5];
+
 	public static MouseEvent mEvent;
 	public static Font customFont;
 	public static Image dice;
@@ -91,7 +91,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	//Creates the screen.
-	
+
 	public Screen(Frame frame) 
 	{
 
@@ -125,11 +125,16 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		CardHandler.counterButtons[3] = new DeckManagerButton((width / 2) - (cardWidth) + (par1ButtonWidth * 3), height / 2, par1ButtonWidth, par1ButtonWidth / 2, "ButtonMinus", "", 1);
 		CardHandler.counterButtons[4] = new DeckManagerButton((width / 2) - (cardWidth) + (par1ButtonWidth * 4), height / 2, par1ButtonWidth, par1ButtonWidth / 2, "ButtonPlus", "", 1);
 		CardHandler.counterButtons[5] = new DeckManagerButton((width / 2) - (cardWidth) + (par1ButtonWidth * 5), height / 2, par1ButtonWidth, par1ButtonWidth / 2, "ButtonMinus", "", 1);
-		
+
+		for(int i = 0; i < 5; i++)
+		{
+			sealedSetSelect[i] = new DropBox(10, 10 + (50 * i), 600, 50, Color.white, Color.black);
+		}
+
 		thread.start();
 	}
 
-	
+
 	//Paints stuff on the screen.
 	@Override
 	public void paintComponent(Graphics g)
@@ -156,7 +161,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		}
 
 		if(scene == 2) { //Game Player
-			
+
 			g.drawImage(background, 0, 0, width, height, null);
 			SceneDrawer.scene2(g);
 
@@ -171,7 +176,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			LifeHandler.drawComponent(g);
 
 			poisonCounter.drawComponent(g);
-			
+
 			if(LifeHandler.open)
 			{
 				poisonCounter.drawComponent(g);
@@ -183,7 +188,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			}
 
 			StackManager.reformatStacks();
-			
+
 			SceneDrawer.drawDropBoxesFor2(g);
 			SceneDrawer.tokenChoice.drawDropBox(g);
 			SceneDrawer.checkCardSelected();
@@ -201,7 +206,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			SceneDrawer.scene4(g);
 
 		}
-		
+
 		if(scene == 6)//Deck Manager edit
 		{
 			g.drawImage(background, 0, 0, width, height, null);
@@ -222,7 +227,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		poisonCounter =  new PoisonCounterHandler(0);
 		lifeAmmount = 20;
 		running = true;
-	
+
 	}
 
 	//The main running method, start to everything.	
@@ -266,7 +271,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	}
 
 	//Works when mouse clicked, thought i wouldn't remember
-	
+
 	public void mouseClicked(MouseEvent e) {
 		if (scene == 0) ButtonHandler.scene0Click(e);
 		if (scene == 1) ButtonHandler.scene1Click(e);
@@ -277,22 +282,22 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			}else if(CardHandler.zoomCard == null)
 			{
 				CardHandler.doDraw(e);
-				
+
 				for(int i = 0; i < SceneDrawer.cardSearch.length; i++){
 					SceneDrawer.cardSearch[i].checkClicked(e);
 				}
-				
+
 				SceneDrawer.tokenChoice.checkClicked(e);
-				
+
 			}else if(CardHandler.zoomCard != null)
 			{
 				CardHandler.checkCounterButtons(e);
 			}
-			
+
 			if(!poisonCounter.getOpen()) LifeHandler.changeLife(e);
 			if(!LifeHandler.open) poisonCounter.changeCounter(e);
 		}
-		
+
 		Rectangle playButton = new Rectangle(500, 0, Screen.buttonWidth, Screen.buttonHeight);
 		Rectangle playButton2 = new Rectangle(10, 500, Screen.buttonWidth, Screen.buttonHeight);
 		if (scene == 3) {
@@ -301,7 +306,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 				FileManager.loadDeck(dropBox[3].getClickedId());
 				chosenDeck = dropBox[3].getClickedId();
 				EditorBase.prepare();
-				
+
 				for(int i = 0; i < FileManager.sealedDeckIds.length; i++)
 				{
 					if(chosenDeck == FileManager.sealedDeckIds[i])
@@ -310,20 +315,39 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 						EditorBase.editingSealedDeck = true;
 					}
 				}
-				
+
 				changeScene(6);
 			}
 		}
 		if (scene == 4 && playButton2.contains(e.getPoint()))
 		{
 			changeScene(5);
-			sealedPlay(dropBox[2].getSelected());
+			String[] packPick = {
+				sealedSetSelect[0].getSelected(),
+				sealedSetSelect[1].getSelected(),
+				sealedSetSelect[2].getSelected(),
+				sealedSetSelect[3].getSelected(),
+				sealedSetSelect[4].getSelected()
+			};
+			sealedPlay(packPick);
+
+			//FileManager.checkPackPrint(sealedPacks);
 			
 			deck = SealedPlayManager.formatForDeck(sealedPacks);
-			sealedBack = deck;
 			EditorBase.prepare(deck);
-			
+
 			changeScene(6);
+		} else if(scene == 4)
+		{
+			boolean par1 = true;
+			for(int hello = 0; hello < sealedSetSelect.length; hello++)
+			{
+				if(par1){
+					if(sealedSetSelect[hello].clickedBool(e)) par1 = false;
+					sealedSetSelect[hello].checkClicked(e);
+				
+				}
+			}
 		}
 	}
 
@@ -338,9 +362,12 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		if(newScene == 4) {
 			sets = getSets();
 
-			for(int i = 0; i < sets.length; i++)
+			for(int i = 0; i < 5; i++)
 			{
-				dropBox[2].addOption(sets[i]);
+				for(int j = 0; j < sets.length; j++)
+				{
+					sealedSetSelect[i].addOption(sets[j]);
+				}
 			}
 		}
 
@@ -352,7 +379,7 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			{
 				Screen.dropBox[4].addOption(sets[i]);
 			}
-			
+
 			EditorBase.addDeckNames(deckNames);
 		}
 	}
@@ -470,109 +497,112 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 		}
 	}
 
-	public static void sealedPlay(String selectedSet)
+	public static void sealedPlay(String[] selectedSet)
 	{
 
-		int common = 0, uncommon = 0, rare = 0, mythicRare = 0, special = 0;
+		sealedPacks = new Pack[5];
+		
+		for(int re = 0; re < 5; re++){
+			int common = 0, uncommon = 0, rare = 0, mythicRare = 0, special = 0;
 
-		for(int i = 0; i < cardList.length; i ++){
-			if(cardList[i] != null && cardList[i].getSetName().equals(selectedSet)) {
-				int par1 = cardList[i].getRarity();
-				switch(par1) {
-				case 0:
-					common++;
-					break;
-				case 1:
-					uncommon++;
-					break;
-				case 2:
-					rare++;
-					break;
-				case 3:
-					mythicRare++;
-					break;
-				case 6:
-					special++;
-					break;
+			for(int i = 0; i < cardList.length; i ++){
+				if(cardList[i] != null && cardList[i].getSetName().equals(selectedSet[re])) {
+					int par1 = cardList[i].getRarity();
+					switch(par1) {
+					case 0:
+						common++;
+						break;
+					case 1:
+						uncommon++;
+						break;
+					case 2:
+						rare++;
+						break;
+					case 3:
+						mythicRare++;
+						break;
+					case 6:
+						special++;
+						break;
 
+					}
 				}
 			}
-		}
-		commonCards = new Card[common];
-		uncommonCards = new Card[uncommon];
-		rareCards = new Card[rare];
-		mythicRareCards = new Card[mythicRare];
-		specialCards = new Card[special];
+			commonCards = new Card[common];
+			uncommonCards = new Card[uncommon];
+			rareCards = new Card[rare];
+			mythicRareCards = new Card[mythicRare];
+			specialCards = new Card[special];
 
-		for(int i = 1; i < cardList.length; i++)
-		{
-
-			if(cardList[i] != null && cardList[i].getSetName().equals(selectedSet)) {
-				int par2 = cardList[i].getRarity();
-
-				switch(par2) {
-				case 0:
-					for(int j = 0; j< commonCards.length; j++)
-					{
-						if(commonCards[j] == null)
-						{
-							commonCards[j] = cardList[i];
-							break;
-						}
-					}
-					break;
-				case 1:
-					for(int j = 0; j < uncommonCards.length; j++)
-					{
-						if(uncommonCards[j] == null)
-						{
-							uncommonCards[j] = cardList[i];
-							break;
-						}
-					}
-					break;
-				case 2:
-					for(int j = 0; j < rareCards.length; j++)
-					{
-						if(rareCards[j] == null)
-						{
-							rareCards[j] = cardList[i];
-							break;
-						}
-					}
-					break;
-				case 3:
-					for( int j = 0; j < mythicRareCards.length; j++)
-					{
-						if(mythicRareCards[j] == null)
-						{
-							mythicRareCards[j] = cardList[i];
-							break;
-						}
-					}
-					break;
-				case 6:
-					for( int j = 0; j < specialCards.length; j++)
-					{
-						if(specialCards[j] == null)
-						{
-							specialCards[j] = cardList[i];
-							break;
-						}
-					}
-					break;
-				}
-			}
-
-			if(special == 0)
+			for(int i = 1; i < cardList.length; i++)
 			{
-				specialCards = null;
+
+				if(cardList[i] != null && cardList[i].getSetName().equals(selectedSet[re])) {
+					int par2 = cardList[i].getRarity();
+
+					switch(par2) {
+					case 0:
+						for(int j = 0; j< commonCards.length; j++)
+						{
+							if(commonCards[j] == null)
+							{
+								commonCards[j] = cardList[i];
+								break;
+							}
+						}
+						break;
+					case 1:
+						for(int j = 0; j < uncommonCards.length; j++)
+						{
+							if(uncommonCards[j] == null)
+							{
+								uncommonCards[j] = cardList[i];
+								break;
+							}
+						}
+						break;
+					case 2:
+						for(int j = 0; j < rareCards.length; j++)
+						{
+							if(rareCards[j] == null)
+							{
+								rareCards[j] = cardList[i];
+								break;
+							}
+						}
+						break;
+					case 3:
+						for( int j = 0; j < mythicRareCards.length; j++)
+						{
+							if(mythicRareCards[j] == null)
+							{
+								mythicRareCards[j] = cardList[i];
+								break;
+							}
+						}
+						break;
+					case 6:
+						for( int j = 0; j < specialCards.length; j++)
+						{
+							if(specialCards[j] == null)
+							{
+								specialCards[j] = cardList[i];
+								break;
+							}
+						}
+						break;
+					}
+				}
+
+				if(special == 0)
+				{
+					specialCards = null;
+				}
+
 			}
 
+			sealedPacks[re] = SealedPlayManager.createPacks(commonCards, uncommonCards, rareCards, mythicRareCards, specialCards);
 		}
-		
-		sealedPacks = SealedPlayManager.createPacks(commonCards, uncommonCards, rareCards, mythicRareCards, specialCards);
-		
 	}
 
 	public static String[] getSets()

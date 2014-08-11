@@ -26,4 +26,24 @@ public class SealedCardInfo {
 		
 		return par1;
 	}
+	
+	/**
+	 * Moves a given amount of the card over to the amount actually in the deck versus the 'sideboard'
+	 * 
+	 * @param moveAmount - Determines how many of the cards are moved.
+	 */
+	public void moveIntoDeck(int moveAmount)
+	{
+		if(moveAmount > amountAvail)
+		{
+			moveAmount = amountAvail;
+		}
+		
+		amountInDeck += moveAmount;
+		amountAvail -= moveAmount;
+	}
+
+	public int getId() {
+		return cardId;
+	}
 }

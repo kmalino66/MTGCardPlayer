@@ -58,7 +58,10 @@ public class SceneDrawer {
 
 	public static void scene4(Graphics g)
 	{
-		Screen.dropBox[2].drawDropBox(g);
+		for(int i = 4; i >= 0; i--)
+		{
+			Screen.sealedSetSelect[i].drawDropBox(g);
+		}
 
 		Image btnPlay = new ImageIcon("res/Button/ButtonPlay.png").getImage();
 		playButton = new Rectangle(10, 500, Screen.buttonWidth, Screen.buttonHeight);

@@ -5,12 +5,12 @@ public class Deck extends Card{
 	private int cardId;
 	private int ammountOfCard;
 	private int rarity;
+	private int sideboard;
 	
 	private String cardName;
 	private String textureName;
 	
-	private boolean sideboard;
-
+	
 	public Deck(int cardId, String cardName, int rarity, String setName, String textureName, int ammountOfCard) {
 		super(cardId, cardName, rarity, setName, textureName);	
 		this.cardId = cardId;
@@ -18,10 +18,10 @@ public class Deck extends Card{
 		this.rarity = rarity;
 		this.textureName = textureName;
 		this.ammountOfCard = ammountOfCard;
-		this.sideboard = false;
+		this.sideboard = 0;
 	}
 	
-	public Deck(int cardId, String cardName, int rarity, String setName, String textureName, int ammountOfCard, boolean sideboard)
+	public Deck(int cardId, String cardName, int rarity, String setName, String textureName, int ammountOfCard, int sideboard)
 	{
 		this(cardId, cardName, rarity, setName, textureName, ammountOfCard);
 		this.sideboard = sideboard;
@@ -58,7 +58,7 @@ public class Deck extends Card{
 		return textureName;
 	}
 
-	public boolean getSideboard()
+	public int getSideboardAmount()
 	{
 		return sideboard;
 	}

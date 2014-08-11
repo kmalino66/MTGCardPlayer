@@ -2,7 +2,7 @@ package net.trizmo.mtgcards.deckeditor;
 
 public class DeckManagerCard {
 	
-	private int amountOfCard;
+	private int amountOfCard, sideboardAmount;
 	private int id, rarity;
 	private String name, setName;
 	
@@ -13,6 +13,7 @@ public class DeckManagerCard {
 		this.amountOfCard = amountOfCard;
 		this.setName = setName;
 		this.rarity = rarity;
+		this.sideboardAmount = 0;
 	}
 	
 	public void setAmountOfCard(int amount)
@@ -41,8 +42,20 @@ public class DeckManagerCard {
 	}
 
 	public int getRarity() {
-		// TODO Auto-generated method stub
-		return 0;
+		return rarity;
+	}
+
+	public void adjustCardAmmount(int delta) {
+		amountOfCard += delta;
+	}
+	
+	public void adjustSideboardAmount(int delta) {
+		sideboardAmount += delta;
+	}
+	
+	public int getSideboardAmount()
+	{
+		return sideboardAmount;
 	}
 
 }

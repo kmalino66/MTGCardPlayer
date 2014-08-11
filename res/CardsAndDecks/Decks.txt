@@ -1,4 +1,3 @@
-14:new
 13:Perfection
 12:Wake of the Eldrazi
 11:Kyles Deck
@@ -13,3 +12,5 @@
 2:Canada
 1:Elf
 0:Myriad
+14:SealedDeck--2014/08/11:sealed
+15:SealedDeck--2014/08/11 17:08:sealed

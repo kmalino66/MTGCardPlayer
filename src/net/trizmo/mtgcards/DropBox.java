@@ -151,7 +151,7 @@ public class DropBox {
 				par1 = true;
 			}
 		}else{
-			for(int i = 0; i < optionList.length; i++)
+			for(int i = 0; i < optionList.length - scrollAmount; i++)
 			{
 				Rectangle rect = new Rectangle(xPos, (yPos + (height * (i +1))), width, height);
 				if(rect.contains(e.getPoint()))

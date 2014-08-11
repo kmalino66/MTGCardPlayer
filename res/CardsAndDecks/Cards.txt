@@ -324,7 +324,7 @@
 353:Elf Druid:5:RTZ:Elf Druid
 354:Elf:5:RTZ:Elf.1
 355:Elf (Reach):5:RTZ:Elf
-356:Elusive Elf:5:RTZ:Elusive Elf
+356:Elusive Elf:1:RTZ:Elusive Elf
 357:Encampment Raid:1:RTZ:Encampment Raid
 358:End in Sight:1:RTZ:End in Sight
 359:Enveloping Dark:0:RTZ:Enveloping Dark
