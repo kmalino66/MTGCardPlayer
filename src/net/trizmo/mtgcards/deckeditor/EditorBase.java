@@ -1,6 +1,7 @@
 package net.trizmo.mtgcards.deckeditor;
 
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -8,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
+import net.trizmo.mtgcards.CoutHandler;
 import net.trizmo.mtgcards.Deck;
 import net.trizmo.mtgcards.DeckNames;
 import net.trizmo.mtgcards.DropBox;
@@ -24,8 +26,10 @@ public class EditorBase {
 	public static DeckManagerButton addCardButton = new DeckManagerButton(700, 10, Screen.cardWidth, Screen.cardWidth / 5, "ButtonAddCard", "ButtonCancel", 1);
 	public static DeckManagerButton ammountAddButton = new DeckManagerButton(Screen.width - (Screen.cardWidth * 2), Screen.cardHeight * 2, Screen.cardWidth * 2, (Screen.cardWidth / 5) * 2, "ButtonChangeAmount", "ButtonAddCard", 1);
 	public static DeckManagerButton closeButton	= new DeckManagerButton((Screen.width / 2) - 251, Screen.height / 2, 502, 100, "ButtonClose", "", 1);
-	public static DeckManagerButton addButton = new DeckManagerButton((Screen.width / 2) - 251, (Screen.height / 2) - 100, 201, 100, "ButtonPlus", "", 1);
-	public static DeckManagerButton minusButton = new DeckManagerButton((Screen.width / 2) + 50, (Screen.height / 2) - 100, 201, 100, "ButtonMinus", "", 1);
+	public static DeckManagerButton addButton = new DeckManagerButton((Screen.width / 2) - 251, (Screen.height / 2) - 250, 201, 100, "ButtonPlus", "", 1);
+	public static DeckManagerButton minusButton = new DeckManagerButton((Screen.width / 2) + 50, (Screen.height / 2) - 250, 201, 100, "ButtonMinus", "", 1);
+	public static DeckManagerButton addButtonSide = new DeckManagerButton((Screen.width / 2) - 251, (Screen.height / 2) - 100, 201, 100, "ButtonPlus", "", 1);
+	public static DeckManagerButton minusButtonSide = new DeckManagerButton((Screen.width / 2) + 50, (Screen.height / 2) - 100, 201, 100, "ButtonMinus", "", 1);
 	public static DeckManagerButton saveButton = new DeckManagerButton(0, Screen.height - ((Screen.cardWidth / 5) * 2), Screen.cardWidth * 2, (Screen.cardWidth / 5) * 2, "ButtonSave", "", 1);
 	public static DeckManagerButton newDeckButton = new DeckManagerButton(610 + Screen.buttonWidth, 0, Screen.buttonWidth, Screen.buttonHeight, "ButtonNewDeck", "", 1);
 	public static DeckManagerCard[] deckCards;
@@ -77,7 +81,14 @@ public class EditorBase {
 			{
 				if(deckCards[j] != null && Screen.deck[i].getCardId() == deckCards[j].getId())
 				{
-					deckCards[j].setAmountOfCard(Screen.deck[i].getAmmountOfCard());
+					if(editingSealedDeck && !secondarySealed)
+					{
+						deckCards[j].setSideboardAmount(Screen.deck[i].getAmmountOfCard());
+					}else{
+						deckCards[j].setAmountOfCard(Screen.deck[i].getAmmountOfCard());
+						deckCards[j].setSideboardAmount(Screen.deck[i].getSideboardAmount());
+					}
+					
 				}
 			}
 		}
@@ -86,9 +97,18 @@ public class EditorBase {
 
 	public static void prepare(Deck[] sealed)
 	{
-		prepare();
 		cardsFromSealed = sealed;
 		editingSealedDeck = true;
+		prepare();
+		
+	}
+	
+	public static void prepare(boolean secondarySealed1)
+	{
+		secondarySealed = secondarySealed1;
+		editingSealedDeck = true;
+		prepare();
+		CoutHandler.event("SEaled? " + secondarySealed1);
 	}
 
 	public static void addCardScreen()
@@ -165,10 +185,18 @@ public class EditorBase {
 
 			if(quantityChangeScreen)
 			{
-				g.fillRect((Screen.width / 2) - 251, (Screen.height / 2) - 100, 502, 200);
+				g.fillRect((Screen.width / 2) - 251, (Screen.height / 2) - 250, 502, 350);
 				addButton.drawButton(g);
 				minusButton.drawButton(g);
+				addButtonSide.drawButton(g);
+				minusButtonSide.drawButton(g);
 				closeButton.drawButton(g);
+				
+				g.setColor(Color.black);
+				FontMetrics fm = g.getFontMetrics();
+				
+				g.drawString("Main Deck", (Screen.width / 2) - (fm.stringWidth("Main Deck") / 2), (Screen.height / 2) - 250);
+				g.drawString("Sideboard", (Screen.width / 2) - (fm.stringWidth("Sideboard") / 2), (Screen.height / 2) - 50 - fm.getHeight());
 
 			}
 
@@ -185,19 +213,22 @@ public class EditorBase {
 
 						if(quantityChangeScreen)
 						{
-							g.setColor(Color.black);
+							
+							
 							boolean par1IsCard = false;
 							for(int j = 0; j < deckCards.length; j++)
 							{
 								if(deckCards[j] != null && deckCards[j].getId() == Screen.cardList[i].getId())
 								{
-									g.drawString(deckCards[j].getAmountOfCard() + "", (Screen.width / 2) - 10, (Screen.height / 2) - 90);
+									g.drawString(deckCards[j].getAmountOfCard() + "", (Screen.width / 2) - 10, (Screen.height / 2) - 200);
+									g.drawString(deckCards[j].getSideboardAmount() + "", (Screen.width / 2) - 10, (Screen.height / 2) - 50);
 									par1IsCard = true;
 								}
 							}
 							if(!par1IsCard)
 							{
-								g.drawString("0", (Screen.width / 2) - 10, (Screen.height / 2) - 90);
+								g.drawString("0", (Screen.width / 2) - 10, (Screen.height / 2) - 50);
+								g.drawString("0", (Screen.width / 2) - 10, (Screen.height / 2) - 200);
 							}
 						}
 					}
@@ -368,6 +399,69 @@ public class EditorBase {
 
 					}
 				}
+				
+				if(addButtonSide.getClicked(e))
+				{
+					int selectedId = -1;
+					selectedId = searchSelectedCardId();
+					
+					if(selectedId != -1 && editingSealedDeck)
+					{
+						for(int i = 0; i < deckCards.length; i++)
+						{
+							if(deckCards[i] != null && deckCards[i].getId() == selectedId)
+							{
+								if(deckCards[i].getAmountOfCard() > 0)
+								{
+									deckCards[i].adjustCardAmmount(-1);
+									deckCards[i].adjustSideboardAmount(1);
+								}
+							}
+						}
+					}else if(selectedId != -1 && !editingSealedDeck)
+					{
+						for(int i = 0; i < deckCards.length; i++)
+						{
+							if(deckCards[i] != null && deckCards[i].getId() == selectedId)
+							{
+								deckCards[i].adjustSideboardAmount(1);
+							}
+						}
+					}
+				}
+				
+				if(minusButtonSide.getClicked(e))
+				{
+					int selectedId = -1;
+					selectedId = searchSelectedCardId();
+					
+					if(selectedId != -1 && editingSealedDeck)
+					{
+						for(int i = 0; i < deckCards.length; i++)
+						{
+							if(deckCards[i] != null && deckCards[i].getId() == selectedId)
+							{
+								if(deckCards[i].getSideboardAmount() > 0)
+								{
+									deckCards[i].adjustCardAmmount(1);
+									deckCards[i].adjustSideboardAmount(-1);
+								}
+							}
+						}
+					}else if(selectedId != -1 && !editingSealedDeck)
+					{
+						for(int i = 0; i < deckCards.length; i++)
+						{
+							if(deckCards[i] != null && deckCards[i].getId() == selectedId)
+							{
+								if(deckCards[i].getSideboardAmount() > 0)
+								{
+									deckCards[i].adjustSideboardAmount(-1);
+								}
+							}
+						}
+					}
+				}
 			}
 			if(saveButton.getClicked(e))
 			{
@@ -426,7 +520,7 @@ public class EditorBase {
 				}
 			}
 		}
-		return 0;
+		return -1;
 	}
 
 	//Expands the deck array by 1 to allow for a new card being added to the deck.

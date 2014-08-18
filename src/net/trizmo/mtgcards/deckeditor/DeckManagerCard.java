@@ -57,5 +57,10 @@ public class DeckManagerCard {
 	{
 		return sideboardAmount;
 	}
+	
+	public void setSideboardAmount(int amount)
+	{
+		sideboardAmount = amount;
+	}
 
 }

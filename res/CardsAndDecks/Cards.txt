@@ -35,7 +35,7 @@
 35:Capashen Knight:0:M14:capashen-knight
 36:Celestial Flare:0:M14:celestial-flare
 37:Chandra Pyromaster:3:M14:chandra-pyromaster
-38:Chandra's Outrage:0:M14:chandras-pheonix
+38:Chandra's Outrage:0:M14:chandras-outrage
 39:Charging Griffin:0:M14:charging-griffin
 40:Child of Night:0:M14:child-of-night
 41:Claustrophobia:0:M14:claustrophobia
@@ -532,7 +532,6 @@
 561:Abandon Steel:6:PRF:Abandon Steel
 562:AEtherwind Glider:0:PRF:Etherwind Glider
 563:Ally:5:PRF:Ally
-564:Ally:5:PRF:Ally
 565:Alter Priorities:0:PRF:Alter Priorities
 566:Ancient Awakening:1:PRF:Ancient Awakening
 567:Angel of Freedom:1:PRF:Angel of Freedom
@@ -727,3 +726,5 @@
 756:Young Blademaster:0:PRF:Young Blademaster
 757:Zombie:5:PRF:Zombie
 758:Olimun the Charger:2:PRF:Olimun the Charger
+759:Beast:5:PRF:Beast
+760:Chandra's Phoenix:2:M14:chandras-phoenix

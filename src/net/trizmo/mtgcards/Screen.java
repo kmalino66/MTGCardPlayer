@@ -273,6 +273,9 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 	//Works when mouse clicked, thought i wouldn't remember
 
 	public void mouseClicked(MouseEvent e) {
+		
+		boolean par1Bool = false;
+		
 		if (scene == 0) ButtonHandler.scene0Click(e);
 		if (scene == 1) ButtonHandler.scene1Click(e);
 		if (scene == 2){
@@ -305,15 +308,21 @@ public class Screen extends JPanel implements Runnable, ActionListener {
 			{
 				FileManager.loadDeck(dropBox[3].getClickedId());
 				chosenDeck = dropBox[3].getClickedId();
-				EditorBase.prepare();
+				
 
 				for(int i = 0; i < FileManager.sealedDeckIds.length; i++)
 				{
 					if(chosenDeck == FileManager.sealedDeckIds[i])
 					{
-						EditorBase.secondarySealed = true;
-						EditorBase.editingSealedDeck = true;
+						par1Bool = true;
 					}
+				}
+				
+				if(par1Bool)
+				{
+					EditorBase.prepare(par1Bool);
+				}else {
+					EditorBase.prepare();
 				}
 
 				changeScene(6);

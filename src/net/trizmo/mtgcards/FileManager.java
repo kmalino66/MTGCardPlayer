@@ -201,6 +201,7 @@ public class FileManager {
 		int cardId, ammountOfCard;
 		int currentCardNumber = 0;
 		int cardNameTypes = 0;
+		int sideboard = 0;
 
 		try {
 			fileInput = new FileInputStream("res/CardsAndDecks/" + deckId + ".txt");
@@ -238,10 +239,15 @@ public class FileManager {
 
 				cardId = Integer.parseInt(splitLine[0]);
 				ammountOfCard = Integer.parseInt(splitLine[1]);
+				if(splitLine.length == 3 && splitLine[2] != null) {
+					sideboard = Integer.parseInt(splitLine[2]);
+					Screen.deck[currentCardNumber] = new Deck(cardId, Screen.cardList[cardId].getName(), Screen.cardList[cardId].getRarity(), 
+							Screen.cardList[cardId].getSetName(), Screen.cardList[cardId].getTextureName(), ammountOfCard, sideboard);
+				}else{
 
-				Screen.deck[currentCardNumber] = new Deck(cardId, Screen.cardList[cardId].getName(), Screen.cardList[cardId].getRarity(), 
-						Screen.cardList[cardId].getSetName(), Screen.cardList[cardId].getTextureName(), ammountOfCard);
-
+					Screen.deck[currentCardNumber] = new Deck(cardId, Screen.cardList[cardId].getName(), Screen.cardList[cardId].getRarity(), 
+							Screen.cardList[cardId].getSetName(), Screen.cardList[cardId].getTextureName(), ammountOfCard);
+				}
 				currentCardNumber++;
 			}
 
@@ -331,9 +337,11 @@ public class FileManager {
 
 			for(int i = 0; i < deck.length; i++)
 			{
-				if(deck[i].getAmountOfCard() > 0 || deck[i].getSideboardAmount() > 0)
-				{
-					printer.println(deck[i].getId() + ":" + deck[i].getAmountOfCard() + ":" + deck[i].getSideboardAmount());
+				if(deck[i] != null){
+					if( deck[i].getAmountOfCard() > 0 || deck[i].getSideboardAmount() > 0)
+					{
+						printer.println(deck[i].getId() + ":" + deck[i].getAmountOfCard() + ":" + deck[i].getSideboardAmount());
+					}
 				}
 			}
 
@@ -345,8 +353,8 @@ public class FileManager {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 
 	public static void createNewDeck(String deckName) throws IOException
 	{
@@ -374,6 +382,11 @@ public class FileManager {
 		}else
 		{
 			int[] par1 = new int[sealedDeckIds.length + 1];
+			
+			for(int i = 0; i < sealedDeckIds.length; i++)
+			{
+				par1[i] = sealedDeckIds[i];
+			}
 			par1[sealedDeckIds.length] = deckId;
 
 			sealedDeckIds = null;
@@ -396,7 +409,7 @@ public class FileManager {
 			PrintWriter deckPrinter = new PrintWriter(deckAdder);
 
 			deckPrinter.println();
-			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HHmm");
 			deckPrinter.print(Screen.deckAmmount + ":" + "SealedDeck--" + dateFormat.format(new Date()) + ":sealed");
 
 			deckAdder.close();
@@ -462,39 +475,39 @@ public class FileManager {
 		}
 		Screen.chosenDeck = Screen.deckAmmount;
 		Screen.deckAmmount++;
-		
-		
-		
+
+
+
 	}
 
 	public static void checkPackPrint(Pack[] sealedPacks) {
-		
+
 		try{
-			
+
 			File file = new File("file.file");
 			file.createNewFile();
-			
+
 			FileWriter fileWriter = new FileWriter("file.file");
 			PrintWriter printer = new PrintWriter(fileWriter);
-			
-			
+
+
 			for(int i = 0; i < 5; i++)
 			{
 				Card[] par1Card = sealedPacks[i].getCards();
-				
+
 				printer.println("Pack number:" + i);
-				
+
 				for(int j = 0; j < par1Card.length; j++)
 				{
 					printer.println(par1Card[j].getName() + ":" + par1Card[j].getRarity());
 				}
 			}
-			
+
 			fileWriter.close();
 			printer.close();
-			
+
 		}catch (IOException e){
-			
+
 		}
 	}
 }
