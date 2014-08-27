@@ -18,7 +18,7 @@ public class PoisonCounterHandler {
 	
 	public PoisonCounterHandler(int counterAmount)
 	{
-		this.counterAmount = counterAmount;
+		PoisonCounterHandler.counterAmount = counterAmount;
 	}
 	
 	public void addCounter()

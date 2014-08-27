@@ -15,3 +15,4 @@
 14:SealedDeck--2014/08/11:sealed
 15:SealedDeck--2014/08/11 17:sealed
 16:SealedDeck Fodimo:sealed
+17:Test Making New Deck

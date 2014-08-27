@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 import net.trizmo.mtgcards.deckeditor.DeckManagerCard;
-import net.trizmo.mtgcards.deckeditor.EditorBase;
 
 public class FileManager {
 

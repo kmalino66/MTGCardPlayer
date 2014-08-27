@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 
@@ -16,7 +17,6 @@ import net.trizmo.mtgcards.DropBox;
 import net.trizmo.mtgcards.FileManager;
 import net.trizmo.mtgcards.SceneDrawer;
 import net.trizmo.mtgcards.Screen;
-import net.trizmo.mtgcards.TypeBox;
 
 public class EditorBase {
 
@@ -31,10 +31,12 @@ public class EditorBase {
 	public static DeckManagerButton addButtonSide = new DeckManagerButton((Screen.width / 2) - 251, (Screen.height / 2) - 100, 201, 100, "ButtonPlus", "", 1);
 	public static DeckManagerButton minusButtonSide = new DeckManagerButton((Screen.width / 2) + 50, (Screen.height / 2) - 100, 201, 100, "ButtonMinus", "", 1);
 	public static DeckManagerButton saveButton = new DeckManagerButton(0, Screen.height - ((Screen.cardWidth / 5) * 2), Screen.cardWidth * 2, (Screen.cardWidth / 5) * 2, "ButtonSave", "", 1);
-	public static DeckManagerButton newDeckButton = new DeckManagerButton(610 + Screen.buttonWidth, 0, Screen.buttonWidth, Screen.buttonHeight, "ButtonNewDeck", "", 1);
+	public static DeckManagerButton newDeckButton = new DeckManagerButton(610 + Screen.buttonWidth, 0, Screen.buttonWidth, Screen.buttonHeight, "ButtonCreateNewDeck", "", 1);
+	public static TypingBox deckNameBox = new TypingBox((Screen.width /2 ) - 100, (Screen.height / 2) - 50, 200, 100);
+	public static DeckManagerButton newDeckOk = new DeckManagerButton((Screen.width / 2) - 100, (Screen.height / 2) + 50, 200, 100, "ButtonOK", "", 1);
 	public static DeckManagerCard[] deckCards;
-	public static TypeBox deckNameBox = new TypeBox(0, 0, 250, 100, Color.BLACK, Color.WHITE);
-	
+	//public static TypeBox deckNameBox = new TypeBox(0, 0, 250, 100, Color.BLACK, Color.WHITE);
+
 	/**
 	 * Contains the cards that were picked from sealed
 	 * if applicable
@@ -50,7 +52,7 @@ public class EditorBase {
 	public static boolean displaySave;
 	public static boolean editingSealedDeck = false;
 	public static boolean secondarySealed = false;
-	
+
 	public static void prepare()
 	{
 		addCard = false;
@@ -88,7 +90,7 @@ public class EditorBase {
 						deckCards[j].setAmountOfCard(Screen.deck[i].getAmmountOfCard());
 						deckCards[j].setSideboardAmount(Screen.deck[i].getSideboardAmount());
 					}
-					
+
 				}
 			}
 		}
@@ -100,9 +102,9 @@ public class EditorBase {
 		cardsFromSealed = sealed;
 		editingSealedDeck = true;
 		prepare();
-		
+
 	}
-	
+
 	public static void prepare(boolean secondarySealed1)
 	{
 		secondarySealed = secondarySealed1;
@@ -123,7 +125,7 @@ public class EditorBase {
 
 	public static void drawEditor(Graphics g, int scene)
 	{
-		
+
 
 		g.setColor(Color.white);
 
@@ -138,8 +140,9 @@ public class EditorBase {
 			if(newDeckScreen)
 			{
 				//TODO Make a textBox to enter the desired deck name and then hit enter to input the name.
-				g.drawRect(0, 0, 250, 200);
-				deckNameBox.drawTypeBox(g);
+				//g.drawRect(0, 0, 250, 200);
+				deckNameBox.drawComponent(g);
+				newDeckOk.drawButton(g);
 			}
 		}
 
@@ -191,10 +194,10 @@ public class EditorBase {
 				addButtonSide.drawButton(g);
 				minusButtonSide.drawButton(g);
 				closeButton.drawButton(g);
-				
+
 				g.setColor(Color.black);
 				FontMetrics fm = g.getFontMetrics();
-				
+
 				g.drawString("Main Deck", (Screen.width / 2) - (fm.stringWidth("Main Deck") / 2), (Screen.height / 2) - 250);
 				g.drawString("Sideboard", (Screen.width / 2) - (fm.stringWidth("Sideboard") / 2), (Screen.height / 2) - 50 - fm.getHeight());
 
@@ -213,8 +216,8 @@ public class EditorBase {
 
 						if(quantityChangeScreen)
 						{
-							
-							
+
+
 							boolean par1IsCard = false;
 							for(int j = 0; j < deckCards.length; j++)
 							{
@@ -263,7 +266,7 @@ public class EditorBase {
 		cardPick.removeOptions();
 		String pickedSet = setPick.getSelected();
 
-		
+
 		if(editingSealedDeck && par1Boolean && !secondarySealed)
 		{
 			for(int i = 0; i < deckCards.length; i++)
@@ -290,7 +293,7 @@ public class EditorBase {
 				}
 			}
 		}else if(editingSealedDeck && secondarySealed && par1Boolean) {
-			
+
 			for(int i = 0; i < deckCards.length; i++)
 			{
 				if(deckCards[i] != null && deckCards[i].getSetName().equals(pickedSet) && Screen.cardList[i].getRarity() == 4)
@@ -298,7 +301,7 @@ public class EditorBase {
 					cardPick.addOption(deckCards[i].getCardName());
 				}
 			}
-			
+
 			for(int i = 0; i < deckCards.length; i++)
 			{
 				if(deckCards[i] != null)
@@ -306,7 +309,7 @@ public class EditorBase {
 					if(deckCards[i].getAmountOfCard() > 0 || deckCards[i].getSideboardAmount() > 0) cardPick.addOption(deckCards[i].getCardName());
 				}
 			}
-			
+
 		}else {
 			for(int i = 0; i < deckCards.length; i++)
 
@@ -324,6 +327,8 @@ public class EditorBase {
 	//Called whenever there is a click on the deck editor scenes.
 	public static void handleClick(MouseEvent e)
 	{
+
+
 		if(displaySave)
 		{
 			displaySave = false;
@@ -354,23 +359,23 @@ public class EditorBase {
 
 					//if(amount > 0 || editingSealedDeck)
 					//{
-						int selectedId = searchSelectedCardId();
+					int selectedId = searchSelectedCardId();
 
-						for(int i = 0; i < deckCards.length; i++)
+					for(int i = 0; i < deckCards.length; i++)
+					{
+						if(deckCards[i] != null && deckCards[i].getId() == selectedId)
 						{
-							if(deckCards[i] != null && deckCards[i].getId() == selectedId)
+							if(editingSealedDeck && /*checkSealed(selectedId, deckCards[i].getAmountOfCard())*/deckCards[i].getSideboardAmount() > 0)
 							{
-								if(editingSealedDeck && /*checkSealed(selectedId, deckCards[i].getAmountOfCard())*/deckCards[i].getSideboardAmount() > 0)
-								{
-									deckCards[i].adjustCardAmmount(1);
-									deckCards[i].adjustSideboardAmount(-1);
+								deckCards[i].adjustCardAmmount(1);
+								deckCards[i].adjustSideboardAmount(-1);
 
-								}else if(!editingSealedDeck || deckCards[i].getRarity() == 4)
-								{
-									deckCards[i].adjustCardAmmount(1);
-								}
+							}else if(!editingSealedDeck || deckCards[i].getRarity() == 4)
+							{
+								deckCards[i].adjustCardAmmount(1);
 							}
 						}
+					}
 					//}else {
 					//	int selectedId = searchSelectedCardId();
 					//	expandDeck(selectedId);
@@ -399,12 +404,12 @@ public class EditorBase {
 
 					}
 				}
-				
+
 				if(addButtonSide.getClicked(e))
 				{
 					int selectedId = -1;
 					selectedId = searchSelectedCardId();
-					
+
 					if(selectedId != -1 && editingSealedDeck)
 					{
 						for(int i = 0; i < deckCards.length; i++)
@@ -429,12 +434,12 @@ public class EditorBase {
 						}
 					}
 				}
-				
+
 				if(minusButtonSide.getClicked(e))
 				{
 					int selectedId = -1;
 					selectedId = searchSelectedCardId();
-					
+
 					if(selectedId != -1 && editingSealedDeck)
 					{
 						for(int i = 0; i < deckCards.length; i++)
@@ -467,7 +472,7 @@ public class EditorBase {
 			{
 				if(!editingSealedDeck)
 				{
-				FileManager.saveDeck(Screen.chosenDeck, deckCards);
+					FileManager.saveDeck(Screen.chosenDeck, deckCards);
 				}else if(editingSealedDeck && secondarySealed)
 				{
 					FileManager.saveDeck(Screen.chosenDeck, deckCards);
@@ -483,7 +488,7 @@ public class EditorBase {
 	//Searches for how many of the selected card is in the deck.
 	public static int searchAmountOfCardsInDeck()
 	{
-		
+
 		if(setPick.getSelected() != null && cardPick.getSelected() != null)
 		{
 			for(int i = 0; i < Screen.cardList.length; i++)
@@ -561,6 +566,25 @@ public class EditorBase {
 			//TODO Create the new deck screen
 			newDeckScreen = true;
 		}
+
+
+		if(newDeckScreen) deckNameBox.checkClicked(e);
+		if(newDeckScreen && newDeckOk.getClicked(e))
+		{
+			try {
+				FileManager.createNewDeck(deckNameBox.getText());
+				FileManager.getDeckNames();
+				FileManager.loadDeck(Screen.deckAmmount - 1);
+				Screen.chosenDeck = Screen.deckAmmount -1;
+				EditorBase.prepare();
+				Screen.changeScene(6);
+				
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+
 	}
 
 	public static void showAmountOfCardsInDeck(Graphics g)
@@ -574,7 +598,7 @@ public class EditorBase {
 				par1CardAmount += deckCards[i].getAmountOfCard();
 			}
 		}
-		
+
 		g.drawString("Amount of cards in deck (sideboard not included): " + par1CardAmount, 10, Screen.height / 2);
 
 	}
@@ -596,6 +620,6 @@ public class EditorBase {
 		}
 
 		return false;
-		
+
 	}
 }
