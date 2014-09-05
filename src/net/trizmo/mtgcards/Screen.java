@@ -25,9 +25,9 @@ import net.trizmo.mtgcards.deckeditor.*;
 
 public class Screen extends JPanel implements Runnable, ActionListener {
 
-	public static final double versionNumber = 2.0;
-	public static final int versionID = 3;
-	public static final String versionName = "Player Beta v2.0"; 
+	public static final double versionNumber = 2.1;
+	public static final int versionID = 4;
+	public static final String versionName = "Player Beta v2.1"; 
 
 	Thread thread = new Thread(this);
 	Frame frame;
