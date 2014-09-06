@@ -30,6 +30,7 @@ public class DropBox {
 		this.background = Color.white;
 		this.foreground = Color.gray;
 		this.opened = false;
+		this.clickedObject = -1;
 
 	}
 
@@ -43,6 +44,7 @@ public class DropBox {
 		this.foreground = foreground;
 		this.opened = false;
 		this.scrollAmount = 0;
+		this.clickedObject = -1;
 	}
 
 	public void drawDropBox(Graphics g)
