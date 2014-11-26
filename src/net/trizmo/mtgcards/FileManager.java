@@ -245,7 +245,7 @@ public class FileManager {
 				}else{
 
 					Screen.deck[currentCardNumber] = new Deck(cardId, Screen.cardList[cardId].getName(), Screen.cardList[cardId].getRarity(), 
-							Screen.cardList[cardId].getSetName(), Screen.cardList[cardId].getTextureName(), ammountOfCard);
+							Screen.cardList[cardId].getSetName(), Screen.cardList[cardId].getTextureName(), ammountOfCard, 0);
 				}
 				currentCardNumber++;
 			}

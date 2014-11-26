@@ -75,13 +75,29 @@ public class MouseHandler implements MouseListener, MouseMotionListener, MouseWh
 				Screen.dropBox[i].scroll(e);
 			}
 			
-			if(EditorBase.setPick != null && EditorBase.setPick.getOpened())
+			if(EditorBase.setPick0 != null && EditorBase.setPick0.getOpened() && !EditorBase.editingSealedDeck)
 			{
-				EditorBase.setPick.scroll(e);
+				EditorBase.setPick0.scroll(e);
 			}
-			if(EditorBase.cardPick != null && EditorBase.cardPick.getOpened())
+			
+			if(EditorBase.cardPick0 != null && EditorBase.cardPick0.getOpened())
 			{
-				EditorBase.cardPick.scroll(e);
+				EditorBase.cardPick0.scroll(e);
+			}
+			
+			if(EditorBase.setPick1 != null && EditorBase.setPick1.getOpened() && !EditorBase.editingSealedDeck)
+			{
+				EditorBase.setPick1.scroll(e);
+			}
+			
+			if(EditorBase.cardPick1 != null && EditorBase.cardPick1.getOpened())
+			{
+				EditorBase.cardPick1.scroll(e);
+			}
+			
+			if(EditorBase.cardPick2 != null && EditorBase.cardPick2.getOpened())
+			{
+				EditorBase.cardPick2.scroll(e);
 			}
 			
 			if(EditorBase.deckPick != null && EditorBase.deckPick.getOpened())

@@ -23,7 +23,7 @@ public class EditorBase {
 
 	public static DropBox deckPick = new DropBox(10, 10, 600, 50);
 
-	public static DropBox lands, setPick0, cardPick0, setPick1, cardPick1, setPick2, cardPick2;
+	public static DropBox lands, setPick0, cardPick0, setPick1, cardPick1, cardPick2;
 
 	public static DeckManagerButton closeButton	= new DeckManagerButton((Screen.width / 2) - 251, Screen.height / 2, 502, 100, "ButtonClose", "", 1);
 	public static DeckManagerButton addButton = new DeckManagerButton((Screen.width / 2) - 251, (Screen.height / 2) - 250, 201, 100, "ButtonPlus", "", 1);
@@ -86,30 +86,26 @@ public class EditorBase {
 			}
 		}
 
-		if(editingSealedDeck)
+
+
+		String[] sets = Screen.getSets();
+
+		setPick0 = new DropBox(10, 10, 600, 50);
+		cardPick0 = new DropBox(10, 60, 600, 50);
+
+		setPick1 = new DropBox(610, 10, 600, 50);
+		cardPick1 = new DropBox(610, 60, 600, 50);
+
+		cardPick2 = new DropBox(1210, 10, 600, 50);
+
+		for(int i = 0; i < sets.length; i++)
 		{
-			//these are for all the picked cards that arent in the deck.
-			cardPick0 = new DropBox(10, 10, 600, 50);
-
-			//These are for the cards that are already in the deck.
-			cardPick1 = new DropBox(610, 10, 600, 50);
-
-		}else {
-			String[] sets = Screen.getSets();
-
-			setPick0 = new DropBox(10, 10, 600, 50);
-			cardPick0 = new DropBox(10, 60, 600, 50);
-
-			setPick1 = new DropBox(610, 10, 600, 50);
-			cardPick1 = new DropBox(610, 60, 600, 50);
-
-			for(int i = 0; i < sets.length; i++)
-			{
-				setPick0.addOption(sets[i]);
-			}
+			setPick0.addOption(sets[i]);
+			setPick1.addOption(sets[i]);
 		}
-
 	}
+
+
 
 	public static void prepare(Deck[] sealed)
 	{
@@ -155,32 +151,42 @@ public class EditorBase {
 
 			showAmountOfCardsInDeck(g);
 
-			if(cardPick0.getOpened())
+
+			if(setPick1.getOpened() || cardPick1.getOpened())
 			{
-				cardPick0.drawDropBox(g);
-				cardPick1.setSelectedToNull();
-				cardPick1.drawDropBox(g);
-
-				if(setPick0 != null) setPick0.setSelectedToNull();
-
-			}else {
-				cardPick1.drawDropBox(g);
+				setPick0.setSelectedToNull();
 				cardPick0.setSelectedToNull();
-				cardPick0.drawDropBox(g);
-
-				if(setPick1 != null) setPick1.setSelectedToNull();
+				cardPick0.removeOptions();
+				cardPick2.setSelectedToNull();
+				cardPick2.removeOptions();
+			} else if(setPick0.getOpened() || cardPick0.getOpened())
+			{
+				setPick1.setSelectedToNull();
+				cardPick1.setSelectedToNull();
+				cardPick2.setSelectedToNull();
+				cardPick1.removeOptions();
+				cardPick2.removeOptions();
+			}else if(cardPick2.getOpened())
+			{
+				setPick0.setSelectedToNull();
+				setPick1.setSelectedToNull();
+				cardPick0.setSelectedToNull();
+				cardPick0.removeOptions();
+				cardPick1.setSelectedToNull();
+				cardPick1.removeOptions();
 			}
 
-			if(!editingSealedDeck)
+			cardPick0.drawDropBox(g);
+			cardPick1.drawDropBox(g);
+			cardPick2.drawDropBox(g);
+
+			if(setPick0.getOpened())
 			{
-				if(setPick0.getOpened())
-				{
-					setPick0.drawDropBox(g);
-					setPick1.drawDropBox(g);
-				}else {
-					setPick1.drawDropBox(g);
-					setPick0.drawDropBox(g);
-				}
+				setPick0.drawDropBox(g);
+				setPick1.drawDropBox(g);
+			}else {
+				setPick1.drawDropBox(g);
+				setPick0.drawDropBox(g);
 			}
 
 			if(quantityChangeScreen)
@@ -200,6 +206,7 @@ public class EditorBase {
 				g.drawString("Sideboard", (Screen.width / 2) - (fm.stringWidth("Sideboard") / 2), (Screen.height / 2) - 50 - fm.getHeight());
 
 			}
+			addCardsToDropbox();
 
 			if(editingSealedDeck)
 			{
@@ -360,7 +367,7 @@ public class EditorBase {
 							}
 						}
 					}
-				}else if(setPick2.getSelected() != null && cardPick2.getSelected()!= null)
+				}else if(cardPick2.getSelected()!= null)
 				{
 					for(int i = 0; i < Screen.cardList.length; i++)
 					{
@@ -368,9 +375,9 @@ public class EditorBase {
 						{
 							String textureName = Screen.cardList[i].getTextureName();
 							String setName = Screen.cardList[i].getSetName();
-							
+
 							g.drawImage(new ImageIcon("res/CardsAndDecks/CardTextures/" + setName + "/" + textureName + ".jpg").getImage(), Screen.width - (Screen.cardWidth * 2), 0, Screen.cardWidth * 2, Screen.cardHeight * 2, null);
-							
+
 							if(quantityChangeScreen)
 							{
 								boolean par1IsCard = false;
@@ -419,13 +426,48 @@ public class EditorBase {
 		}
 	}
 
-	public static void addCardsToDropbox(boolean par1Boolean)
+	public static void addCardsToDropbox()
 	{
+		cardPick0.removeOptions();
+		cardPick1.removeOptions();
+		cardPick2.removeOptions();
+
 		if(editingSealedDeck)
 		{
 			//Add the cards picked from the sealed play into the first dropbox.
-			
+			for(int i = 0; i < deckCards.length; i++)
+			{
+				if(setPick0.getSelected() != null && deckCards[i] != null && deckCards[i].getAmountOfCard() == 0 && deckCards[i].getSetName().equals(setPick0.getSelected()) && deckCards[i].getSideboardAmount() > 0)
+				{
+					cardPick0.addOption(deckCards[i].getCardName());
+				}else if(setPick1.getSelected() != null && deckCards[i] != null && deckCards[i].getAmountOfCard() > 0 && deckCards[i].getSetName().equals(setPick1.getSelected()))
+				{
+					cardPick1.addOption(deckCards[i].getCardName());
+				}else if(deckCards[i] != null && deckCards[i].getRarity() == 4)
+				{
+					cardPick2.addOption(deckCards[i].getCardName());
+				}
+			}
+		}else{
+			for(int i = 0; i < deckCards.length; i++)
+			{
+				if(setPick0.getSelected() != null && deckCards[i] != null && deckCards[i].getSetName().equals(setPick0.getSelected()) && deckCards[i].getAmountOfCard() == 0 && deckCards[i].getSideboardAmount() == 0)
+				{
+					cardPick0.addOption(deckCards[i].getCardName());
+				}else if(setPick1.getSelected() != null && deckCards[i] != null && deckCards[i].getSetName().equals(setPick1.getSelected()))
+				{
+					if(deckCards[i].getAmountOfCard() > 0 || deckCards[i].getSideboardAmount() > 0)
+					{
+						cardPick1.addOption(deckCards[i].getCardName());
+					}
+				}else if(deckCards[i] != null && deckCards[i].getRarity() == 4)
+				{
+					cardPick2.addOption(deckCards[i].getCardName());
+				}
+			}
 		}
+
+
 	}
 
 
@@ -433,23 +475,29 @@ public class EditorBase {
 	public static void handleClick(MouseEvent e)
 	{
 
+		addCardsToDropbox();
+
 
 		if(displaySave)
 		{
 			displaySave = false;
 		}else{
 
-			cardPick0.checkClicked(e);
-			cardPick1.checkClicked(e);
-			cardPick2.checkClicked(e);
-			
-			if(!editingSealedDeck)
+			//This is where it checks if the dropboxes are cleared.
+			if(!setPick0.getOpened())
 			{
-				setPick0.checkClicked(e);
-				setPick1.checkClicked(e);
-				setPick2.checkClicked(e);
+				cardPick0.checkClicked(e);
 			}
+			if(!setPick1.getOpened())
+			{
+				cardPick1.checkClicked(e);
+			}
+
+			cardPick2.checkClicked(e);
+			setPick0.checkClicked(e);
+			setPick1.checkClicked(e);
 			
+
 			if(quantityChangeScreen)
 			{
 				if(closeButton.getClicked(e))
@@ -459,7 +507,7 @@ public class EditorBase {
 
 				if(addButton.getClicked(e))
 				{
-					
+
 					int selectedId = searchSelectedCardId();
 
 					for(int i = 0; i < deckCards.length; i++)
@@ -482,11 +530,12 @@ public class EditorBase {
 
 				if(minusButton.getClicked(e))
 				{
-					int amount = searchAmountOfCardsInDeck();
+					int selectedId = searchSelectedCardId();
+					int[] amount = searchAmountOfCardsInDeck(selectedId);
 
-					if(amount > 0)
+					if(amount[0] > 0)
 					{
-						int selectedId = searchSelectedCardId();
+
 
 						for(int i = 0; i < deckCards.length; i++)
 						{
@@ -572,7 +621,6 @@ public class EditorBase {
 					FileManager.saveDeck(Screen.chosenDeck, deckCards);
 				}else if(editingSealedDeck && secondarySealed)
 				{
-					FileManager.saveDeck(Screen.chosenDeck, deckCards);
 				}else {
 					FileManager.saveNewSealedDeck(deckCards, cardsFromSealed);
 					secondarySealed = true;
@@ -583,27 +631,73 @@ public class EditorBase {
 	}
 
 	//Searches for how many of the selected card is in the deck.
-	public static int searchAmountOfCardsInDeck()
+	public static int[] searchAmountOfCardsInDeck(int cardId)
 	{
-		
-		if(cardPick0.getSelected() != null)
+		for(int i = 0; i < deckCards.length;i++)
 		{
-			
+			if(deckCards[i] != null && deckCards[i].getId() == cardId)
+			{
+				return new int[] {deckCards[i].getAmountOfCard(), deckCards[i].getSideboardAmount()};
+			}
 		}
-		
+		return null;
 	}
 
 	//Gets the id for the currently selected card
-	public static int searchSelectedCardId(Card selectedCard)
+	public static int searchSelectedCardId()
 	{
-		for(int i = 0; i < Screen.cardList.length; i++)
+		int switchNumber = -1, cardId = 0;
+		String selectedCardName;
+
+		if(cardPick0.getSelected() != "")
 		{
-			if(Screen.cardList[i] != null && Screen.cardList[i].getName().equalsIgnoreCase(selectedCard.getName()))
-			{
-				return Screen.cardList[i].getId();
-			}
+			switchNumber = 0;
+		}else if(cardPick1.getSelected() != "")
+		{
+			switchNumber = 1;
+		}else if(cardPick2.getSelected() != "")
+		{
+			switchNumber = 2;
 		}
-		return 0;
+
+		switch(switchNumber)
+		{
+		case 0:
+			selectedCardName = cardPick0.getSelected();
+
+			for(int i = 0; i < deckCards.length; i++)
+			{
+				if(deckCards[i] != null && deckCards[i].getCardName().equalsIgnoreCase(selectedCardName))
+				{
+					cardId = deckCards[i].getId();
+				}
+			}
+			break;
+		case 1:
+			selectedCardName = cardPick1.getSelected();
+
+			for(int i = 0; i > deckCards.length; i++)
+			{
+				if(deckCards[i] != null && deckCards[i].getCardName().equalsIgnoreCase(selectedCardName))
+				{
+					cardId = deckCards[i].getId();
+				}
+			}
+			break;
+		case 2:
+			selectedCardName = cardPick2.getSelected();
+
+			for(int i = 0; i < deckCards.length; i++)
+			{
+				if(deckCards[i] != null && deckCards[i].getCardName().equalsIgnoreCase(selectedCardName))
+				{
+					cardId = deckCards[i].getId();
+				}
+			}
+			break;
+		}
+
+		return cardId;
 	}
 
 	//Expands the deck array by 1 to allow for a new card being added to the deck.
